@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import ArticleCard from "@/components/ArticleCard";
 import HeroSection from "@/components/HeroSection";
 import IntroSection from "@/components/IntroSection";
+import NewsletterSection from "@/components/NewsletterSection";
 import { articles } from "@/data/articles";
 
 const Index = () => {
