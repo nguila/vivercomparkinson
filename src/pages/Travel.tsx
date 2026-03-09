@@ -2,9 +2,9 @@ import Header from "@/components/Header";
 import ArticleCard from "@/components/ArticleCard";
 import { articles } from "@/data/articles";
 
-const Travel = () => {
-  const travelArticles = articles.filter(article => 
-    article.category.toLowerCase() === "travel"
+const Saude = () => {
+  const saudeArticles = articles.filter(article => 
+    article.category.toLowerCase() === "saúde"
   );
 
   return (
@@ -12,21 +12,19 @@ const Travel = () => {
       <Header />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Hero Section */}
         <div className="mb-16 text-center space-y-6">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down">
-            Travel & Exploration
+            Saúde & Bem-Estar
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up stagger-1">
-            Journey through inspiring destinations, cultural insights, and mindful travel practices. 
-            Discover how to explore the world with intention, curiosity, and respect for local communities and environments.
+            Informação médica acessível sobre tratamentos, exercício físico, sono e nutrição. 
+            Conselhos práticos para melhorar a qualidade de vida com Parkinson.
           </p>
         </div>
 
-        {/* Articles Grid */}
         <section>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {travelArticles.map((article, index) => (
+            {saudeArticles.map((article, index) => (
               <div key={article.id} className={`animate-slide-up stagger-${Math.min(index + 2, 6)}`}>
                 <ArticleCard {...article} />
               </div>
@@ -34,20 +32,17 @@ const Travel = () => {
           </div>
         </section>
 
-        {/* Travel Philosophy */}
         <section className="mt-16 rounded-2xl bg-card p-8 md:p-12">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-6">Our Travel Philosophy</h2>
+            <h2 className="text-3xl font-bold mb-6">Informação de Confiança</h2>
             <div className="space-y-4 text-muted-foreground">
               <p>
-                Travel is more than visiting new places—it's about opening ourselves to new perspectives, cultures, 
-                and ways of being. We believe in slow, intentional travel that prioritizes meaningful connections 
-                over checking off bucket list items.
+                Todos os nossos artigos de saúde são revistos por profissionais médicos especializados em Parkinson. 
+                A informação aqui partilhada não substitui o aconselhamento médico, mas ajuda a compreender 
+                melhor a doença e as opções disponíveis.
               </p>
               <p>
-                Whether you're exploring your own backyard or venturing to distant lands, we share stories and 
-                insights that inspire mindful exploration, sustainable practices, and genuine cultural exchange. 
-                Join us in discovering that the journey itself is often the most valuable destination.
+                Consulte sempre o seu neurologista antes de fazer alterações ao seu tratamento ou rotina de exercício.
               </p>
             </div>
           </div>
@@ -57,4 +52,4 @@ const Travel = () => {
   );
 };
 
-export default Travel;
+export default Saude;
