@@ -347,6 +347,11 @@ export const articles: Article[] = [
       conclusion: "A medicação para Parkinson é uma ciência em constante evolução. Mantenha uma comunicação aberta com a sua equipa médica, não tenha medo de fazer perguntas, e lembre-se: o objetivo é encontrar o equilíbrio que lhe dê a melhor qualidade de vida possível.",
     },
     tags: ["medicação", "levodopa", "tratamento", "farmacologia"],
+    resources: [
+      { title: "Infarmed - Medicamentos", url: "https://www.infarmed.pt", description: "Autoridade Nacional do Medicamento - informação oficial sobre fármacos" },
+      { title: "Parkinson's Foundation - Medicação", url: "https://www.parkinson.org/understanding-parkinsons/treatment/prescription-medications", description: "Guia detalhado sobre medicamentos para Parkinson" },
+      { title: "SNS - Portal do Utente", url: "https://www.sns.gov.pt", description: "Serviço Nacional de Saúde - informação para utentes" },
+    ],
   },
   {
     id: "009",
