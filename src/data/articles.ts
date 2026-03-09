@@ -148,6 +148,10 @@ export const articles: Article[] = [
       conclusion: "Não deixe o Parkinson tirar-lhe o prazer de cozinhar. Com as adaptações certas e uma boa dose de criatividade, a cozinha pode continuar a ser o seu espaço de alegria e independência.",
     },
     tags: ["dia a dia", "cozinha", "adaptação", "autonomia"],
+    resources: [
+      { title: "Parkinson's Foundation - Dicas para o Dia a Dia", url: "https://www.parkinson.org/living-with-parkinsons/daily-activities", description: "Estratégias práticas para atividades diárias" },
+      { title: "APDPk - Terapia Ocupacional", url: "https://www.apparkinson.org", description: "Informação sobre terapia ocupacional e adaptações" },
+    ],
   },
   {
     id: "004",
