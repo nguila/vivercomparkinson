@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import ArticleCard from "@/components/ArticleCard";
 import HeroSection from "@/components/HeroSection";
 import IntroSection from "@/components/IntroSection";
+import NewsletterSection from "@/components/NewsletterSection";
 import { articles } from "@/data/articles";
 
 const Index = () => {
@@ -37,24 +38,7 @@ const Index = () => {
         </section>
 
         {/* Newsletter Section */}
-        <section className="my-20 rounded-[2.5rem] bg-card p-12 md:p-16 text-center animate-scale-in">
-          <div className="max-w-2xl mx-auto space-y-8">
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">Fique informado.</h2>
-            <p className="text-xl text-muted-foreground leading-relaxed">
-              Subscreva para receber as nossas últimas histórias, dicas e recursos diretamente no seu email.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="O seu email"
-                className="flex-1 px-6 py-4 rounded-full border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring transition-all"
-              />
-              <button className="px-10 py-4 rounded-full bg-primary text-primary-foreground font-medium hover:bg-primary/90 hover:scale-105 transition-all">
-                Subscrever
-              </button>
-            </div>
-          </div>
-        </section>
+        <NewsletterSection />
       </main>
 
       {/* Footer */}
