@@ -389,6 +389,11 @@ export const articles: Article[] = [
       conclusion: "A fisioterapia não é opcional — é essencial. Encontre um profissional que conheça o Parkinson, seja consistente nos exercícios e celebre cada pequena conquista. O movimento é liberdade.",
     },
     tags: ["fisioterapia", "reabilitação", "exercício", "equilíbrio"],
+    resources: [
+      { title: "LSVT BIG", url: "https://www.lsvtglobal.com/lsvt-big", description: "Programa de fisioterapia intensiva para Parkinson" },
+      { title: "PWR! Moves", url: "https://www.pwr4life.org", description: "Programa de exercício específico para Parkinson" },
+      { title: "Ordem dos Fisioterapeutas", url: "https://www.ordemdosfisioterapeutas.pt", description: "Encontre um fisioterapeuta especializado em Portugal" },
+    ],
   },
   {
     id: "010",
