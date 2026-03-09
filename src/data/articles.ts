@@ -474,6 +474,11 @@ export const articles: Article[] = [
       conclusion: "Manter o cérebro ativo é tão importante como manter o corpo em movimento. Escolha atividades que lhe dêem prazer, varie os estímulos, e partilhe estes momentos com outras pessoas. A mente agradece — e a alma também.",
     },
     tags: ["jogos mentais", "cognição", "estimulação", "tecnologia"],
+    resources: [
+      { title: "Lumosity", url: "https://www.lumosity.com", description: "Treino cognitivo personalizado com jogos científicos" },
+      { title: "Peak Brain Training", url: "https://www.peak.net", description: "App de exercícios mentais com mais de 40 jogos" },
+      { title: "BrainHQ", url: "https://www.brainhq.com", description: "Plataforma de treino cerebral baseada em neurociência" },
+    ],
   },
   {
     id: "012",
