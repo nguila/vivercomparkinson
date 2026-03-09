@@ -11,56 +11,60 @@ const About = () => {
         {/* Hero Section */}
         <div className="mb-16 text-center space-y-6">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down">
-            About Perspective
+            Sobre o Viver com Parkinson
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed animate-slide-up stagger-1">
-            A space for exploring ideas, finding inspiration, and discovering new ways of seeing the world.
+            Um espaço de partilha, informação e esperança para quem vive com a doença de Parkinson.
           </p>
         </div>
 
         {/* Story Section */}
         <section className="mb-16 space-y-6 text-muted-foreground animate-slide-up stagger-2">
-          <h2 className="text-3xl font-bold text-foreground mb-6">Our Story</h2>
+          <h2 className="text-3xl font-bold text-foreground mb-6">A Nossa História</h2>
           <p>
-            Perspective began with a simple question: What if we could create a space where thoughtful ideas, 
-            meaningful stories, and practical wisdom come together to enrich our daily lives?
+            O Viver com Parkinson nasceu de uma necessidade sentida: a de criar um espaço em português 
+            onde pessoas com Parkinson, os seus cuidadores e familiares possam encontrar informação fiável, 
+            histórias inspiradoras e uma comunidade de apoio.
           </p>
           <p>
-            In a world saturated with information, we felt the need for something different—a publication that 
-            prioritizes depth over speed, quality over quantity, and authentic connection over viral content. 
-            Perspective is our answer to that need.
+            Acreditamos que o diagnóstico de Parkinson não é o fim — é o início de uma nova forma de viver. 
+            Com informação adequada, apoio emocional e dicas práticas, é possível manter uma vida rica e significativa.
           </p>
           <p>
-            We explore topics that matter: wellness practices that actually work, travel experiences that transform 
-            us, creative pursuits that bring joy, and personal growth strategies that lead to lasting change. 
-            Our approach is grounded in curiosity, backed by research, and enriched by lived experience.
+            A nossa equipa é composta por profissionais de saúde, cuidadores experientes e pessoas que vivem 
+            com Parkinson. Cada artigo é escrito com rigor científico e sensibilidade humana, porque sabemos 
+            que por trás de cada diagnóstico há uma pessoa com medos, esperanças e muita força.
           </p>
         </section>
 
         {/* Mission Section */}
         <section className="mb-16 rounded-2xl bg-card p-8 md:p-12">
-          <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
+          <h2 className="text-3xl font-bold mb-6">A Nossa Missão</h2>
           <div className="space-y-4 text-muted-foreground">
             <p>
-              We believe that how we see the world shapes how we experience it. Perspective is dedicated to 
-              offering fresh viewpoints, practical insights, and inspiring stories that help readers:
+              Queremos ser a referência em língua portuguesa para quem vive com Parkinson. 
+              A nossa missão é:
             </p>
             <ul className="space-y-3 ml-6">
               <li className="flex items-start">
                 <span className="mr-3 mt-1">•</span>
-                <span>Cultivate mindful, balanced lifestyles that prioritize wellbeing</span>
+                <span>Partilhar histórias reais que inspiram e dão esperança</span>
               </li>
               <li className="flex items-start">
                 <span className="mr-3 mt-1">•</span>
-                <span>Explore the world with curiosity and respect</span>
+                <span>Oferecer dicas práticas para o dia a dia com Parkinson</span>
               </li>
               <li className="flex items-start">
                 <span className="mr-3 mt-1">•</span>
-                <span>Express themselves authentically through creative pursuits</span>
+                <span>Informar sobre tratamentos, investigação e novidades médicas</span>
               </li>
               <li className="flex items-start">
                 <span className="mr-3 mt-1">•</span>
-                <span>Embrace personal growth as a lifelong journey</span>
+                <span>Criar uma comunidade solidária e acolhedora</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-3 mt-1">•</span>
+                <span>Apoiar cuidadores e familiares na sua jornada</span>
               </li>
             </ul>
           </div>
@@ -68,30 +72,30 @@ const About = () => {
 
         {/* Values Section */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Our Values</h2>
+          <h2 className="text-3xl font-bold mb-8">Os Nossos Valores</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="p-6 rounded-xl bg-muted">
-              <h3 className="text-xl font-semibold mb-3">Authenticity</h3>
+              <h3 className="text-xl font-semibold mb-3">Empatia</h3>
               <p className="text-muted-foreground">
-                We share real experiences, honest reflections, and genuine insights—not curated perfection.
+                Cada pessoa é única e cada jornada com Parkinson é diferente. Ouvimos, compreendemos e respeitamos.
               </p>
             </div>
             <div className="p-6 rounded-xl bg-muted">
-              <h3 className="text-xl font-semibold mb-3">Thoughtfulness</h3>
+              <h3 className="text-xl font-semibold mb-3">Rigor</h3>
               <p className="text-muted-foreground">
-                Every article is carefully researched, thoughtfully written, and designed to add real value.
+                A informação que partilhamos é baseada em evidência científica e revista por profissionais de saúde.
               </p>
             </div>
             <div className="p-6 rounded-xl bg-muted">
-              <h3 className="text-xl font-semibold mb-3">Inclusivity</h3>
+              <h3 className="text-xl font-semibold mb-3">Esperança</h3>
               <p className="text-muted-foreground">
-                We welcome diverse perspectives and believe everyone's journey deserves respect and representation.
+                Acreditamos que é possível viver bem com Parkinson. Cada história partilhada é uma semente de esperança.
               </p>
             </div>
             <div className="p-6 rounded-xl bg-muted">
-              <h3 className="text-xl font-semibold mb-3">Sustainability</h3>
+              <h3 className="text-xl font-semibold mb-3">Comunidade</h3>
               <p className="text-muted-foreground">
-                We promote practices that are sustainable for individuals, communities, and the planet.
+                Ninguém precisa de enfrentar o Parkinson sozinho. Juntos somos mais fortes.
               </p>
             </div>
           </div>
@@ -99,13 +103,13 @@ const About = () => {
 
         {/* CTA Section */}
         <section className="text-center py-12 rounded-2xl bg-card">
-          <h2 className="text-3xl font-bold mb-4">Join Our Community</h2>
+          <h2 className="text-3xl font-bold mb-4">Junte-se à Nossa Comunidade</h2>
           <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Subscribe to receive our latest articles, insights, and inspiration directly in your inbox.
+            Subscreva para receber as nossas últimas histórias, dicas e recursos diretamente no seu email.
           </p>
           <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8">
             <Mail className="mr-2 h-4 w-4" />
-            Subscribe Now
+            Subscrever
           </Button>
         </section>
       </main>
