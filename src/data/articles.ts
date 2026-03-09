@@ -431,6 +431,12 @@ export const articles: Article[] = [
       conclusion: "Conhecer os seus direitos é um passo importante para viver com mais dignidade e menos preocupações financeiras. Não hesite em procurar apoio jurídico e social — há recursos disponíveis que muitos desconhecem. A Associação Portuguesa de Doentes de Parkinson pode orientá-lo.",
     },
     tags: ["direitos", "apoios sociais", "legislação", "incapacidade"],
+    resources: [
+      { title: "Segurança Social - Prestações", url: "https://www.seg-social.pt", description: "Portal da Segurança Social - informação sobre prestações e apoios" },
+      { title: "DECO - Direitos dos Doentes", url: "https://www.deco.proteste.pt", description: "Associação de defesa do consumidor - direitos na saúde" },
+      { title: "Junta Médica - Atestado Multiusos", url: "https://www.sns.gov.pt", description: "Como requerer o Atestado Médico de Incapacidade Multiusos" },
+      { title: "Portal do Cidadão", url: "https://eportugal.gov.pt", description: "Serviços públicos e informação sobre direitos" },
+    ],
   },
   {
     id: "011",
