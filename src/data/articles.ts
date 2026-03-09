@@ -20,6 +20,11 @@ export interface Article {
     conclusion: string;
   };
   tags: string[];
+  resources?: {
+    title: string;
+    url: string;
+    description: string;
+  }[];
 }
 
 export const articles: Article[] = [

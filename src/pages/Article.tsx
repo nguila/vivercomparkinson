@@ -2,7 +2,7 @@ import { useParams, Navigate } from "react-router-dom";
 import Header from "@/components/Header";
 import ArticleCard from "@/components/ArticleCard";
 import { getArticleById, getRelatedArticles } from "@/data/articles";
-import { Facebook, Twitter, Linkedin, Link2, ArrowLeft } from "lucide-react";
+import { Facebook, Twitter, Linkedin, Link2, ArrowLeft, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 
@@ -18,18 +18,15 @@ const Article = () => {
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(window.location.href);
-    toast.success("Link copied to clipboard!");
+    toast.success("Link copiado!");
   };
 
   const getCategoryClass = (cat: string) => {
     const normalized = cat.toLowerCase();
-    if (normalized.includes("financ")) return "tag-financing";
-    if (normalized.includes("lifestyle")) return "tag-lifestyle";
-    if (normalized.includes("community")) return "tag-community";
-    if (normalized.includes("wellness")) return "tag-wellness";
-    if (normalized.includes("travel")) return "tag-travel";
-    if (normalized.includes("creativ")) return "tag-creativity";
-    if (normalized.includes("growth")) return "tag-growth";
+    if (normalized.includes("histór")) return "tag-wellness";
+    if (normalized.includes("saúde")) return "tag-travel";
+    if (normalized.includes("dia")) return "tag-creativity";
+    if (normalized.includes("comunidade")) return "tag-growth";
     return "tag-lifestyle";
   };
 
@@ -38,18 +35,16 @@ const Article = () => {
       <Header />
       
       <main>
-        {/* Back Navigation */}
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <a
             href="/"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors"
           >
             <ArrowLeft className="w-4 h-4" />
-            Back to articles
+            Voltar aos artigos
           </a>
         </div>
 
-        {/* Hero Image */}
         <div className="relative w-full h-[400px] md:h-[500px] lg:h-[600px] mb-12">
           <img
             src={article.image}
@@ -60,7 +55,6 @@ const Article = () => {
         </div>
 
         <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-32 relative z-10">
-          {/* Article Header */}
           <div className="mb-12 animate-slide-up">
             <div className="flex items-center gap-3 mb-6">
               <span className={`px-4 py-2 rounded-full text-sm font-medium ${getCategoryClass(article.category)}`}>
@@ -68,7 +62,7 @@ const Article = () => {
               </span>
               <span className="text-sm text-muted-foreground">{article.date}</span>
               <span className="text-sm text-muted-foreground">•</span>
-              <span className="text-sm text-muted-foreground">{article.readTime} read</span>
+              <span className="text-sm text-muted-foreground">{article.readTime} de leitura</span>
             </div>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight">
@@ -79,7 +73,6 @@ const Article = () => {
               {article.subtitle}
             </p>
 
-            {/* Author Info */}
             <div className="flex items-center justify-between border-t border-b border-border py-6">
               <div className="flex items-center gap-4">
                 <img
@@ -93,12 +86,11 @@ const Article = () => {
                 </div>
               </div>
 
-              {/* Share Buttons */}
               <div className="hidden md:flex items-center gap-2">
                 <button
                   onClick={handleCopyLink}
                   className="w-10 h-10 rounded-full border border-border hover:border-primary hover:bg-muted transition-all flex items-center justify-center"
-                  aria-label="Copy link"
+                  aria-label="Copiar link"
                 >
                   <Link2 className="w-4 h-4" />
                 </button>
@@ -107,7 +99,7 @@ const Article = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full border border-border hover:border-primary hover:bg-muted transition-all flex items-center justify-center"
-                  aria-label="Share on Twitter"
+                  aria-label="Partilhar no Twitter"
                 >
                   <Twitter className="w-4 h-4" />
                 </a>
@@ -116,7 +108,7 @@ const Article = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full border border-border hover:border-primary hover:bg-muted transition-all flex items-center justify-center"
-                  aria-label="Share on Facebook"
+                  aria-label="Partilhar no Facebook"
                 >
                   <Facebook className="w-4 h-4" />
                 </a>
@@ -125,7 +117,7 @@ const Article = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-10 h-10 rounded-full border border-border hover:border-primary hover:bg-muted transition-all flex items-center justify-center"
-                  aria-label="Share on LinkedIn"
+                  aria-label="Partilhar no LinkedIn"
                 >
                   <Linkedin className="w-4 h-4" />
                 </a>
@@ -135,25 +127,49 @@ const Article = () => {
 
           {/* Article Content */}
           <div className="prose prose-lg max-w-none mb-16 animate-slide-up stagger-2">
-            <p className="text-lg leading-relaxed text-muted-foreground mb-8">
+            <p className="text-lg leading-relaxed text-muted-foreground mb-8 whitespace-pre-line">
               {article.content.introduction}
             </p>
 
             {article.content.sections.map((section, index) => (
               <div key={index} className="mb-10">
                 <h2 className="text-3xl font-bold mb-4">{section.heading}</h2>
-                <p className="text-lg leading-relaxed text-muted-foreground">
+                <p className="text-lg leading-relaxed text-muted-foreground whitespace-pre-line">
                   {section.content}
                 </p>
               </div>
             ))}
 
             <div className="mt-12 p-6 rounded-2xl bg-muted border-l-4 border-accent">
-              <p className="text-lg leading-relaxed italic text-foreground">
+              <p className="text-lg leading-relaxed italic text-foreground whitespace-pre-line">
                 {article.content.conclusion}
               </p>
             </div>
           </div>
+
+          {/* Resources */}
+          {article.resources && article.resources.length > 0 && (
+            <div className="mb-12 p-6 rounded-2xl bg-card border border-border">
+              <h3 className="text-xl font-bold mb-4">📚 Recursos Úteis</h3>
+              <div className="space-y-3">
+                {article.resources.map((resource, index) => (
+                  <a
+                    key={index}
+                    href={resource.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-start gap-3 p-3 rounded-lg hover:bg-muted transition-colors group"
+                  >
+                    <ExternalLink className="w-4 h-4 mt-1 text-primary flex-shrink-0" />
+                    <div>
+                      <p className="font-medium group-hover:text-primary transition-colors">{resource.title}</p>
+                      <p className="text-sm text-muted-foreground">{resource.description}</p>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Tags */}
           <div className="mb-12 pb-12 border-b border-border">
@@ -169,23 +185,23 @@ const Article = () => {
             </div>
           </div>
 
-          {/* Mobile Share Buttons */}
+          {/* Mobile Share */}
           <div className="md:hidden mb-12 pb-12 border-b border-border">
-            <p className="text-sm font-semibold mb-4">Share this article</p>
+            <p className="text-sm font-semibold mb-4">Partilhar este artigo</p>
             <div className="flex items-center gap-3">
               <button
                 onClick={handleCopyLink}
                 className="flex-1 py-3 rounded-full border border-border hover:border-primary hover:bg-muted transition-all flex items-center justify-center gap-2"
               >
                 <Link2 className="w-4 h-4" />
-                <span className="text-sm">Copy link</span>
+                <span className="text-sm">Copiar link</span>
               </button>
               <a
                 href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(article.title)}&url=${encodeURIComponent(window.location.href)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 rounded-full border border-border hover:border-primary hover:bg-muted transition-all flex items-center justify-center"
-                aria-label="Share on Twitter"
+                aria-label="Partilhar no Twitter"
               >
                 <Twitter className="w-4 h-4" />
               </a>
@@ -194,7 +210,7 @@ const Article = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 rounded-full border border-border hover:border-primary hover:bg-muted transition-all flex items-center justify-center"
-                aria-label="Share on Facebook"
+                aria-label="Partilhar no Facebook"
               >
                 <Facebook className="w-4 h-4" />
               </a>
@@ -206,7 +222,7 @@ const Article = () => {
         {/* Related Articles */}
         <section className="bg-muted py-16 animate-fade-in">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold mb-8 animate-slide-up">You might also like</h2>
+            <h2 className="text-3xl font-bold mb-8 animate-slide-up">Também pode gostar</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {relatedArticles.map((relatedArticle, index) => (
                 <div key={relatedArticle.id} className={`animate-slide-up stagger-${Math.min(index + 1, 3)}`}>
