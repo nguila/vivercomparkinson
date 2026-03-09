@@ -1,8 +1,8 @@
 import Header from "@/components/Header";
-import { Mail, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { toast } from "sonner";
+import { sendEmail } from "@/lib/api/email";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -13,23 +13,27 @@ const Contact = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const mailtoLink = `mailto:jonenguila@gmail.com?subject=${encodeURIComponent(
-      `[Viver com Parkinson] ${formData.subject}`
-    )}&body=${encodeURIComponent(
-      `Nome: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
-    )}`;
+    try {
+      const result = await sendEmail({
+        ...formData,
+        type: 'contact',
+      });
 
-    window.location.href = mailtoLink;
-
-    setTimeout(() => {
-      toast.success("O seu cliente de email foi aberto. Envie a mensagem a partir daí.");
-      setFormData({ name: "", email: "", subject: "", message: "" });
+      if (result.success) {
+        toast.success("Mensagem enviada com sucesso! Responderemos em breve.");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        toast.error(result.error || "Erro ao enviar mensagem. Tente novamente.");
+      }
+    } catch {
+      toast.error("Erro ao enviar mensagem. Tente novamente.");
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -53,7 +57,7 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="max-w-2xl mx-auto">
           <div className="rounded-2xl bg-card p-8">
             <h2 className="text-2xl font-bold mb-6">Envie-nos uma mensagem</h2>
             <form onSubmit={handleSubmit} className="space-y-6 animate-slide-up stagger-2">
@@ -66,6 +70,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
+                  maxLength={100}
                   className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring"
                   placeholder="O seu nome"
                 />
@@ -79,6 +84,7 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
+                  maxLength={255}
                   className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring"
                   placeholder="o.seu@email.com"
                 />
@@ -92,6 +98,7 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
+                  maxLength={200}
                   className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring"
                   placeholder="Sobre o que deseja falar?"
                 />
@@ -104,6 +111,7 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
+                  maxLength={2000}
                   rows={6}
                   className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring resize-none"
                   placeholder="Escreva aqui a sua mensagem..."
@@ -114,69 +122,31 @@ const Contact = () => {
                 disabled={isSubmitting}
                 className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full py-6"
               >
-                {isSubmitting ? "A abrir email..." : "Enviar Mensagem"}
+                {isSubmitting ? "A enviar..." : "Enviar Mensagem"}
               </Button>
             </form>
           </div>
 
-          <div className="space-y-8">
-            <div className="rounded-2xl bg-card p-8">
-              <h2 className="text-2xl font-bold mb-6">Informações de Contacto</h2>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Email</h3>
-                    <p className="text-muted-foreground">jonenguila@gmail.com</p>
-                    <p className="text-muted-foreground text-sm">Respondemos em 24 horas</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Localização</h3>
-                    <p className="text-muted-foreground">Portugal</p>
-                    <p className="text-muted-foreground text-sm">Comunidade online</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Linha de Apoio APDPk</h3>
-                    <p className="text-muted-foreground">+351 21 355 8640</p>
-                    <p className="text-muted-foreground text-sm">Associação Portuguesa de Doentes de Parkinson</p>
-                  </div>
-                </div>
+          <div className="mt-8 rounded-2xl bg-muted p-8">
+            <h3 className="text-xl font-bold mb-4">Perguntas Frequentes</h3>
+            <div className="space-y-4 text-sm">
+              <div>
+                <h4 className="font-semibold mb-1">Posso partilhar a minha história?</h4>
+                <p className="text-muted-foreground">
+                  Sim! Encorajamos partilhas de experiências. Use o formulário acima para nos enviar a sua história.
+                </p>
               </div>
-            </div>
-
-            <div className="rounded-2xl bg-muted p-8">
-              <h3 className="text-xl font-bold mb-4">Perguntas Frequentes</h3>
-              <div className="space-y-4 text-sm">
-                <div>
-                  <h4 className="font-semibold mb-1">Posso partilhar a minha história?</h4>
-                  <p className="text-muted-foreground">
-                    Sim! Encorajamos partilhas de experiências. Use o formulário para nos enviar a sua história.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-1">Sou profissional de saúde. Posso contribuir?</h4>
-                  <p className="text-muted-foreground">
-                    Com certeza. Valorizamos contribuições de neurologistas, fisioterapeutas e outros profissionais.
-                  </p>
-                </div>
-                <div>
-                  <h4 className="font-semibold mb-1">Onde encontro apoio presencial?</h4>
-                  <p className="text-muted-foreground">
-                    A APDPk tem núcleos em várias cidades. Visite apparkinson.org para encontrar o mais perto de si.
-                  </p>
-                </div>
+              <div>
+                <h4 className="font-semibold mb-1">Sou profissional de saúde. Posso contribuir?</h4>
+                <p className="text-muted-foreground">
+                  Com certeza. Valorizamos contribuições de neurologistas, fisioterapeutas e outros profissionais.
+                </p>
+              </div>
+              <div>
+                <h4 className="font-semibold mb-1">Onde encontro apoio presencial?</h4>
+                <p className="text-muted-foreground">
+                  A APDPk tem núcleos em várias cidades. Visite <a href="https://www.apparkinson.org" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">apparkinson.org</a> para encontrar o mais perto de si.
+                </p>
               </div>
             </div>
           </div>

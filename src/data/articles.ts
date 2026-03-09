@@ -20,6 +20,11 @@ export interface Article {
     conclusion: string;
   };
   tags: string[];
+  resources?: {
+    title: string;
+    url: string;
+    description: string;
+  }[];
 }
 
 export const articles: Article[] = [
@@ -59,6 +64,11 @@ export const articles: Article[] = [
       conclusion: "Se pudesse dizer algo a quem acabou de receber o diagnóstico, seria isto: permita-se sentir medo, mas não deixe o medo definir a sua vida. Há muito para viver, muito para descobrir, e muito amor para receber e dar. O Parkinson é parte da minha história, mas não é toda a minha história.",
     },
     tags: ["parkinson", "diagnóstico", "resiliência", "história pessoal"],
+    resources: [
+      { title: "APDPk - Associação Portuguesa de Doentes de Parkinson", url: "https://www.apparkinson.org", description: "Apoio, informação e grupos de suporte em Portugal" },
+      { title: "European Parkinson's Disease Association", url: "https://www.epda.eu.com", description: "Recursos europeus sobre Parkinson" },
+      { title: "Parkinson's Foundation", url: "https://www.parkinson.org", description: "Informação científica e recursos para doentes e famílias" },
+    ],
   },
   {
     id: "002",
@@ -96,6 +106,11 @@ export const articles: Article[] = [
       conclusion: "O exercício não é uma cura, mas é uma das melhores prescrições que podemos dar a quem vive com Parkinson. Mexa-se ao seu ritmo, encontre atividades que lhe dêem prazer, e lembre-se: cada passo conta.",
     },
     tags: ["exercício", "saúde", "movimento", "qualidade de vida"],
+    resources: [
+      { title: "Parkinson's Foundation - Exercício", url: "https://www.parkinson.org/living-with-parkinsons/exercise", description: "Guia completo de exercícios para Parkinson" },
+      { title: "LSVT Global - Programas BIG & LOUD", url: "https://www.lsvtglobal.com", description: "Programas de exercício especializados para Parkinson" },
+      { title: "Dance for PD", url: "https://danceforpd.org", description: "Programa internacional de dança para pessoas com Parkinson" },
+    ],
   },
   {
     id: "003",
@@ -133,6 +148,10 @@ export const articles: Article[] = [
       conclusion: "Não deixe o Parkinson tirar-lhe o prazer de cozinhar. Com as adaptações certas e uma boa dose de criatividade, a cozinha pode continuar a ser o seu espaço de alegria e independência.",
     },
     tags: ["dia a dia", "cozinha", "adaptação", "autonomia"],
+    resources: [
+      { title: "Parkinson's Foundation - Dicas para o Dia a Dia", url: "https://www.parkinson.org/living-with-parkinsons/daily-activities", description: "Estratégias práticas para atividades diárias" },
+      { title: "APDPk - Terapia Ocupacional", url: "https://www.apparkinson.org", description: "Informação sobre terapia ocupacional e adaptações" },
+    ],
   },
   {
     id: "004",
@@ -170,6 +189,11 @@ export const articles: Article[] = [
       conclusion: "Cuidar de alguém com Parkinson é um dos atos mais generosos que alguém pode fazer. Mas para cuidar bem, é preciso estar bem. Não tenha vergonha de pedir ajuda — merece-a tanto quanto a pessoa de quem cuida.",
     },
     tags: ["cuidador", "comunidade", "saúde mental", "apoio"],
+    resources: [
+      { title: "Cuidadores de Portugal", url: "https://cuidadores.pt", description: "Rede nacional de apoio a cuidadores informais" },
+      { title: "Linha do Cuidador - SNS 24", url: "https://www.sns24.gov.pt", description: "Linha de apoio do Serviço Nacional de Saúde: 808 24 24 24" },
+      { title: "EPDA - Guia para Cuidadores", url: "https://www.epda.eu.com/living-well/caring-and-parkinsons/", description: "Recursos europeus para cuidadores de pessoas com Parkinson" },
+    ],
   },
   {
     id: "005",
@@ -281,6 +305,11 @@ export const articles: Article[] = [
       conclusion: "A alimentação não cura o Parkinson, mas uma dieta bem planeada pode melhorar a eficácia da medicação, aliviar sintomas e aumentar a energia e bem-estar. Consulte um nutricionista que conheça a doença para um plano personalizado.",
     },
     tags: ["alimentação", "nutrição", "levodopa", "dieta"],
+    resources: [
+      { title: "Parkinson's Foundation - Nutrição", url: "https://www.parkinson.org/living-with-parkinsons/diet-nutrition", description: "Guia completo sobre alimentação e Parkinson" },
+      { title: "Michael J. Fox Foundation", url: "https://www.michaeljfox.org/news/parkinsons-disease-diet", description: "Investigação sobre dieta e Parkinson" },
+      { title: "Ordem dos Nutricionistas", url: "https://www.ordemdosnutricionistas.pt", description: "Encontre um nutricionista em Portugal" },
+    ],
   },
   {
     id: "008",
@@ -318,6 +347,11 @@ export const articles: Article[] = [
       conclusion: "A medicação para Parkinson é uma ciência em constante evolução. Mantenha uma comunicação aberta com a sua equipa médica, não tenha medo de fazer perguntas, e lembre-se: o objetivo é encontrar o equilíbrio que lhe dê a melhor qualidade de vida possível.",
     },
     tags: ["medicação", "levodopa", "tratamento", "farmacologia"],
+    resources: [
+      { title: "Infarmed - Medicamentos", url: "https://www.infarmed.pt", description: "Autoridade Nacional do Medicamento - informação oficial sobre fármacos" },
+      { title: "Parkinson's Foundation - Medicação", url: "https://www.parkinson.org/understanding-parkinsons/treatment/prescription-medications", description: "Guia detalhado sobre medicamentos para Parkinson" },
+      { title: "SNS - Portal do Utente", url: "https://www.sns.gov.pt", description: "Serviço Nacional de Saúde - informação para utentes" },
+    ],
   },
   {
     id: "009",
@@ -355,6 +389,11 @@ export const articles: Article[] = [
       conclusion: "A fisioterapia não é opcional — é essencial. Encontre um profissional que conheça o Parkinson, seja consistente nos exercícios e celebre cada pequena conquista. O movimento é liberdade.",
     },
     tags: ["fisioterapia", "reabilitação", "exercício", "equilíbrio"],
+    resources: [
+      { title: "LSVT BIG", url: "https://www.lsvtglobal.com/lsvt-big", description: "Programa de fisioterapia intensiva para Parkinson" },
+      { title: "PWR! Moves", url: "https://www.pwr4life.org", description: "Programa de exercício específico para Parkinson" },
+      { title: "Ordem dos Fisioterapeutas", url: "https://www.ordemdosfisioterapeutas.pt", description: "Encontre um fisioterapeuta especializado em Portugal" },
+    ],
   },
   {
     id: "010",
@@ -392,6 +431,12 @@ export const articles: Article[] = [
       conclusion: "Conhecer os seus direitos é um passo importante para viver com mais dignidade e menos preocupações financeiras. Não hesite em procurar apoio jurídico e social — há recursos disponíveis que muitos desconhecem. A Associação Portuguesa de Doentes de Parkinson pode orientá-lo.",
     },
     tags: ["direitos", "apoios sociais", "legislação", "incapacidade"],
+    resources: [
+      { title: "Segurança Social - Prestações", url: "https://www.seg-social.pt", description: "Portal da Segurança Social - informação sobre prestações e apoios" },
+      { title: "DECO - Direitos dos Doentes", url: "https://www.deco.proteste.pt", description: "Associação de defesa do consumidor - direitos na saúde" },
+      { title: "Junta Médica - Atestado Multiusos", url: "https://www.sns.gov.pt", description: "Como requerer o Atestado Médico de Incapacidade Multiusos" },
+      { title: "Portal do Cidadão", url: "https://eportugal.gov.pt", description: "Serviços públicos e informação sobre direitos" },
+    ],
   },
   {
     id: "011",
@@ -429,6 +474,11 @@ export const articles: Article[] = [
       conclusion: "Manter o cérebro ativo é tão importante como manter o corpo em movimento. Escolha atividades que lhe dêem prazer, varie os estímulos, e partilhe estes momentos com outras pessoas. A mente agradece — e a alma também.",
     },
     tags: ["jogos mentais", "cognição", "estimulação", "tecnologia"],
+    resources: [
+      { title: "Lumosity", url: "https://www.lumosity.com", description: "Treino cognitivo personalizado com jogos científicos" },
+      { title: "Peak Brain Training", url: "https://www.peak.net", description: "App de exercícios mentais com mais de 40 jogos" },
+      { title: "BrainHQ", url: "https://www.brainhq.com", description: "Plataforma de treino cerebral baseada em neurociência" },
+    ],
   },
   {
     id: "012",
@@ -466,6 +516,12 @@ export const articles: Article[] = [
       conclusion: "Cuidar da mente é tão importante como cuidar do corpo. A depressão e a ansiedade são tratáveis, e não precisa de enfrentá-las sozinho. Procure ajuda, aceite apoio, e lembre-se: a sua saúde emocional merece toda a atenção.",
     },
     tags: ["saúde mental", "depressão", "ansiedade", "gestão emocional"],
+    resources: [
+      { title: "Ordem dos Psicólogos Portugueses", url: "https://www.ordemdospsicologos.pt", description: "Encontre um psicólogo em Portugal" },
+      { title: "SOS Voz Amiga", url: "https://www.sosvozamiga.org", description: "Linha de apoio emocional: 213 544 545 (diariamente 15h30-00h30)" },
+      { title: "SNS 24 - Saúde Mental", url: "https://www.sns24.gov.pt", description: "Aconselhamento de saúde mental: 808 24 24 24" },
+      { title: "Headspace", url: "https://www.headspace.com", description: "App de meditação guiada para gestão de ansiedade" },
+    ],
   },
   {
     id: "013",
