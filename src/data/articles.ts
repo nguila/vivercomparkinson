@@ -516,6 +516,12 @@ export const articles: Article[] = [
       conclusion: "Cuidar da mente é tão importante como cuidar do corpo. A depressão e a ansiedade são tratáveis, e não precisa de enfrentá-las sozinho. Procure ajuda, aceite apoio, e lembre-se: a sua saúde emocional merece toda a atenção.",
     },
     tags: ["saúde mental", "depressão", "ansiedade", "gestão emocional"],
+    resources: [
+      { title: "Ordem dos Psicólogos Portugueses", url: "https://www.ordemdospsicologos.pt", description: "Encontre um psicólogo em Portugal" },
+      { title: "SOS Voz Amiga", url: "https://www.sosvozamiga.org", description: "Linha de apoio emocional: 213 544 545 (diariamente 15h30-00h30)" },
+      { title: "SNS 24 - Saúde Mental", url: "https://www.sns24.gov.pt", description: "Aconselhamento de saúde mental: 808 24 24 24" },
+      { title: "Headspace", url: "https://www.headspace.com", description: "App de meditação guiada para gestão de ansiedade" },
+    ],
   },
   {
     id: "013",
