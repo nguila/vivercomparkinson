@@ -12,14 +12,11 @@ interface ArticleCardProps {
 const ArticleCard = ({ id, title, category, date, image, size = "small" }: ArticleCardProps) => {
   const getCategoryClass = (cat: string) => {
     const normalized = cat.toLowerCase();
-    if (normalized.includes("financ")) return "tag-financing";
-    if (normalized.includes("lifestyle")) return "tag-lifestyle";
-    if (normalized.includes("community")) return "tag-community";
-    if (normalized.includes("wellness")) return "tag-wellness";
-    if (normalized.includes("travel")) return "tag-travel";
-    if (normalized.includes("creativ")) return "tag-creativity";
-    if (normalized.includes("growth")) return "tag-growth";
-    return "tag-lifestyle";
+    if (normalized.includes("histór") || normalized.includes("histor")) return "tag-historias";
+    if (normalized.includes("saúde") || normalized.includes("saude")) return "tag-saude";
+    if (normalized.includes("dia")) return "tag-diadia";
+    if (normalized.includes("comunidade")) return "tag-comunidade";
+    return "tag-historias";
   };
 
   return (
@@ -52,10 +49,9 @@ const ArticleCard = ({ id, title, category, date, image, size = "small" }: Artic
             </span>
           </div>
 
-          {/* Bottom section - Title and Arrow */}
+          {/* Bottom section - Title */}
           <div className="flex items-end justify-between gap-4">
             <div className="flex-1">
-              <span className="text-white/50 text-xs font-medium tracking-wider block mb-3">{id}</span>
               <h3 className="text-white text-xl md:text-2xl lg:text-3xl font-bold leading-tight tracking-tight">
                 {title}
               </h3>
@@ -63,7 +59,7 @@ const ArticleCard = ({ id, title, category, date, image, size = "small" }: Artic
           </div>
         </div>
 
-        {/* Floating circular arrow button - positioned outside content overlay */}
+        {/* Floating circular arrow button */}
         <div className="absolute bottom-6 right-6 floating-button">
           <ArrowUpRight className="w-5 h-5" />
         </div>

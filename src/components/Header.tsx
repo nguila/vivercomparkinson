@@ -38,28 +38,28 @@ const Header = () => {
           <div className="flex items-center min-w-0">
             <a href="/" className="flex items-center gap-1.5 sm:gap-2">
               <div className="w-7 h-7 sm:w-8 sm:h-8 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-primary-foreground font-bold text-base sm:text-lg">P</span>
+                <span className="text-primary-foreground font-bold text-base sm:text-lg">VP</span>
               </div>
-              <span className="text-base sm:text-xl font-bold font-serif truncate">Perspective</span>
+              <span className="text-base sm:text-xl font-bold font-serif truncate">Viver com Parkinson</span>
             </a>
           </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-2">
             <a href="/" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
-              Home
+              Início
             </a>
             <a href="/#articles" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
-              Articles
+              Artigos
             </a>
-            <a href="/wellness" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
-              Wellness
+            <a href="/historias" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
+              Histórias
             </a>
-            <a href="/travel" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
-              Travel
+            <a href="/saude" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
+              Saúde
             </a>
             <a href="/about" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
-              About
+              Sobre
             </a>
           </nav>
 
@@ -68,7 +68,7 @@ const Header = () => {
             <button
               onClick={toggleTheme}
               className="p-1.5 sm:p-2 rounded-full hover:bg-muted/60 transition-all"
-              aria-label="Toggle theme"
+              aria-label="Alternar tema"
             >
               {isDark ? (
                 <Sun className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -78,14 +78,14 @@ const Header = () => {
             </button>
             
             <Button className="hidden md:flex bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-2 hover:scale-105 transition-all">
-              Join Now
+              Subscrever
             </Button>
 
             {/* Mobile Menu Button */}
             <button
               className="md:hidden p-1.5 sm:p-2"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
+              aria-label="Abrir menu"
             >
               {isMenuOpen ? <X className="h-5 w-5 sm:h-6 sm:w-6" /> : <Menu className="h-5 w-5 sm:h-6 sm:w-6" />}
             </button>
@@ -97,22 +97,22 @@ const Header = () => {
           <div className="md:hidden py-4 border-t border-border animate-fade-in">
             <nav className="flex flex-col gap-4">
               <a href="/" className="text-sm font-medium hover:text-accent transition-colors">
-                Home
+                Início
               </a>
               <a href="/#articles" className="text-sm font-medium hover:text-accent transition-colors">
-                Articles
+                Artigos
               </a>
-              <a href="/wellness" className="text-sm font-medium hover:text-accent transition-colors">
-                Wellness
+              <a href="/historias" className="text-sm font-medium hover:text-accent transition-colors">
+                Histórias
               </a>
-              <a href="/travel" className="text-sm font-medium hover:text-accent transition-colors">
-                Travel
+              <a href="/saude" className="text-sm font-medium hover:text-accent transition-colors">
+                Saúde
               </a>
               <a href="/about" className="text-sm font-medium hover:text-accent transition-colors">
-                About
+                Sobre
               </a>
               <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full w-full">
-                Join Now
+                Subscrever
               </Button>
             </nav>
           </div>

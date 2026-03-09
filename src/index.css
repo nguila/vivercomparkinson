@@ -2,102 +2,93 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Design system for Viver com Parkinson - Calming teal/sage palette */
 
 @layer base {
   :root {
-    /* Warm, sophisticated palette inspired by the design */
-    --background: 36 44% 96%;
-    --foreground: 0 0% 18%;
+    --background: 180 20% 97%;
+    --foreground: 200 25% 15%;
 
-    --card: 33 40% 94%;
-    --card-foreground: 0 0% 18%;
+    --card: 180 15% 94%;
+    --card-foreground: 200 25% 15%;
 
-    --popover: 36 44% 96%;
-    --popover-foreground: 0 0% 18%;
+    --popover: 180 20% 97%;
+    --popover-foreground: 200 25% 15%;
 
-    --primary: 0 0% 18%;
-    --primary-foreground: 36 44% 96%;
+    --primary: 175 35% 35%;
+    --primary-foreground: 180 20% 97%;
 
-    --secondary: 25 30% 70%;
-    --secondary-foreground: 0 0% 18%;
+    --secondary: 160 20% 70%;
+    --secondary-foreground: 200 25% 15%;
 
-    --muted: 33 30% 88%;
-    --muted-foreground: 0 0% 40%;
+    --muted: 175 15% 90%;
+    --muted-foreground: 200 10% 45%;
 
-    --accent: 140 20% 50%;
-    --accent-foreground: 36 44% 96%;
+    --accent: 175 40% 42%;
+    --accent-foreground: 180 20% 97%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 36 44% 96%;
+    --destructive-foreground: 180 20% 97%;
 
-    --border: 33 25% 85%;
-    --input: 33 25% 85%;
-    --ring: 0 0% 18%;
+    --border: 175 15% 85%;
+    --input: 175 15% 85%;
+    --ring: 175 35% 35%;
 
     --radius: 1rem;
 
-    /* Custom design tokens */
-    --tag-financing: 210 50% 75%;
-    --tag-lifestyle: 140 20% 70%;
-    --tag-community: 25 35% 60%;
-    --tag-wellness: 280 30% 75%;
-    --tag-travel: 195 50% 70%;
-    --tag-creativity: 330 40% 75%;
-    --tag-growth: 50 45% 70%;
+    /* Category tag tokens */
+    --tag-historias: 200 40% 75%;
+    --tag-saude: 160 35% 70%;
+    --tag-diadia: 35 45% 72%;
+    --tag-comunidade: 280 25% 75%;
 
     /* Polish design tokens */
-    --cream: 40 40% 90%;
-    --cream-foreground: 0 0% 18%;
-    --surface-elevated: 36 44% 98%;
-    --shadow-soft: 0 0% 0%;
+    --cream: 175 20% 92%;
+    --cream-foreground: 200 25% 15%;
+    --surface-elevated: 180 20% 98%;
+    --shadow-soft: 200 25% 15%;
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .dark {
-    --background: 0 0% 10%;
-    --foreground: 36 44% 96%;
+    --background: 200 20% 10%;
+    --foreground: 180 15% 92%;
 
-    --card: 0 0% 14%;
-    --card-foreground: 36 44% 96%;
+    --card: 200 18% 14%;
+    --card-foreground: 180 15% 92%;
 
-    --popover: 0 0% 10%;
-    --popover-foreground: 36 44% 96%;
+    --popover: 200 20% 10%;
+    --popover-foreground: 180 15% 92%;
 
-    --primary: 36 44% 96%;
-    --primary-foreground: 0 0% 18%;
+    --primary: 175 40% 55%;
+    --primary-foreground: 200 20% 10%;
 
-    --secondary: 25 15% 30%;
-    --secondary-foreground: 36 44% 96%;
+    --secondary: 160 15% 30%;
+    --secondary-foreground: 180 15% 92%;
 
-    --muted: 0 0% 20%;
-    --muted-foreground: 0 0% 60%;
+    --muted: 200 15% 20%;
+    --muted-foreground: 180 10% 60%;
 
-    --accent: 140 20% 45%;
-    --accent-foreground: 36 44% 96%;
+    --accent: 175 35% 50%;
+    --accent-foreground: 200 20% 10%;
 
     --destructive: 0 62% 50%;
-    --destructive-foreground: 36 44% 96%;
+    --destructive-foreground: 180 15% 92%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 36 44% 96%;
+    --border: 200 15% 22%;
+    --input: 200 15% 22%;
+    --ring: 175 40% 55%;
 
     /* Dark mode tag colors */
-    --tag-financing: 210 40% 45%;
-    --tag-lifestyle: 140 20% 40%;
-    --tag-community: 25 30% 40%;
-    --tag-wellness: 280 25% 45%;
-    --tag-travel: 195 40% 45%;
-    --tag-creativity: 330 35% 45%;
-    --tag-growth: 50 40% 45%;
+    --tag-historias: 200 35% 40%;
+    --tag-saude: 160 30% 38%;
+    --tag-diadia: 35 35% 40%;
+    --tag-comunidade: 280 20% 42%;
 
     /* Dark mode polish tokens */
-    --cream: 40 20% 25%;
-    --cream-foreground: 36 44% 96%;
-    --surface-elevated: 0 0% 16%;
+    --cream: 200 15% 22%;
+    --cream-foreground: 180 15% 92%;
+    --surface-elevated: 200 18% 14%;
     --shadow-soft: 0 0% 0%;
   }
 }
@@ -141,125 +132,40 @@ All colors MUST be HSL.
 
   /* Animation keyframes */
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 
   @keyframes slideUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes slideDown {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   @keyframes scaleIn {
-    from {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
   }
 
-  .animate-fade-in {
-    animation: fadeIn 0.5s ease-out;
-  }
-
-  .animate-slide-up {
-    animation: slideUp 0.6s ease-out;
-  }
-
-  .animate-slide-down {
-    animation: slideDown 0.6s ease-out;
-  }
-
-  .animate-scale-in {
-    animation: scaleIn 0.5s ease-out;
-  }
+  .animate-fade-in { animation: fadeIn 0.5s ease-out; }
+  .animate-slide-up { animation: slideUp 0.6s ease-out; }
+  .animate-slide-down { animation: slideDown 0.6s ease-out; }
+  .animate-scale-in { animation: scaleIn 0.5s ease-out; }
 
   /* Stagger animations */
-  .stagger-1 {
-    animation-delay: 0.1s;
-    opacity: 0;
-    animation-fill-mode: forwards;
-  }
+  .stagger-1 { animation-delay: 0.1s; opacity: 0; animation-fill-mode: forwards; }
+  .stagger-2 { animation-delay: 0.2s; opacity: 0; animation-fill-mode: forwards; }
+  .stagger-3 { animation-delay: 0.3s; opacity: 0; animation-fill-mode: forwards; }
+  .stagger-4 { animation-delay: 0.4s; opacity: 0; animation-fill-mode: forwards; }
+  .stagger-5 { animation-delay: 0.5s; opacity: 0; animation-fill-mode: forwards; }
+  .stagger-6 { animation-delay: 0.6s; opacity: 0; animation-fill-mode: forwards; }
 
-  .stagger-2 {
-    animation-delay: 0.2s;
-    opacity: 0;
-    animation-fill-mode: forwards;
-  }
-
-  .stagger-3 {
-    animation-delay: 0.3s;
-    opacity: 0;
-    animation-fill-mode: forwards;
-  }
-
-  .stagger-4 {
-    animation-delay: 0.4s;
-    opacity: 0;
-    animation-fill-mode: forwards;
-  }
-
-  .stagger-5 {
-    animation-delay: 0.5s;
-    opacity: 0;
-    animation-fill-mode: forwards;
-  }
-
-  .stagger-6 {
-    animation-delay: 0.6s;
-    opacity: 0;
-    animation-fill-mode: forwards;
-  }
-
-  .tag-financing {
-    @apply bg-[hsl(var(--tag-financing))] text-primary;
-  }
-
-  .tag-lifestyle {
-    @apply bg-[hsl(var(--tag-lifestyle))] text-primary;
-  }
-
-  .tag-community {
-    @apply bg-[hsl(var(--tag-community))] text-primary;
-  }
-
-  .tag-wellness {
-    @apply bg-[hsl(var(--tag-wellness))] text-primary;
-  }
-
-  .tag-travel {
-    @apply bg-[hsl(var(--tag-travel))] text-primary;
-  }
-
-  .tag-creativity {
-    @apply bg-[hsl(var(--tag-creativity))] text-primary;
-  }
-
-  .tag-growth {
-    @apply bg-[hsl(var(--tag-growth))] text-primary;
-  }
+  .tag-historias { @apply bg-[hsl(var(--tag-historias))] text-primary; }
+  .tag-saude { @apply bg-[hsl(var(--tag-saude))] text-primary; }
+  .tag-diadia { @apply bg-[hsl(var(--tag-diadia))] text-primary; }
+  .tag-comunidade { @apply bg-[hsl(var(--tag-comunidade))] text-primary; }
 }
