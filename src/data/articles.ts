@@ -104,7 +104,11 @@ export const articles: Article[] = [
       ],
       conclusion: "O exercício não é uma cura, mas é uma das melhores prescrições que podemos dar a quem vive com Parkinson. Mexa-se ao seu ritmo, encontre atividades que lhe dêem prazer, e lembre-se: cada passo conta.",
     },
-    tags: ["exercício", "saúde", "movimento", "qualidade de vida"],
+    resources: [
+      { title: "Parkinson's Foundation - Exercício", url: "https://www.parkinson.org/living-with-parkinsons/exercise", description: "Guia completo de exercícios para Parkinson" },
+      { title: "LSVT Global - Programas BIG & LOUD", url: "https://www.lsvtglobal.com", description: "Programas de exercício especializados para Parkinson" },
+      { title: "Dance for PD", url: "https://danceforpd.org", description: "Programa internacional de dança para pessoas com Parkinson" },
+    ],
   },
   {
     id: "003",
