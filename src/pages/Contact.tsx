@@ -11,11 +11,25 @@ const Contact = () => {
     subject: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Message sent! We'll get back to you soon.");
-    setFormData({ name: "", email: "", subject: "", message: "" });
+    setIsSubmitting(true);
+
+    const mailtoLink = `mailto:jonenguila@gmail.com?subject=${encodeURIComponent(
+      `[Viver com Parkinson] ${formData.subject}`
+    )}&body=${encodeURIComponent(
+      `Nome: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
+    )}`;
+
+    window.location.href = mailtoLink;
+
+    setTimeout(() => {
+      toast.success("O seu cliente de email foi aberto. Envie a mensagem a partir daí.");
+      setFormData({ name: "", email: "", subject: "", message: "" });
+      setIsSubmitting(false);
+    }, 1000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -30,25 +44,21 @@ const Contact = () => {
       <Header />
       
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Hero Section */}
         <div className="mb-16 text-center space-y-6">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight animate-slide-down">
-            Get in Touch
+            Fale Connosco
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up stagger-1">
-            Have a question, suggestion, or just want to say hello? We'd love to hear from you.
+            Tem uma questão, sugestão ou quer partilhar a sua história? Adoraríamos ouvir de si.
           </p>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
           <div className="rounded-2xl bg-card p-8">
-            <h2 className="text-2xl font-bold mb-6">Send us a message</h2>
-        <form onSubmit={handleSubmit} className="space-y-6 animate-slide-up stagger-2">
-          <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">
-                  Name
-                </label>
+            <h2 className="text-2xl font-bold mb-6">Envie-nos uma mensagem</h2>
+            <form onSubmit={handleSubmit} className="space-y-6 animate-slide-up stagger-2">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium mb-2">Nome</label>
                 <input
                   type="text"
                   id="name"
@@ -57,13 +67,11 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring"
-                  placeholder="Your name"
+                  placeholder="O seu nome"
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">
-                  Email
-                </label>
+                <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
                 <input
                   type="email"
                   id="email"
@@ -72,13 +80,11 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring"
-                  placeholder="your.email@example.com"
+                  placeholder="o.seu@email.com"
                 />
               </div>
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium mb-2">
-                  Subject
-                </label>
+                <label htmlFor="subject" className="block text-sm font-medium mb-2">Assunto</label>
                 <input
                   type="text"
                   id="subject"
@@ -87,13 +93,11 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring"
-                  placeholder="What's this about?"
+                  placeholder="Sobre o que deseja falar?"
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">
-                  Message
-                </label>
+                <label htmlFor="message" className="block text-sm font-medium mb-2">Mensagem</label>
                 <textarea
                   id="message"
                   name="message"
@@ -102,22 +106,22 @@ const Contact = () => {
                   required
                   rows={6}
                   className="w-full px-4 py-3 rounded-lg border border-input bg-background focus:outline-none focus:ring-2 focus:ring-ring resize-none"
-                  placeholder="Tell us what's on your mind..."
+                  placeholder="Escreva aqui a sua mensagem..."
                 />
               </div>
               <Button 
                 type="submit"
+                disabled={isSubmitting}
                 className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full py-6"
               >
-                Send Message
+                {isSubmitting ? "A abrir email..." : "Enviar Mensagem"}
               </Button>
             </form>
           </div>
 
-          {/* Contact Information */}
           <div className="space-y-8">
             <div className="rounded-2xl bg-card p-8">
-              <h2 className="text-2xl font-bold mb-6">Contact Information</h2>
+              <h2 className="text-2xl font-bold mb-6">Informações de Contacto</h2>
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-full bg-muted flex items-center justify-center flex-shrink-0">
@@ -125,8 +129,8 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Email</h3>
-                    <p className="text-muted-foreground">hello@perspective.blog</p>
-                    <p className="text-muted-foreground text-sm">We'll respond within 24 hours</p>
+                    <p className="text-muted-foreground">jonenguila@gmail.com</p>
+                    <p className="text-muted-foreground text-sm">Respondemos em 24 horas</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -134,9 +138,9 @@ const Contact = () => {
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">Location</h3>
-                    <p className="text-muted-foreground">San Francisco, CA</p>
-                    <p className="text-muted-foreground text-sm">Remote-first team</p>
+                    <h3 className="font-semibold mb-1">Localização</h3>
+                    <p className="text-muted-foreground">Portugal</p>
+                    <p className="text-muted-foreground text-sm">Comunidade online</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -144,33 +148,33 @@ const Contact = () => {
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">Phone</h3>
-                    <p className="text-muted-foreground">+1 (555) 123-4567</p>
-                    <p className="text-muted-foreground text-sm">Mon-Fri, 9am-5pm PST</p>
+                    <h3 className="font-semibold mb-1">Linha de Apoio APDPk</h3>
+                    <p className="text-muted-foreground">+351 21 355 8640</p>
+                    <p className="text-muted-foreground text-sm">Associação Portuguesa de Doentes de Parkinson</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="rounded-2xl bg-muted p-8">
-              <h3 className="text-xl font-bold mb-4">Frequently Asked Questions</h3>
+              <h3 className="text-xl font-bold mb-4">Perguntas Frequentes</h3>
               <div className="space-y-4 text-sm">
                 <div>
-                  <h4 className="font-semibold mb-1">Can I contribute to Perspective?</h4>
+                  <h4 className="font-semibold mb-1">Posso partilhar a minha história?</h4>
                   <p className="text-muted-foreground">
-                    Yes! We welcome guest contributions. Please use the form to submit your pitch or article idea.
+                    Sim! Encorajamos partilhas de experiências. Use o formulário para nos enviar a sua história.
                   </p>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-1">How do I advertise with you?</h4>
+                  <h4 className="font-semibold mb-1">Sou profissional de saúde. Posso contribuir?</h4>
                   <p className="text-muted-foreground">
-                    For advertising inquiries, email partnerships@perspective.blog with details about your brand.
+                    Com certeza. Valorizamos contribuições de neurologistas, fisioterapeutas e outros profissionais.
                   </p>
                 </div>
                 <div>
-                  <h4 className="font-semibold mb-1">Can I republish your content?</h4>
+                  <h4 className="font-semibold mb-1">Onde encontro apoio presencial?</h4>
                   <p className="text-muted-foreground">
-                    Please contact us for permissions and licensing. We're generally open to republishing with proper attribution.
+                    A APDPk tem núcleos em várias cidades. Visite apparkinson.org para encontrar o mais perto de si.
                   </p>
                 </div>
               </div>
