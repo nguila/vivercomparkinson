@@ -1,29 +1,31 @@
 import { useState } from "react";
 import { toast } from "sonner";
+import { sendEmail } from "@/lib/api/email";
 
 const NewsletterSection = () => {
   const [email, setEmail] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
 
     setIsSubmitting(true);
 
-    const mailtoLink = `mailto:jonenguila@gmail.com?subject=${encodeURIComponent(
-      "[Viver com Parkinson] Nova Subscrição Newsletter"
-    )}&body=${encodeURIComponent(
-      `Novo pedido de subscrição da newsletter.\n\nEmail: ${email}`
-    )}`;
+    try {
+      const result = await sendEmail({ email, type: 'newsletter' });
 
-    window.location.href = mailtoLink;
-
-    setTimeout(() => {
-      toast.success("Obrigado! O seu cliente de email foi aberto para confirmar a subscrição.");
-      setEmail("");
+      if (result.success) {
+        toast.success("Obrigado! A sua subscrição foi registada com sucesso.");
+        setEmail("");
+      } else {
+        toast.error(result.error || "Erro ao subscrever. Tente novamente.");
+      }
+    } catch {
+      toast.error("Erro ao subscrever. Tente novamente.");
+    } finally {
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
 
   return (
