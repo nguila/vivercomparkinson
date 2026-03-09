@@ -541,6 +541,80 @@ export const articles: Article[] = [
     },
     tags: ["conto", "realismo mágico", "história", "resiliência", "adaptação"],
   },
+  {
+    id: "015",
+    title: "O Ritmo que Não se Vê",
+    subtitle: "A história de Rui, um engenheiro que aprende a viver quando o corpo deixa de obedecer",
+    category: "Histórias",
+    date: "Abr 18, 2025",
+    readTime: "10 min",
+    image: "https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=1920&q=80",
+    author: {
+      name: "Autor Convidado",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
+      bio: "Escritor e explorador de narrativas sobre a condição humana",
+    },
+    content: {
+      introduction: "Quando Rui Carvalho deixou cair a chávena de café pela terceira vez na mesma semana, percebeu que algo estava errado.\n\nO som da porcelana a partir-se no chão da cozinha foi seco. Pequeno. Definitivo. A cozinha cheirava a café torrado e detergente. A sua mulher, Helena, levantou os olhos do jornal.\n\n— Estás bem?\n\nRui respondeu automaticamente.\n\n— Claro.\n\nMas não estava.\n\nDurante meses fingiu que o problema era cansaço. Stress do trabalho. Falta de sono. Era engenheiro civil, quarenta e oito anos, vida organizada, rotina previsível. O corpo obedecia. Até deixar de obedecer.\n\nO tremor começou discreto, na mão direita. Primeiro ao segurar talheres. Depois ao escrever. Depois simplesmente parado, sentado no sofá.\n\nQuando finalmente ouviu o diagnóstico no consultório, sentiu uma estranha mistura de alívio e medo. Doença de Parkinson. A palavra parecia pesada demais para caber naquela sala branca.",
+      sections: [
+        {
+          heading: "O Constrangimento Silencioso",
+          content: "Os primeiros meses foram os mais difíceis. Não pela dor. A doença não doía. Doía o constrangimento.\n\nAbotoar uma camisa tornava-se uma tarefa longa. Escrever um e-mail parecia trabalho de criança a aprender caligrafia. O teclado traía-lhe os dedos. No trabalho, começou a evitar reuniões onde precisava de apresentar plantas ou desenhar esquemas.\n\nO verdadeiro choque veio numa manhã banal. Tentava fazer a barba. A lâmina tremia contra a pele. Pequenos cortes surgiram no queixo. O espelho mostrava-lhe algo que não reconhecia.\n\nHelena entrou na casa de banho.\n\n— Deixa-me ajudar.\n\nRui recusou de imediato.\n\n— Não preciso.\n\nEra mentira. Precisava. Mas aceitar ajuda parecia confirmar algo que ainda tentava negar.",
+        },
+        {
+          heading: "Os Gestos Invisíveis",
+          content: "Nos dias seguintes começou a reparar nos pequenos obstáculos que antes eram invisíveis. Abrir uma garrafa. Amarrar atacadores. Cortar carne no prato. A vida estava cheia de gestos minúsculos que exigiam precisão. E a precisão era exatamente o que o corpo lhe estava a retirar.\n\nHelena manteve-se calma. Observadora. Não insistia demasiado, mas estava sempre perto.\n\n— A doença não és tu — disse uma noite.\n\nRui respondeu seco.\n\n— Agora faz parte de mim.\n\nEla não discutiu. Apenas ficou ali.",
+        },
+        {
+          heading: "As Moedas no Supermercado",
+          content: "O momento decisivo chegou numa simples ida ao supermercado. Rui estava na fila da caixa. Tentava pagar com moedas. As mãos tremiam. Uma moeda caiu. Depois outra.\n\nA fila começou a crescer atrás dele. Alguém suspirou. Uma senhora murmurou algo sobre «demorar tanto». O rosto de Rui aqueceu. Sentiu a pressão no peito. Durante um segundo quis abandonar tudo e sair dali.\n\nFoi então que o rapaz da caixa falou.\n\n— Não tenha pressa.\n\nA voz era tranquila. Sem julgamento. Ajudou a apanhar as moedas. Esperou. Ninguém protestou novamente.\n\nRui percebeu algo simples e brutal naquele momento: o mundo não tinha parado. Só ele estava parado, preso na vergonha.\n\nSaiu do supermercado em silêncio. À noite sentou-se com Helena.\n\n— Preciso de aprender a viver com isto — disse.\n\nFoi a primeira vez que falou da doença sem tentar diminuí-la.",
+        },
+        {
+          heading: "Uma Vida Que Continua Cheia",
+          content: "Com o tempo, Rui começou a reconstruir a rotina. Mudou pequenos hábitos. Comprou sapatos sem atacadores. Usou talheres adaptados. Aprendeu exercícios recomendados pelo fisioterapeuta.\n\nO tremor continuava. Alguns dias eram piores. Mas outras coisas apareceram no lugar da antiga perfeição. Paciência. Humor estranho. Capacidade de pedir ajuda.\n\nCerta manhã, enquanto tomava café na varanda, a mão tremia ligeiramente ao levantar a chávena.\n\nHelena observou.\n\n— Ainda te incomoda?\n\nRui pensou um momento.\n\n— Menos do que antes.\n\nNão porque tivesse desaparecido. Mas porque deixara de lutar contra cada segundo. A doença de Parkinson estava ali. Mas a vida também. E, surpreendentemente, continuava cheia.",
+        },
+      ],
+      conclusion: "A história de Rui mostra que o Parkinson não é apenas um diagnóstico médico — é uma transformação profunda da relação com o próprio corpo e com o mundo. A maior batalha trava-se nos gestos mais simples do dia a dia, e a maior vitória é aprender a aceitar ajuda sem perder a dignidade.",
+    },
+    tags: ["conto", "drama realista", "diagnóstico", "resiliência", "dia a dia"],
+  },
+  {
+    id: "016",
+    title: "As Pequenas Vitórias de Dona Teresa",
+    subtitle: "A padeira que recusou deixar de amassar pão, mesmo quando as mãos já não obedeciam",
+    category: "Histórias",
+    date: "Abr 22, 2025",
+    readTime: "8 min",
+    image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1920&q=80",
+    author: {
+      name: "Autor Convidado",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
+      bio: "Escritor e explorador de narrativas sobre a condição humana",
+    },
+    content: {
+      introduction: "Teresa Almeida sempre acordou cedo. Durante quarenta anos abriu a padaria do bairro antes do nascer do sol. Amassava pão, organizava vitrines, cumprimentava clientes pelo nome.\n\nAgora tinha sessenta e nove anos e acordava cedo por outra razão. Rigidez. As mãos demoravam a obedecer. As pernas pareciam feitas de madeira nas primeiras horas do dia.\n\nO neurologista explicara com clareza. Doença de Parkinson.\n\nTeresa ouviu tudo com a calma de quem já viveu muito. Mas, em casa, quando tentou abrir um frasco de compota e não conseguiu, sentiu algo diferente. Frustração pura.",
+      sections: [
+        {
+          heading: "O Campo de Treino Matinal",
+          content: "A rotina matinal transformou-se num campo de treino. Levantar da cama exigia concentração. Vestir-se era uma sequência de movimentos calculados.\n\nA sua vizinha, Marta, começou a passar lá todos os dias.\n\n— Só para ver se estás viva — dizia, meio a brincar.\n\nMarta tinha trinta e cinco anos e uma energia incansável. Inicialmente Teresa rejeitava ajuda.\n\n— Sempre fiz tudo sozinha.\n\nMarta respondia com lógica simples.\n\n— Sempre, até agora.\n\nAs pequenas tarefas tornaram-se desafios. Cortar legumes. Segurar uma panela. Escrever a lista de compras.",
+        },
+        {
+          heading: "A Teimosia Como Arma",
+          content: "Mas Teresa tinha um traço de personalidade que a doença não conseguia eliminar: teimosia.\n\nCriou estratégias próprias. Deixava tudo organizado na cozinha. Usava recipientes leves. Movia-se devagar, mas sem parar.\n\nCada dia era uma negociação entre o que o corpo permitia e o que a vontade exigia. E Teresa, mais vezes do que não, ganhava a negociação.",
+        },
+        {
+          heading: "De Volta à Padaria",
+          content: "Numa tarde decidiu voltar à padaria. O novo dono, Luís, era antigo aprendiz. Ficou surpreso ao vê-la.\n\n— Dona Teresa!\n\nEla caminhou até ao balcão lentamente.\n\n— Quero tentar fazer pão.\n\nLuís hesitou. As mãos dela tremiam visivelmente. Mas Teresa insistiu.\n\nA massa não ficou perfeita. O formato saiu irregular. O corte superior, tradicional no pão, ficou torto.\n\nMas quando saiu do forno, o cheiro era exatamente o mesmo de sempre.\n\nLuís provou um pedaço.\n\n— Está ótimo.\n\nTeresa riu.\n\n— Sempre esteve.",
+        },
+        {
+          heading: "Cada Pão, Uma Conquista",
+          content: "Desde então Teresa visita a padaria uma vez por semana. Não para trabalhar o dia inteiro. Apenas para ajudar um pouco.\n\nAmassar massa tornou-se exercício. Conversar com clientes tornou-se terapia.\n\nO tremor continua. Às vezes derrama farinha na bancada. Às vezes precisa de descansar a meio da tarefa.\n\nMas cada pão que sai do forno representa algo maior do que antes. Antes era trabalho. Agora é conquista. Uma de muitas pequenas vitórias.",
+        },
+      ],
+      conclusion: "Nota do Autor: As duas histórias exploram o território silencioso do dia a dia com Parkinson. O conflito não é um evento extraordinário, mas a adaptação constante. Rui representa o impacto psicológico inicial — vergonha, negação e reconstrução da identidade. Teresa representa resiliência prática e a importância das pequenas vitórias. O tremor, símbolo central do Parkinson, torna-se também metáfora para a instabilidade da vida. A mensagem subjacente é que a dignidade humana não desaparece com a perda de controlo físico; muitas vezes revela-se justamente nesse processo de adaptação.",
+    },
+    tags: ["conto", "drama humano", "resiliência", "pequenas vitórias", "padaria"],
+  },
 ];
 
 export function getArticleById(id: string): Article | undefined {
