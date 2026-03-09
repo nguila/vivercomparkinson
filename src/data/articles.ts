@@ -504,6 +504,43 @@ export const articles: Article[] = [
     },
     tags: ["tecnologia", "apps", "gadgets", "autonomia"],
   },
+  {
+    id: "014",
+    title: "A Cidade que Tremia em Silêncio",
+    subtitle: "Um conto de realismo mágico sobre Parkinson, perda de controlo e a beleza da adaptação",
+    category: "Histórias",
+    date: "Abr 15, 2025",
+    readTime: "15 min",
+    image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?w=1920&q=80",
+    author: {
+      name: "Autor Convidado",
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80",
+      bio: "Escritor e explorador de narrativas sobre a condição humana",
+    },
+    content: {
+      introduction: "Na cidade de Valmares, o chão vibrava. Não era um terramoto. Não havia sirenes, nem fissuras nas paredes, nem pânico nas ruas. Era um tremor discreto, quase íntimo, que começara há anos e que só alguns pareciam notar. As chávenas tilintavam suavemente nos pires. A água nos copos desenhava círculos concêntricos, como se respirasse com dificuldade. As folhas das árvores estremeciam mesmo na ausência de vento.\n\nMiguel Antunes foi o primeiro a admitir que a cidade sofria de algo estranho. Tinha setenta e dois anos, fora relojoeiro durante quatro décadas, e conhecia o valor da precisão como poucos. As suas mãos, outrora firmes como aço temperado, começaram a tremer numa manhã fria de outubro, enquanto ajustava o mecanismo de um relógio antigo.\n\nO diagnóstico veio meses depois, pronunciado com voz clínica e olhos treinados para a distância: doença de Parkinson.\n\nMiguel ouviu a expressão como se fosse o nome de uma antiga maldição. Repetiu-a em silêncio, sílaba por sílaba, como quem testa o peso de uma palavra nova. Parkinson. Soava a coisa estrangeira, invasiva. Soava a algo que se infiltra.\n\nFoi então que começou a reparar no tremor da cidade.\n\nA sua neta, Clara, de dezasseis anos, era a única que levava as suas observações a sério. Tinha uma imaginação afiada e uma sensibilidade que a tornava atenta às pequenas alterações do mundo. Sentava-se ao lado dele na oficina, entre o cheiro a óleo fino e madeira envelhecida, e ouvia-o falar.\n\n— A cidade está a tremer comigo — disse ele certa tarde, enquanto as engrenagens vibravam sob os seus dedos instáveis.\n\nClara não riu. Observou o pó a dançar na luz oblíqua da janela. E, por um instante, pareceu-lhe que o ar realmente pulsava.",
+      sections: [
+        {
+          heading: "O Tremor Cresce",
+          content: "Com o passar dos meses, o tremor aumentou. Não o suficiente para alarmar as autoridades. Não o suficiente para ser notícia. Mas suficiente para que os habitantes mais atentos sentissem uma inquietação inexplicável. Havia algo descompassado no ritmo das coisas. Os semáforos mudavam de cor um segundo antes do habitual. Os sinos da igreja ecoavam com uma vibração irregular.\n\nMiguel começou a perder mais do que a firmeza das mãos. A sua caligrafia transformou-se em riscos incertos. O seu andar tornou-se hesitante, como se o chão fosse água. A oficina, outrora santuário de precisão, passou a ser território hostil.\n\nO conflito não era apenas físico. Era uma batalha contra o próprio tempo. Um relojoeiro cuja vida fora dedicada a medir segundos via-se agora traído pelo corpo, incapaz de controlar o próprio pulso.\n\nClara decidiu investigar. Percorreu os arquivos da biblioteca municipal, leu sobre falhas geológicas, campos magnéticos, teorias improváveis. Nada explicava aquele tremor suave e persistente.",
+        },
+        {
+          heading: "A Descoberta de Clara",
+          content: "Numa noite de chuva fina, enquanto ajudava o avô a fechar a loja, Clara sentiu algo diferente. Encostou a mão ao balcão de madeira. A vibração parecia sincronizada com o tremor das mãos de Miguel.\n\n— Avô, e se não for a cidade que está doente?\n\nEle ergueu o olhar, cansado.\n\n— E se for o mundo a ajustar-se a mim?\n\nA ideia era absurda. E, no entanto, quanto mais a doença avançava, mais o tremor da cidade se tornava evidente. Pequenas fendas começaram a surgir nas fachadas antigas. O lago do parque exibia ondas constantes, mesmo em dias de absoluta calmaria.\n\nMiguel começou a sentir culpa. Como se o seu corpo, ao falhar, estivesse a arrastar tudo consigo. Como se a doença de Parkinson não fosse apenas um diagnóstico individual, mas uma força de desordem que se propagava.\n\nClara recusava essa visão.\n\n— Não és tu que estás a causar isto — dizia ela, com firmeza juvenil. — Talvez estejas apenas a sentir o que sempre esteve aqui.\n\nMas Miguel via nos olhos dela o medo que ela não verbalizava.",
+        },
+        {
+          heading: "O Grande Relógio da Torre",
+          content: "O ponto de rutura veio numa manhã de primavera. Miguel decidiu reparar o grande relógio da torre da igreja, parado havia semanas. Subiu os degraus estreitos com dificuldade, Clara ao seu lado, pronta para o amparar. Lá em cima, o mecanismo colossal aguardava, coberto de pó e ferrugem.\n\nAs engrenagens estavam desalinhadas. Vibravam de forma irregular, como um coração em arritmia.\n\n— Está a imitar-me — murmurou Miguel.\n\nCom mãos trémulas, tentou ajustar o mecanismo. Cada movimento era um desafio. O metal parecia resistir-lhe, como se tivesse vontade própria. O tremor intensificou-se. Não apenas nas suas mãos, mas em toda a estrutura da torre.\n\nOs sinos começaram a tocar sozinhos, num repicar caótico. A cidade inteira pareceu estremecer. As pessoas saíram às ruas, olhando em volta, confusas.\n\nClara segurou o pulso do avô.\n\n— Não lutes contra o tremor — disse ela, com uma clareza que não sabia de onde vinha. — Trabalha com ele.\n\nMiguel fechou os olhos. Pela primeira vez desde o diagnóstico, deixou de tentar imobilizar as mãos. Em vez disso, deixou-as mover-se no ritmo que o corpo impunha. Ajustou as engrenagens acompanhando a vibração, como um maestro que aceita o compasso imperfeito da orquestra.\n\nO mecanismo respondeu. As peças encaixaram-se não apesar do tremor, mas através dele. O som metálico tornou-se harmónico. O repicar dos sinos transformou-se numa melodia clara, profunda, quase solene.\n\nE então, gradualmente, a cidade estabilizou. Não ficou imóvel. Mas o tremor deixou de ser caótico. Tornou-se um pulso suave, constante, como uma respiração partilhada.\n\nMiguel caiu de joelhos, exausto. As suas mãos continuavam a tremer. Continuariam a tremer. A doença de Parkinson não desaparecera. Mas algo mudara.",
+        },
+        {
+          heading: "Uma Nova Harmonia",
+          content: "Nos meses seguintes, Valmares ganhou uma nova reputação. Visitantes comentavam que havia algo diferente ali. Uma energia subtil, uma vibração quase impercetível que tornava o lugar vivo.\n\nMiguel já não conseguia trabalhar como antes. A oficina foi fechada, e Clara começou a estudar engenharia mecânica, determinada a compreender sistemas imperfeitos.\n\nO tremor persistia, tanto na cidade como no corpo de Miguel. Mas deixara de ser visto como falha. Tornara-se característica. Marca.\n\nCerta tarde, sentados no banco do parque, Miguel observou a superfície do lago ondular suavemente.\n\n— Sempre pensei que o meu valor estava na precisão — disse ele. — Mas talvez esteja na persistência.\n\nClara apertou-lhe a mão trémula.\n\nA cidade continuava a vibrar. Não de doença, mas de adaptação. Como um coração que aprende um novo ritmo e decide, ainda assim, continuar a bater.\n\nE assim, a palavra que chegara como sentença tornou-se símbolo. Não apenas de perda, mas de transformação. A doença de Parkinson permanecia. Mas já não era apenas tremor. Era também resistência.",
+        },
+      ],
+      conclusion: "Nota do Autor: A palavra «doença de Parkinson» inspirou-me a explorar a ideia de tremor não apenas como sintoma físico, mas como metáfora de instabilidade e mudança. Em vez de centrar a narrativa na dimensão clínica, optei por um realismo mágico onde o corpo e a cidade se espelham mutuamente. A doença torna-se símbolo da perda de controlo, mas também da necessidade de adaptação. O conflito principal nasce da tentativa de resistir ao inevitável, enquanto a resolução sugere que aceitar a imperfeição pode gerar uma nova forma de harmonia. A cidade que treme representa todos os sistemas que enfrentam falhas, sejam corpos, relações ou comunidades. No fundo, a história questiona onde reside o valor humano quando a precisão se perde — e o que pode emergir quando aprendemos a trabalhar com as nossas limitações, em vez de contra elas.",
+    },
+    tags: ["conto", "realismo mágico", "história", "resiliência", "adaptação"],
+  },
 ];
 
 export function getArticleById(id: string): Article | undefined {
