@@ -305,6 +305,11 @@ export const articles: Article[] = [
       conclusion: "A alimentação não cura o Parkinson, mas uma dieta bem planeada pode melhorar a eficácia da medicação, aliviar sintomas e aumentar a energia e bem-estar. Consulte um nutricionista que conheça a doença para um plano personalizado.",
     },
     tags: ["alimentação", "nutrição", "levodopa", "dieta"],
+    resources: [
+      { title: "Parkinson's Foundation - Nutrição", url: "https://www.parkinson.org/living-with-parkinsons/diet-nutrition", description: "Guia completo sobre alimentação e Parkinson" },
+      { title: "Michael J. Fox Foundation", url: "https://www.michaeljfox.org/news/parkinsons-disease-diet", description: "Investigação sobre dieta e Parkinson" },
+      { title: "Ordem dos Nutricionistas", url: "https://www.ordemdosnutricionistas.pt", description: "Encontre um nutricionista em Portugal" },
+    ],
   },
   {
     id: "008",
