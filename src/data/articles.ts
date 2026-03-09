@@ -189,6 +189,11 @@ export const articles: Article[] = [
       conclusion: "Cuidar de alguém com Parkinson é um dos atos mais generosos que alguém pode fazer. Mas para cuidar bem, é preciso estar bem. Não tenha vergonha de pedir ajuda — merece-a tanto quanto a pessoa de quem cuida.",
     },
     tags: ["cuidador", "comunidade", "saúde mental", "apoio"],
+    resources: [
+      { title: "Cuidadores de Portugal", url: "https://cuidadores.pt", description: "Rede nacional de apoio a cuidadores informais" },
+      { title: "Linha do Cuidador - SNS 24", url: "https://www.sns24.gov.pt", description: "Linha de apoio do Serviço Nacional de Saúde: 808 24 24 24" },
+      { title: "EPDA - Guia para Cuidadores", url: "https://www.epda.eu.com/living-well/caring-and-parkinsons/", description: "Recursos europeus para cuidadores de pessoas com Parkinson" },
+    ],
   },
   {
     id: "005",
