@@ -63,7 +63,11 @@ export const articles: Article[] = [
       ],
       conclusion: "Se pudesse dizer algo a quem acabou de receber o diagnóstico, seria isto: permita-se sentir medo, mas não deixe o medo definir a sua vida. Há muito para viver, muito para descobrir, e muito amor para receber e dar. O Parkinson é parte da minha história, mas não é toda a minha história.",
     },
-    tags: ["parkinson", "diagnóstico", "resiliência", "história pessoal"],
+    resources: [
+      { title: "APDPk - Associação Portuguesa de Doentes de Parkinson", url: "https://www.apparkinson.org", description: "Apoio, informação e grupos de suporte em Portugal" },
+      { title: "European Parkinson's Disease Association", url: "https://www.epda.eu.com", description: "Recursos europeus sobre Parkinson" },
+      { title: "Parkinson's Foundation", url: "https://www.parkinson.org", description: "Informação científica e recursos para doentes e famílias" },
+    ],
   },
   {
     id: "002",
