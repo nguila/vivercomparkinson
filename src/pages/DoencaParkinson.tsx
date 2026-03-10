@@ -15,8 +15,9 @@ import {
   commonSymptoms,
   managementStrategies,
   reliableSources,
+  treatments,
 } from "@/data/parkinson-stages";
-import { ExternalLink, BookOpen, Brain, Activity, Heart, Shield, Clock, AlertCircle } from "lucide-react";
+import { ExternalLink, BookOpen, Brain, Activity, Heart, Shield, Clock, AlertCircle, Pill, Zap } from "lucide-react";
 
 const DoencaParkinson = () => {
   const [activeTab, setActiveTab] = useState("fases");
@@ -68,6 +69,10 @@ const DoencaParkinson = () => {
             <TabsTrigger value="gestao" className="flex-1 min-w-[120px] rounded-xl py-2.5 text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
               <Heart className="w-4 h-4 mr-1.5" />
               Gestão
+            </TabsTrigger>
+            <TabsTrigger value="tratamentos" className="flex-1 min-w-[120px] rounded-xl py-2.5 text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+              <Pill className="w-4 h-4 mr-1.5" />
+              Tratamentos
             </TabsTrigger>
             <TabsTrigger value="fontes" className="flex-1 min-w-[120px] rounded-xl py-2.5 text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
               <Shield className="w-4 h-4 mr-1.5" />
@@ -293,7 +298,115 @@ const DoencaParkinson = () => {
             </Accordion>
           </TabsContent>
 
-          {/* FONTES */}
+          {/* TRATAMENTOS */}
+          <TabsContent value="tratamentos" className="animate-fade-in">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl sm:text-3xl font-bold font-serif mb-3">Tratamentos Medicamentosos e Cirúrgicos</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Informação detalhada sobre os principais tratamentos disponíveis — desde medicamentos dopaminérgicos até intervenções cirúrgicas e terapias emergentes.
+              </p>
+            </div>
+
+            {(["dopaminergic", "non-dopaminergic", "surgical", "emerging"] as const).map((cat) => {
+              const catTreatments = treatments.filter((t) => t.category === cat);
+              if (catTreatments.length === 0) return null;
+              const catLabels = {
+                dopaminergic: { label: "Terapias Dopaminérgicas", icon: <Brain className="w-5 h-5 text-primary" />, desc: "Medicamentos que aumentam ou imitam a dopamina no cérebro." },
+                "non-dopaminergic": { label: "Terapias Não-Dopaminérgicas", icon: <Pill className="w-5 h-5 text-primary" />, desc: "Medicamentos com mecanismos alternativos." },
+                surgical: { label: "Intervenções Cirúrgicas e Dispositivos", icon: <Zap className="w-5 h-5 text-primary" />, desc: "Procedimentos para doença avançada." },
+                emerging: { label: "Terapias Emergentes e em Investigação", icon: <Activity className="w-5 h-5 text-primary" />, desc: "Abordagens inovadoras em desenvolvimento." },
+              };
+              const info = catLabels[cat];
+              return (
+                <div key={cat} className="mb-10">
+                  <div className="flex items-center gap-2 mb-1">
+                    {info.icon}
+                    <h3 className="text-xl font-bold font-serif">{info.label}</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-5 ml-7">{info.desc}</p>
+
+                  <Accordion type="multiple" className="space-y-3">
+                    {catTreatments.map((treatment, index) => (
+                      <AccordionItem
+                        key={index}
+                        value={`treatment-${cat}-${index}`}
+                        className="bg-card rounded-2xl border border-border px-6 data-[state=open]:shadow-md transition-shadow"
+                      >
+                        <AccordionTrigger className="text-base font-bold font-serif hover:no-underline py-5">
+                          {treatment.name}
+                        </AccordionTrigger>
+                        <AccordionContent className="pb-6 space-y-5">
+                          <p className="text-sm text-muted-foreground leading-relaxed">{treatment.description}</p>
+
+                          <div className="bg-muted/50 rounded-xl p-4">
+                            <h5 className="font-semibold text-xs uppercase tracking-wide mb-2 flex items-center gap-1.5">
+                              <Brain className="w-3.5 h-3.5 text-primary" />
+                              Mecanismo de Ação
+                            </h5>
+                            <p className="text-sm text-muted-foreground leading-relaxed">{treatment.mechanism}</p>
+                          </div>
+
+                          <div className="grid sm:grid-cols-2 gap-5">
+                            <div>
+                              <h5 className="font-semibold text-xs uppercase tracking-wide text-primary mb-3 flex items-center gap-1.5">
+                                <Heart className="w-3.5 h-3.5" />
+                                Indicações
+                              </h5>
+                              <ul className="space-y-2">
+                                {treatment.indications.map((item, i) => (
+                                  <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                                    <span className="w-1.5 h-1.5 bg-primary/60 rounded-full mt-1.5 flex-shrink-0" />
+                                    {item}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                            <div>
+                              <h5 className="font-semibold text-xs uppercase tracking-wide text-destructive mb-3 flex items-center gap-1.5">
+                                <AlertCircle className="w-3.5 h-3.5" />
+                                Efeitos Secundários
+                              </h5>
+                              <ul className="space-y-2">
+                                {treatment.sideEffects.map((item, i) => (
+                                  <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                                    <span className="w-1.5 h-1.5 bg-destructive/60 rounded-full mt-1.5 flex-shrink-0" />
+                                    {item}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+
+                          <div className="bg-primary/5 rounded-xl p-4 border border-primary/10">
+                            <h5 className="font-semibold text-xs uppercase tracking-wide mb-2">📝 Notas Importantes</h5>
+                            <p className="text-sm text-muted-foreground leading-relaxed">{treatment.notes}</p>
+                          </div>
+
+                          <a
+                            href={treatment.sourceUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+                          >
+                            <ExternalLink className="w-3.5 h-3.5" />
+                            Ver fonte e mais informação
+                          </a>
+                        </AccordionContent>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
+                </div>
+              );
+            })}
+
+            <div className="bg-muted/50 rounded-2xl border border-border p-6 mt-6">
+              <p className="text-sm text-muted-foreground leading-relaxed text-center max-w-2xl mx-auto">
+                <strong>⚕️ Aviso:</strong> A escolha do tratamento deve ser sempre individualizada e decidida em conjunto com o neurologista. Nunca altere a medicação sem orientação médica.
+              </p>
+            </div>
+          </TabsContent>
+
+
           <TabsContent value="fontes" className="animate-fade-in">
             <div className="text-center mb-8">
               <h2 className="text-2xl sm:text-3xl font-bold font-serif mb-3">Fontes Fidedignas</h2>
