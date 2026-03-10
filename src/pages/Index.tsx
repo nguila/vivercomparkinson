@@ -73,16 +73,9 @@ const Index = () => {
                 <li><a href="/#newsletter" className="hover:text-accent transition-colors">Newsletter</a></li>
               </ul>
             </div>
-            <div>
-              <h3 className="font-semibold mb-4">Legal</h3>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li><a href="/privacy" className="hover:text-accent transition-colors">Política de Privacidade</a></li>
-                <li><a href="/terms" className="hover:text-accent transition-colors">Termos de Utilização</a></li>
-              </ul>
-            </div>
           </div>
           <div className="pt-8 border-t border-border text-center text-sm text-muted-foreground">
-            <p>© 2025 Viver com Parkinson. Todos os direitos reservados.</p>
+            <p>© 2026 Viver com Parkinson. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
