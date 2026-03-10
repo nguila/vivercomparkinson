@@ -65,7 +65,7 @@ export const articles: Article[] = [
     },
     tags: ["parkinson", "diagnóstico", "resiliência", "história pessoal"],
     resources: [
-      { title: "APDPk - Associação Portuguesa de Doentes de Parkinson", url: "https://www.apparkinson.org", description: "Apoio, informação e grupos de suporte em Portugal" },
+      { title: "APDPk - Associação Portuguesa de Doentes de Parkinson", url: "https://parkinson.pt", description: "Apoio, informação e grupos de suporte em Portugal" },
       { title: "European Parkinson's Disease Association", url: "https://www.epda.eu.com", description: "Recursos europeus sobre Parkinson" },
       { title: "Parkinson's Foundation", url: "https://www.parkinson.org", description: "Informação científica e recursos para doentes e famílias" },
     ],
