@@ -15,8 +15,9 @@ import {
   commonSymptoms,
   managementStrategies,
   reliableSources,
+  treatments,
 } from "@/data/parkinson-stages";
-import { ExternalLink, BookOpen, Brain, Activity, Heart, Shield, Clock, AlertCircle } from "lucide-react";
+import { ExternalLink, BookOpen, Brain, Activity, Heart, Shield, Clock, AlertCircle, Pill, Zap } from "lucide-react";
 
 const DoencaParkinson = () => {
   const [activeTab, setActiveTab] = useState("fases");
