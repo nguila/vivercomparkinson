@@ -745,7 +745,7 @@ export const articles: Article[] = [
     },
     tags: ["conto", "drama humano", "resiliência", "jardim", "adaptação"],
     resources: [
-      { title: "APDPk - Associação Portuguesa de Doentes de Parkinson", url: "https://www.apparkinson.org", description: "Apoio, informação e grupos de suporte em Portugal" },
+      { title: "APDPk - Associação Portuguesa de Doentes de Parkinson", url: "https://parkinson.pt", description: "Apoio, informação e grupos de suporte em Portugal" },
       { title: "Parkinson's Foundation", url: "https://www.parkinson.org", description: "Informação científica e recursos para doentes e famílias" },
     ],
   },
