@@ -65,7 +65,7 @@ export const articles: Article[] = [
     },
     tags: ["parkinson", "diagnóstico", "resiliência", "história pessoal"],
     resources: [
-      { title: "APDPk - Associação Portuguesa de Doentes de Parkinson", url: "https://www.apparkinson.org", description: "Apoio, informação e grupos de suporte em Portugal" },
+      { title: "APDPk - Associação Portuguesa de Doentes de Parkinson", url: "https://parkinson.pt", description: "Apoio, informação e grupos de suporte em Portugal" },
       { title: "European Parkinson's Disease Association", url: "https://www.epda.eu.com", description: "Recursos europeus sobre Parkinson" },
       { title: "Parkinson's Foundation", url: "https://www.parkinson.org", description: "Informação científica e recursos para doentes e famílias" },
     ],
@@ -150,7 +150,7 @@ export const articles: Article[] = [
     tags: ["dia a dia", "cozinha", "adaptação", "autonomia"],
     resources: [
       { title: "Parkinson's Foundation - Dicas para o Dia a Dia", url: "https://www.parkinson.org/living-with-parkinsons/daily-activities", description: "Estratégias práticas para atividades diárias" },
-      { title: "APDPk - Terapia Ocupacional", url: "https://www.apparkinson.org", description: "Informação sobre terapia ocupacional e adaptações" },
+      { title: "APDPk - Terapia Ocupacional", url: "https://parkinson.pt", description: "Informação sobre terapia ocupacional e adaptações" },
     ],
   },
   {
@@ -704,7 +704,7 @@ export const articles: Article[] = [
     },
     tags: ["conto", "drama realista", "resiliência", "persistência", "professor"],
     resources: [
-      { title: "APDPk - Associação Portuguesa de Doentes de Parkinson", url: "https://www.apparkinson.org", description: "Apoio, informação e grupos de suporte em Portugal" },
+      { title: "APDPk - Associação Portuguesa de Doentes de Parkinson", url: "https://parkinson.pt", description: "Apoio, informação e grupos de suporte em Portugal" },
       { title: "European Parkinson's Disease Association", url: "https://www.epda.eu.com", description: "Recursos europeus sobre Parkinson" },
     ],
   },
@@ -745,7 +745,7 @@ export const articles: Article[] = [
     },
     tags: ["conto", "drama humano", "resiliência", "jardim", "adaptação"],
     resources: [
-      { title: "APDPk - Associação Portuguesa de Doentes de Parkinson", url: "https://www.apparkinson.org", description: "Apoio, informação e grupos de suporte em Portugal" },
+      { title: "APDPk - Associação Portuguesa de Doentes de Parkinson", url: "https://parkinson.pt", description: "Apoio, informação e grupos de suporte em Portugal" },
       { title: "Parkinson's Foundation", url: "https://www.parkinson.org", description: "Informação científica e recursos para doentes e famílias" },
     ],
   },

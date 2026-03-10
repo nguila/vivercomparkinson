@@ -486,7 +486,7 @@ export const reliableSources: ParkinsonSource[] = [
   },
   {
     title: "APDPk - Associação Portuguesa de Doentes de Parkinson",
-    url: "https://www.apparkinson.org",
+    url: "https://parkinson.pt",
     description: "A principal associação portuguesa dedicada ao Parkinson. Grupos de apoio, informação e serviços em Portugal.",
     type: "organization",
   },

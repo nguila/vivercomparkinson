@@ -145,7 +145,7 @@ const Contact = () => {
               <div>
                 <h4 className="font-semibold mb-1">Onde encontro apoio presencial?</h4>
                 <p className="text-muted-foreground">
-                  A APDPk tem núcleos em várias cidades. Visite <a href="https://www.apparkinson.org" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">apparkinson.org</a> para encontrar o mais perto de si.
+                  A APDPk tem núcleos em várias cidades. Visite <a href="https://parkinson.pt" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">parkinson.pt</a> para encontrar o mais perto de si.
                 </p>
               </div>
             </div>
