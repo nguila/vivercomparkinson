@@ -38,6 +38,9 @@ const Index = () => {
           </div>
         </section>
 
+        {/* Research & Advances Section */}
+        <ResearchSection />
+
         {/* Newsletter Section */}
         <NewsletterSection />
       </main>
