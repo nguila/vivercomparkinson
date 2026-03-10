@@ -70,6 +70,10 @@ const DoencaParkinson = () => {
               <Heart className="w-4 h-4 mr-1.5" />
               Gestão
             </TabsTrigger>
+            <TabsTrigger value="tratamentos" className="flex-1 min-w-[120px] rounded-xl py-2.5 text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+              <Pill className="w-4 h-4 mr-1.5" />
+              Tratamentos
+            </TabsTrigger>
             <TabsTrigger value="fontes" className="flex-1 min-w-[120px] rounded-xl py-2.5 text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
               <Shield className="w-4 h-4 mr-1.5" />
               Fontes
