@@ -83,9 +83,11 @@ const Header = () => {
               )}
             </button>
             
-            <Button className="hidden md:flex bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-2 hover:scale-105 transition-all">
-              Subscrever
-            </Button>
+            <a href="/#newsletter">
+              <Button className="hidden md:flex bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 py-2 hover:scale-105 transition-all">
+                Subscrever
+              </Button>
+            </a>
 
             {/* Mobile Menu Button */}
             <button
@@ -123,9 +125,11 @@ const Header = () => {
               <a href="/about" className="text-sm font-medium hover:text-accent transition-colors">
                 Sobre
               </a>
-              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full w-full">
-                Subscrever
-              </Button>
+              <a href="/#newsletter">
+                <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full w-full">
+                  Subscrever
+                </Button>
+              </a>
             </nav>
           </div>
         )}
