@@ -704,7 +704,7 @@ export const articles: Article[] = [
     },
     tags: ["conto", "drama realista", "resiliência", "persistência", "professor"],
     resources: [
-      { title: "APDPk - Associação Portuguesa de Doentes de Parkinson", url: "https://www.apparkinson.org", description: "Apoio, informação e grupos de suporte em Portugal" },
+      { title: "APDPk - Associação Portuguesa de Doentes de Parkinson", url: "https://parkinson.pt", description: "Apoio, informação e grupos de suporte em Portugal" },
       { title: "European Parkinson's Disease Association", url: "https://www.epda.eu.com", description: "Recursos europeus sobre Parkinson" },
     ],
   },
