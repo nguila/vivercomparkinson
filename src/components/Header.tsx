@@ -58,6 +58,9 @@ const Header = () => {
             <a href="/saude" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
               Saúde
             </a>
+            <a href="/doenca" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
+              A Doença
+            </a>
             <a href="/investigacao" className="text-sm font-medium hover:bg-muted/60 rounded-full px-4 py-2 transition-all">
               Investigação
             </a>
@@ -110,6 +113,9 @@ const Header = () => {
               </a>
               <a href="/saude" className="text-sm font-medium hover:text-accent transition-colors">
                 Saúde
+              </a>
+              <a href="/doenca" className="text-sm font-medium hover:text-accent transition-colors">
+                A Doença
               </a>
               <a href="/investigacao" className="text-sm font-medium hover:text-accent transition-colors">
                 Investigação
