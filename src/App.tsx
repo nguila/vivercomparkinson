@@ -37,6 +37,7 @@ const App = () => (
           <Route path="/comunidade" element={<Comunidade />} />
           <Route path="/growth" element={<Comunidade />} />
           <Route path="/investigacao" element={<Research />} />
+          <Route path="/doenca" element={<DoencaParkinson />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
