@@ -671,6 +671,84 @@ export const articles: Article[] = [
     },
     tags: ["conto", "drama humano", "resiliência", "pequenas vitórias", "padaria"],
   },
+  {
+    id: "017",
+    title: "O Dia Seguinte",
+    subtitle: "Quando o mundo não para, nós também não podemos parar",
+    category: "Histórias",
+    date: "Mar 8, 2026",
+    readTime: "9 min",
+    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=1920&q=80",
+    author: {
+      name: "Autor Convidado",
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&q=80",
+      bio: "Escritor e cronista dedicado a narrativas sobre resiliência humana",
+    },
+    content: {
+      introduction: "Quando João Mendes recebeu o diagnóstico, a primeira coisa que fez foi caminhar.\n\nSaiu do hospital sem dizer quase nada. O neurologista falara durante quinze minutos, explicou sintomas, medicamentos e evolução da doença. Mas uma única frase ficou presa na mente de João.\n\nDoença de Parkinson.\n\nCaminhou pelas ruas da cidade como quem tenta escapar a uma notícia impossível. Tinha cinquenta e cinco anos, professor de história, corredor amador aos fins de semana. Sempre acreditou que o corpo e a mente eram aliados fiéis.\n\nSentou-se num banco do jardim. As mãos tremiam ligeiramente sobre os joelhos.\n\nFoi então que percebeu algo curioso.\n\nO mundo continuava exatamente igual.\n\nOs carros passavam. Crianças brincavam no parque. Um casal discutia perto de um café. Nada parecia afetado pela sentença que agora ocupava o centro da sua vida.\n\nE isso, de forma inesperada, deu-lhe uma ideia simples.\n\nSe o mundo não tinha parado, ele também não podia parar.",
+      sections: [
+        {
+          heading: "A Aprendizagem Brutal",
+          content: "Os primeiros meses foram uma fase de aprendizagem brutal.\n\nJoão sempre foi uma pessoa independente. Gostava de fazer tudo sozinho. Mas a doença começou a alterar pequenos detalhes da rotina.\n\nA letra tornou-se menor e tremida. As manhãs tornaram-se rígidas, os músculos demoravam a responder. Às vezes parecia que o corpo precisava de alguns minutos para acordar completamente.\n\nNa escola, tentou esconder o diagnóstico.\n\nAté ao dia em que deixou cair o marcador enquanto escrevia no quadro. O silêncio da sala foi imediato.\n\nUma aluna da primeira fila levantou-se, apanhou o marcador e colocou-o na sua mão.\n\n— Professor, está tudo bem?\n\nJoão respirou fundo. Podia continuar a esconder.\n\nOu podia fazer algo diferente.\n\n— Tenho doença de Parkinson — disse calmamente.\n\nA turma ficou em silêncio.\n\nDepois alguém perguntou algo inesperado.\n\n— Isso significa que vai deixar de dar aulas?\n\nJoão respondeu sem pensar demasiado.\n\n— Não. Significa apenas que vou precisar de um pouco mais de paciência. Da vossa e da minha.\n\nA aula continuou.",
+        },
+        {
+          heading: "A Persistência",
+          content: "Alguns anos depois, os sintomas tornaram-se mais evidentes.\n\nO tremor aumentou. O equilíbrio tornou-se menos seguro. Algumas tarefas simples passaram a exigir mais tempo.\n\nMas João criou novos rituais.\n\nFazia fisioterapia todas as manhãs. Caminhava todos os dias. Aprendeu exercícios de coordenação. Adaptou a forma como dava aulas.\n\nComeçou a usar apresentações digitais em vez de escrever muito no quadro.\n\nUm dia, um colega perguntou-lhe algo direto.\n\n— Porque continuas a trabalhar tanto?\n\nJoão pensou um momento antes de responder.\n\n— Porque a doença tenta reduzir a vida ao que perdemos. Eu prefiro contar o que ainda tenho.",
+        },
+        {
+          heading: "A Última Aula",
+          content: "Quando se reformou, aos sessenta e cinco anos, organizou uma última aula aberta.\n\nNão foi sobre história antiga ou revoluções.\n\nFalou sobre persistência.\n\n— A vida muda, sempre mudou — disse aos alunos. — O truque não é evitar a mudança. É continuar a viver apesar dela.\n\nAs mãos tremiam.\n\nMas a voz estava firme.\n\nE quando saiu da sala, percebeu algo importante.\n\nA doença de Parkinson estava presente.\n\nMas não tinha definido o final da história.",
+        },
+      ],
+      conclusion: "Nota do Autor: Estas histórias procuram mostrar uma dimensão frequentemente esquecida quando se fala da doença de Parkinson: a continuidade da vida. O diagnóstico pode parecer uma ruptura definitiva, mas na realidade a maioria das pessoas vive muitos anos com a doença, passando por diferentes fases de adaptação. João representa a persistência intelectual e social, alguém que se recusa a abandonar o propósito. O Parkinson aparece como um processo progressivo, não como um fim imediato. O tema central é simples, mas profundo: viver não significa manter tudo igual, significa continuar a avançar mesmo quando o caminho muda.",
+    },
+    tags: ["conto", "drama realista", "resiliência", "persistência", "professor"],
+    resources: [
+      { title: "APDPk - Associação Portuguesa de Doentes de Parkinson", url: "https://www.apparkinson.org", description: "Apoio, informação e grupos de suporte em Portugal" },
+      { title: "European Parkinson's Disease Association", url: "https://www.epda.eu.com", description: "Recursos europeus sobre Parkinson" },
+    ],
+  },
+  {
+    id: "018",
+    title: "O Jardim de Helena",
+    subtitle: "Uma mulher que aprendeu a viver ao ritmo das plantas quando o corpo deixou de obedecer",
+    category: "Histórias",
+    date: "Mar 8, 2026",
+    readTime: "8 min",
+    image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1920&q=80",
+    author: {
+      name: "Autor Convidado",
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=800&q=80",
+      bio: "Escritor e cronista dedicado a narrativas sobre resiliência humana",
+    },
+    content: {
+      introduction: "Helena Duarte descobriu a doença numa manhã de primavera.\n\nEstava no jardim de casa, a plantar tomates, quando a pá começou a tremer nas suas mãos.\n\nNo início pensou que fosse fadiga. Trabalhara demasiado no dia anterior. Mas os tremores voltaram no dia seguinte. E no outro.\n\nMeses depois veio o diagnóstico.\n\nDoença de Parkinson.\n\nO médico falou de tratamentos, exercícios, acompanhamento. Helena ouviu tudo com atenção, mas havia uma pergunta que não conseguiu evitar.\n\n— Ainda vou conseguir cuidar do meu jardim?\n\nO médico sorriu com cuidado.\n\n— Sim. Talvez de forma diferente.",
+      sections: [
+        {
+          heading: "O Ritmo das Plantas",
+          content: "O jardim sempre foi o lugar onde Helena encontrava paz.\n\nHavia roseiras antigas, ervas aromáticas, árvores de fruto e um pequeno banco de madeira onde costumava ler.\n\nQuando os sintomas começaram a progredir, as tarefas tornaram-se mais lentas.\n\nRegar demorava mais tempo. Transportar vasos era difícil. Às vezes deixava cair ferramentas.\n\nNo início isso irritava-a profundamente.\n\nAté que um dia percebeu algo curioso.\n\nAs plantas não tinham pressa.\n\nAs árvores cresciam devagar. As flores abriam no seu próprio ritmo. O jardim inteiro era um exercício de paciência.\n\nTalvez pudesse aprender com ele.",
+        },
+        {
+          heading: "A Adaptação",
+          content: "Começou a reorganizar tudo.\n\nColocou vasos mais leves. Criou caminhos mais fáceis de percorrer. Pediu ajuda ao vizinho para instalar um sistema simples de rega.\n\nO jardim adaptou-se.\n\nE ela também.",
+        },
+        {
+          heading: "O Jardim Que Cuida",
+          content: "Alguns anos depois, os tremores tornaram-se mais fortes.\n\nHavia dias em que sair da cama exigia esforço. Havia dias em que segurar uma tesoura de poda parecia impossível.\n\nNuma dessas manhãs sentou-se no banco do jardim e ficou apenas a observar.\n\nPensou em tudo o que a doença tinha mudado.\n\nE em tudo o que ainda estava ali.\n\nO sol nas folhas. O cheiro da terra húmida. O som das abelhas.\n\nNesse momento percebeu algo importante.\n\nO jardim não existia apenas porque ela cuidava dele.\n\nEle também cuidava dela.\n\nLevantou-se lentamente e começou a regar as plantas.\n\nDevagar.\n\nSem pressa.",
+        },
+        {
+          heading: "Cada Estação, Um Capítulo",
+          content: "Helena já não trabalha no jardim como antes.\n\nMas continua a visitá-lo todos os dias.\n\nAlgumas tarefas são feitas pelos filhos. Outras pelos vizinhos. Outras simplesmente ficam por fazer.\n\nE, surpreendentemente, o jardim continua bonito.\n\nÀs vezes até mais bonito do que antes.\n\nPorque agora cada flor tem um significado diferente.\n\nCada estação representa mais um capítulo vivido.",
+        },
+      ],
+      conclusion: "A doença de Parkinson continua presente. Mas o jardim continua a crescer. E Helena também.\n\nNota do Autor: Helena simboliza a adaptação tranquila — aprender a viver num ritmo diferente sem perder sentido. O foco desta narrativa está na vontade de viver e na capacidade humana de reconstruir rotinas e identidade apesar das limitações físicas. Viver não significa manter tudo igual, significa continuar a avançar mesmo quando o caminho muda.",
+    },
+    tags: ["conto", "drama humano", "resiliência", "jardim", "adaptação"],
+    resources: [
+      { title: "APDPk - Associação Portuguesa de Doentes de Parkinson", url: "https://www.apparkinson.org", description: "Apoio, informação e grupos de suporte em Portugal" },
+      { title: "Parkinson's Foundation", url: "https://www.parkinson.org", description: "Informação científica e recursos para doentes e famílias" },
+    ],
+  },
 ];
 
 export function getArticleById(id: string): Article | undefined {
