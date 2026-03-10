@@ -70,7 +70,7 @@ const Index = () => {
               <h3 className="font-semibold mb-4">Recursos</h3>
               <ul className="space-y-2 text-sm text-muted-foreground">
                 <li><a href="https://parkinson.pt" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">APDPk</a></li>
-                <li><a href="/#newsletter" className="hover:text-accent transition-colors">Newsletter</a></li>
+                
               </ul>
             </div>
           </div>
