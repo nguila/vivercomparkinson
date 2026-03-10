@@ -1,7 +1,8 @@
+import { useState } from "react";
 import Header from "@/components/Header";
 import { researchItems } from "@/data/research";
 import { Badge } from "@/components/ui/badge";
-import { FlaskConical, ExternalLink, ArrowUpRight } from "lucide-react";
+import { FlaskConical, ExternalLink, ArrowUpRight, Filter } from "lucide-react";
 
 const categoryColors: Record<string, string> = {
   "Terapias": "bg-[hsl(var(--tag-saude))] text-primary",
@@ -13,6 +14,12 @@ const categoryColors: Record<string, string> = {
 const categories = ["Todos", "Terapias", "Medicamentos", "Investigação", "Ensaios Clínicos"];
 
 const Research = () => {
+  const [activeCategory, setActiveCategory] = useState("Todos");
+
+  const filteredItems = activeCategory === "Todos"
+    ? researchItems
+    : researchItems.filter(item => item.category === activeCategory);
+
   return (
     <div className="min-h-screen bg-background animate-fade-in">
       <Header />
@@ -30,12 +37,12 @@ const Research = () => {
           </h1>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-slide-up stagger-1">
             Os últimos avanços em terapias, medicamentos, pesquisas e ensaios clínicos na luta contra a doença de Parkinson. 
-            Informação baseada em fontes científicas fidedignas.
+            Informação baseada em fontes científicas fidedignas, atualizada diariamente.
           </p>
         </div>
 
         {/* Trusted Sources Banner */}
-        <div className="rounded-2xl bg-primary/5 border border-primary/10 p-6 mb-12 animate-slide-up stagger-2">
+        <div className="rounded-2xl bg-primary/5 border border-primary/10 p-6 mb-8 animate-slide-up stagger-2">
           <div className="flex flex-col md:flex-row items-start md:items-center gap-4">
             <div className="flex-1">
               <h3 className="font-bold text-lg mb-1">📚 Fontes Científicas Verificadas</h3>
@@ -53,70 +60,104 @@ const Research = () => {
           </div>
         </div>
 
+        {/* Category Filter */}
+        <div className="mb-10 animate-slide-up stagger-3">
+          <div className="flex items-center gap-2 mb-4">
+            <Filter className="w-4 h-4 text-muted-foreground" />
+            <span className="text-sm font-medium text-muted-foreground">Filtrar por categoria</span>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {categories.map(cat => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                  activeCategory === cat
+                    ? "bg-primary text-primary-foreground shadow-md"
+                    : "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground"
+                }`}
+              >
+                {cat}
+                {cat !== "Todos" && (
+                  <span className="ml-1.5 opacity-70">
+                    ({researchItems.filter(i => i.category === cat).length})
+                  </span>
+                )}
+              </button>
+            ))}
+          </div>
+        </div>
+
         {/* Research Items */}
         <div className="space-y-8">
-          {researchItems.map((item, index) => (
-            <article
-              key={item.id}
-              id={item.id}
-              className={`rounded-2xl overflow-hidden bg-card border border-border hover:border-primary/20 transition-all duration-300 animate-slide-up stagger-${Math.min(index + 1, 6)}`}
-            >
-              <div className="grid md:grid-cols-3 gap-0">
-                <div className="relative h-64 md:h-auto overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <Badge className={`${categoryColors[item.category] || "bg-muted text-foreground"} text-xs font-medium border-0`}>
-                      {item.category}
-                    </Badge>
+          {filteredItems.length === 0 ? (
+            <div className="text-center py-16 text-muted-foreground">
+              <p className="text-lg">Nenhum artigo encontrado nesta categoria.</p>
+            </div>
+          ) : (
+            filteredItems.map((item, index) => (
+              <article
+                key={item.id}
+                id={item.id}
+                className={`rounded-2xl overflow-hidden bg-card border border-border hover:border-primary/20 transition-all duration-300 animate-slide-up stagger-${Math.min(index + 1, 6)}`}
+              >
+                <div className="grid md:grid-cols-3 gap-0">
+                  <div className="relative h-64 md:h-auto overflow-hidden">
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <Badge className={`${categoryColors[item.category] || "bg-muted text-foreground"} text-xs font-medium border-0`}>
+                        {item.category}
+                      </Badge>
+                    </div>
                   </div>
-                </div>
-                <div className="md:col-span-2 p-6 md:p-8 flex flex-col justify-between">
-                  <div>
-                    <div className="flex items-center gap-3 text-sm text-muted-foreground mb-3">
-                      <span>{item.date}</span>
-                      <span>·</span>
+                  <div className="md:col-span-2 p-6 md:p-8 flex flex-col justify-between">
+                    <div>
+                      <div className="flex items-center gap-3 text-sm text-muted-foreground mb-3">
+                        <span>{item.date}</span>
+                        <span>·</span>
+                        <a
+                          href={item.sourceUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-1 hover:text-primary transition-colors"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5" />
+                          {item.source}
+                        </a>
+                      </div>
+                      <h2 className="text-xl md:text-2xl font-bold mb-3 leading-tight">
+                        {item.title}
+                      </h2>
+                      <p className="text-muted-foreground leading-relaxed mb-4">
+                        {item.content}
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-border">
+                      {item.tags.map(tag => (
+                        <Badge key={tag} variant="secondary" className="text-xs">
+                          {tag}
+                        </Badge>
+                      ))}
                       <a
                         href={item.sourceUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-1 hover:text-primary transition-colors"
+                        className="ml-auto inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
                       >
-                        <ExternalLink className="w-3.5 h-3.5" />
-                        {item.source}
+                        Ler fonte original
+                        <ArrowUpRight className="w-4 h-4" />
                       </a>
                     </div>
-                    <h2 className="text-xl md:text-2xl font-bold mb-3 leading-tight">
-                      {item.title}
-                    </h2>
-                    <p className="text-muted-foreground leading-relaxed mb-4">
-                      {item.content}
-                    </p>
-                  </div>
-                  <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-border">
-                    {item.tags.map(tag => (
-                      <Badge key={tag} variant="secondary" className="text-xs">
-                        {tag}
-                      </Badge>
-                    ))}
-                    <a
-                      href={item.sourceUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ml-auto inline-flex items-center gap-1 text-sm font-medium text-primary hover:text-primary/80 transition-colors"
-                    >
-                      Ler fonte original
-                      <ArrowUpRight className="w-4 h-4" />
-                    </a>
                   </div>
                 </div>
-              </div>
-            </article>
-          ))}
+              </article>
+            ))
+          )}
         </div>
 
         {/* Inspirational CTA */}
