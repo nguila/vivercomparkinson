@@ -14,6 +14,7 @@ import Contact from "./pages/Contact";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import Research from "./pages/Research";
+import DoencaParkinson from "./pages/DoencaParkinson";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
