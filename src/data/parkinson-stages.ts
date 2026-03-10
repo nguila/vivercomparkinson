@@ -264,6 +264,207 @@ export const managementStrategies = [
   },
 ];
 
+export interface Treatment {
+  name: string;
+  category: "dopaminergic" | "non-dopaminergic" | "surgical" | "emerging";
+  description: string;
+  mechanism: string;
+  indications: string[];
+  sideEffects: string[];
+  notes: string;
+  sourceUrl: string;
+}
+
+export const treatments: Treatment[] = [
+  {
+    name: "Levodopa / Carbidopa (Sinemet, Madopar)",
+    category: "dopaminergic",
+    description: "O tratamento mais eficaz e mais utilizado para a doença de Parkinson. A levodopa é convertida em dopamina no cérebro. A carbidopa (ou benserazida) impede a conversão periférica, reduzindo efeitos secundários.",
+    mechanism: "A levodopa atravessa a barreira hematoencefálica e é convertida em dopamina pela enzima DOPA descarboxilase nos neurónios dopaminérgicos remanescentes da substância negra.",
+    indications: [
+      "Tratamento de primeira linha em doentes com mais de 70 anos",
+      "Sintomas motores moderados a severos em qualquer idade",
+      "Quando agonistas dopaminérgicos são insuficientes ou mal tolerados",
+      "Formulações de libertação prolongada para flutuações motoras",
+    ],
+    sideEffects: [
+      "Náuseas e vómitos (especialmente no início)",
+      "Discinesias (movimentos involuntários) após uso prolongado",
+      "Flutuações motoras (fenómeno ON/OFF) após 5-10 anos",
+      "Hipotensão ortostática",
+      "Sonolência e confusão (em idosos)",
+    ],
+    notes: "Após 5-10 anos de uso, cerca de 50-80% dos doentes desenvolvem flutuações motoras e discinesias. A interação com proteínas da dieta pode reduzir a absorção — recomenda-se tomar 30-60 min antes das refeições.",
+    sourceUrl: "https://www.parkinson.org/understanding-parkinsons/treatment/prescription-medications/carbidopa-levodopa",
+  },
+  {
+    name: "Agonistas Dopaminérgicos (Pramipexol, Ropinirol, Rotigotina)",
+    category: "dopaminergic",
+    description: "Medicamentos que imitam a ação da dopamina nos recetores cerebrais. Podem ser usados em monoterapia nas fases iniciais ou em combinação com levodopa nas fases mais avançadas.",
+    mechanism: "Estimulam diretamente os recetores de dopamina D2 e D3 no estriado, sem necessidade de conversão enzimática. Têm uma semivida mais longa que a levodopa.",
+    indications: [
+      "Tratamento inicial em doentes mais jovens (<70 anos) para atrasar o uso de levodopa",
+      "Terapia adjuvante à levodopa para reduzir flutuações motoras",
+      "Rotigotina em adesivo transdérmico para administração contínua",
+      "Apomorfina subcutânea para resgate rápido de episódios OFF",
+    ],
+    sideEffects: [
+      "Náuseas, tonturas e sonolência diurna excessiva",
+      "Edema periférico (inchaço das pernas)",
+      "Distúrbios do controlo de impulsos (jogo patológico, compras compulsivas, hipersexualidade) em 15-20% dos doentes",
+      "Alucinações visuais (mais frequentes em idosos)",
+      "Síndrome de abstinência ao descontinuar",
+    ],
+    notes: "Os distúrbios do controlo de impulsos são um efeito secundário importante que deve ser monitorizado ativamente. A apomorfina é o único agonista que pode ser administrado por via subcutânea para alívio rápido.",
+    sourceUrl: "https://www.michaeljfox.org/news/dopamine-agonists",
+  },
+  {
+    name: "Inibidores da MAO-B (Rasagilina, Selegilina, Safinamida)",
+    category: "dopaminergic",
+    description: "Medicamentos que bloqueiam a enzima monoamina oxidase B (MAO-B), responsável pela degradação da dopamina no cérebro. Prolongam o efeito da dopamina disponível.",
+    mechanism: "Inibem irreversivelmente (rasagilina, selegilina) ou reversivelmente (safinamida) a MAO-B, impedindo a degradação da dopamina e aumentando a sua disponibilidade sináptica.",
+    indications: [
+      "Monoterapia nas fases muito iniciais com sintomas leves",
+      "Terapia adjuvante à levodopa para prolongar o efeito e reduzir períodos OFF",
+      "Safinamida: também bloqueia canais de sódio e libertação de glutamato",
+      "Possível efeito neuroprotetor (em investigação)",
+    ],
+    sideEffects: [
+      "Insónia (especialmente selegilina)",
+      "Cefaleias e tonturas",
+      "Náuseas ligeiras",
+      "Interações com antidepressivos (risco de síndrome serotoninérgica)",
+      "Discinesias quando combinados com levodopa",
+    ],
+    notes: "A rasagilina é geralmente preferida à selegilina por ter menos efeitos secundários e interações. A safinamida é a mais recente e tem um duplo mecanismo de ação.",
+    sourceUrl: "https://www.parkinsons.org.uk/information-and-support/mao-b-inhibitors",
+  },
+  {
+    name: "Inibidores da COMT (Entacapona, Opicapona, Tolcapona)",
+    category: "dopaminergic",
+    description: "Bloqueiam a enzima catecol-O-metiltransferase (COMT) que degrada a levodopa no organismo, aumentando a sua biodisponibilidade e prolongando o seu efeito.",
+    mechanism: "Ao inibir a COMT, impedem a degradação periférica da levodopa, permitindo que mais levodopa chegue ao cérebro. São sempre usados em combinação com levodopa.",
+    indications: [
+      "Adjuvante à levodopa em doentes com flutuações motoras (wearing-off)",
+      "Opicapona: dose única diária, inibidor de terceira geração desenvolvido em Portugal",
+      "Redução dos períodos OFF em 1-2 horas por dia",
+      "Permitem reduzir a dose total de levodopa",
+    ],
+    sideEffects: [
+      "Discinesias (por aumento do efeito da levodopa)",
+      "Diarreia (especialmente entacapona)",
+      "Coloração alaranjada da urina (inofensivo)",
+      "Tolcapona: risco raro de hepatotoxicidade (requer monitorização hepática)",
+      "Náuseas e dor abdominal",
+    ],
+    notes: "A opicapona (Ongentys®) foi desenvolvida pela empresa portuguesa BIAL e aprovada pela EMA em 2016. Representa um avanço significativo por necessitar de apenas uma toma diária.",
+    sourceUrl: "https://www.parkinson.org/understanding-parkinsons/treatment/prescription-medications/comt-inhibitors",
+  },
+  {
+    name: "Anticolinérgicos (Tri-hexifenidilo, Biperideno)",
+    category: "non-dopaminergic",
+    description: "Dos medicamentos mais antigos para o Parkinson. Bloqueiam a ação da acetilcolina, reequilibrando a relação dopamina/acetilcolina no estriado. Uso atualmente limitado.",
+    mechanism: "Bloqueiam os recetores muscarínicos de acetilcolina no estriado. Com a redução de dopamina no Parkinson, a acetilcolina fica relativamente em excesso, e estes fármacos restauram o equilíbrio.",
+    indications: [
+      "Tremor de repouso predominante em doentes jovens",
+      "Quando o tremor não responde adequadamente à levodopa",
+      "Sialorreia (excesso de saliva)",
+      "Uso cada vez mais raro devido aos efeitos secundários cognitivos",
+    ],
+    sideEffects: [
+      "Boca seca, visão turva, obstipação, retenção urinária",
+      "Confusão mental e alucinações (especialmente em idosos)",
+      "Défice de memória e comprometimento cognitivo",
+      "Contraindicados em doentes com glaucoma ou hiperplasia da próstata",
+    ],
+    notes: "Devido ao risco de efeitos cognitivos adversos, os anticolinérgicos são geralmente evitados em doentes com mais de 65 anos e nunca usados em doentes com demência.",
+    sourceUrl: "https://www.parkinsons.org.uk/information-and-support/anticholinergics",
+  },
+  {
+    name: "Amantadina",
+    category: "non-dopaminergic",
+    description: "Originalmente um antiviral, a amantadina tem múltiplos mecanismos de ação no Parkinson. É o único medicamento aprovado para o tratamento de discinesias induzidas pela levodopa.",
+    mechanism: "Antagonista dos recetores NMDA de glutamato, aumenta a libertação de dopamina, bloqueia a recaptação de dopamina e tem propriedades anticolinérgicas leves.",
+    indications: [
+      "Tratamento de discinesias induzidas pela levodopa (formulação de libertação prolongada — Gocovri®)",
+      "Monoterapia nas fases iniciais com sintomas leves",
+      "Adjuvante para rigidez e bradicinesia",
+      "Redução do congelamento da marcha em alguns doentes",
+    ],
+    sideEffects: [
+      "Livedo reticularis (descoloração arroxeada da pele nas pernas)",
+      "Edema dos tornozelos",
+      "Insónia e alucinações visuais",
+      "Confusão (em idosos)",
+      "Deve ser descontinuada gradualmente",
+    ],
+    notes: "A formulação de libertação prolongada (Gocovri®) foi aprovada em 2017 especificamente para discinesias. Reduz as discinesias em cerca de 40% sem piorar o controlo motor.",
+    sourceUrl: "https://www.michaeljfox.org/news/amantadine-and-parkinsons-disease",
+  },
+  {
+    name: "Estimulação Cerebral Profunda (DBS)",
+    category: "surgical",
+    description: "Procedimento cirúrgico que implanta elétrodos em áreas específicas do cérebro (núcleo subtalâmico ou globo pálido interno) ligados a um neuroestimulador. Considerada a principal opção cirúrgica para Parkinson avançado.",
+    mechanism: "Elétrodos implantados enviam impulsos elétricos contínuos de alta frequência que modulam a atividade neuronal anormal nos circuitos dos gânglios da base, reduzindo os sintomas motores.",
+    indications: [
+      "Flutuações motoras severas (ON/OFF) não controladas com medicação otimizada",
+      "Discinesias incapacitantes induzidas pela levodopa",
+      "Tremor severo refratário à medicação",
+      "Doentes com boa resposta à levodopa (preditivo de bom resultado)",
+      "Idade geralmente inferior a 70 anos, sem demência significativa",
+    ],
+    sideEffects: [
+      "Riscos cirúrgicos: hemorragia intracraniana (1-2%), infeção (3-5%)",
+      "Efeitos da estimulação: alterações na fala (disartria), parestesias",
+      "Alterações de humor e comportamento em alguns doentes",
+      "Necessidade de ajustes frequentes da programação",
+      "Substituição da bateria do neuroestimulador a cada 3-5 anos (ou recarregável)",
+    ],
+    notes: "Em Portugal, a DBS está disponível em centros especializados (Hospital de Santa Maria, Hospital de São João, Hospital de Coimbra). Reduz a medicação em 50-60% e melhora os sintomas motores em 40-60%. O sistema adaptativo (aDBS), que ajusta automaticamente a estimulação, está em desenvolvimento.",
+    sourceUrl: "https://www.parkinson.org/understanding-parkinsons/treatment/surgical-treatment/deep-brain-stimulation",
+  },
+  {
+    name: "Terapias de Infusão (Duodopa, Apomorfina contínua)",
+    category: "surgical",
+    description: "Terapias de administração contínua para doentes com flutuações motoras severas. A Duodopa é um gel de levodopa/carbidopa administrado diretamente no jejuno. A apomorfina pode ser administrada por bomba subcutânea.",
+    mechanism: "A administração contínua mantém níveis plasmáticos estáveis do fármaco, evitando os picos e vales que causam flutuações motoras e discinesias com a medicação oral.",
+    indications: [
+      "Flutuações motoras severas não controladas com medicação oral otimizada",
+      "Alternativa à DBS em doentes não elegíveis para cirurgia cerebral",
+      "Duodopa: requer gastrostomia percutânea (PEG-J)",
+      "Bomba de apomorfina: administração subcutânea sem necessidade de cirurgia",
+    ],
+    sideEffects: [
+      "Duodopa: complicações da sonda (deslocamento, obstrução, infeção local)",
+      "Apomorfina: nódulos subcutâneos no local de injeção, náuseas",
+      "Ambos: discinesias, alucinações",
+      "Duodopa: polineuropatia (deficiência de vitamina B12 — requer suplementação)",
+    ],
+    notes: "A foslevodopa/foscarbidopa (Produodopa®) é uma nova formulação subcutânea aprovada em 2024 que elimina a necessidade de sonda jejunal, representando um grande avanço na conveniência para o doente.",
+    sourceUrl: "https://www.parkinsons.org.uk/information-and-support/duodopa",
+  },
+  {
+    name: "Terapias Emergentes e em Investigação",
+    category: "emerging",
+    description: "Várias abordagens inovadoras estão em desenvolvimento para modificar a progressão da doença, não apenas tratar sintomas. Incluem terapias génicas, imunoterapias e terapias com células estaminais.",
+    mechanism: "Diferentes abordagens: anticorpos anti-alfa-sinucleína (prasinezumab), terapias génicas que aumentam a produção de dopamina, transplante de neurónios dopaminérgicos derivados de células estaminais, e agonistas GLP-1 (originalmente para diabetes).",
+    indications: [
+      "Prasinezumab (anti-alfa-sinucleína): resultados promissores em fase II — pode abrandar progressão motora",
+      "Lixisenatida (agonista GLP-1): estudo LIXIPARK mostrou abrandamento da progressão em 2024",
+      "Terapia génica (AAV-GAD, AAV-AADC): ensaios clínicos de fase I/II em curso",
+      "Transplante de células estaminais: ensaios iniciais no Japão e EUA",
+    ],
+    sideEffects: [
+      "Variáveis conforme a terapia — ainda em estudo",
+      "Imunoterapias: reações de infusão, risco teórico de autoimunidade",
+      "Terapia génica: riscos cirúrgicos da administração intracerebral",
+      "GLP-1: náuseas, perda de peso (geralmente bem tolerados)",
+    ],
+    notes: "O estudo mais promissor recente é o LIXIPARK (2024, NEJM), que demonstrou que a lixisenatida (um agonista GLP-1 usado na diabetes) abrandou a progressão dos sintomas motores em 12 meses. Vários ensaios clínicos estão ativamente a recrutar em ClinicalTrials.gov.",
+    sourceUrl: "https://clinicaltrials.gov/search?cond=Parkinson%20Disease&aggFilters=status:rec",
+  },
+];
+
 export const reliableSources: ParkinsonSource[] = [
   {
     title: "Michael J. Fox Foundation",
