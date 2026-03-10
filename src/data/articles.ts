@@ -150,7 +150,7 @@ export const articles: Article[] = [
     tags: ["dia a dia", "cozinha", "adaptação", "autonomia"],
     resources: [
       { title: "Parkinson's Foundation - Dicas para o Dia a Dia", url: "https://www.parkinson.org/living-with-parkinsons/daily-activities", description: "Estratégias práticas para atividades diárias" },
-      { title: "APDPk - Terapia Ocupacional", url: "https://www.apparkinson.org", description: "Informação sobre terapia ocupacional e adaptações" },
+      { title: "APDPk - Terapia Ocupacional", url: "https://parkinson.pt", description: "Informação sobre terapia ocupacional e adaptações" },
     ],
   },
   {
