@@ -111,6 +111,9 @@ const Header = () => {
               <a href="/saude" className="text-sm font-medium hover:text-accent transition-colors">
                 Saúde
               </a>
+              <a href="/investigacao" className="text-sm font-medium hover:text-accent transition-colors">
+                Investigação
+              </a>
               <a href="/about" className="text-sm font-medium hover:text-accent transition-colors">
                 Sobre
               </a>
