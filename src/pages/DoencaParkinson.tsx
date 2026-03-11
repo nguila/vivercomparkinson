@@ -454,8 +454,7 @@ const DoencaParkinson = () => {
               </p>
             </div>
           </TabsContent>
-
-
+          <TabsContent value="fontes" className="animate-fade-in">
             <div className="text-center mb-8">
               <h2 className="text-2xl sm:text-3xl font-bold font-serif mb-3">Fontes Fidedignas</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
