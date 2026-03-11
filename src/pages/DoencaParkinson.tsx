@@ -16,8 +16,9 @@ import {
   managementStrategies,
   reliableSources,
   treatments,
+  medicationCare,
 } from "@/data/parkinson-stages";
-import { ExternalLink, BookOpen, Brain, Activity, Heart, Shield, Clock, AlertCircle, Pill, Zap } from "lucide-react";
+import { ExternalLink, BookOpen, Brain, Activity, Heart, Shield, Clock, AlertCircle, Pill, Zap, UtensilsCrossed } from "lucide-react";
 
 const DoencaParkinson = () => {
   const [activeTab, setActiveTab] = useState("fases");
@@ -73,6 +74,10 @@ const DoencaParkinson = () => {
             <TabsTrigger value="tratamentos" className="flex-1 min-w-[120px] rounded-xl py-2.5 text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
               <Pill className="w-4 h-4 mr-1.5" />
               Tratamentos
+            </TabsTrigger>
+            <TabsTrigger value="medicacao" className="flex-1 min-w-[120px] rounded-xl py-2.5 text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+              <UtensilsCrossed className="w-4 h-4 mr-1.5" />
+              Medicação
             </TabsTrigger>
             <TabsTrigger value="fontes" className="flex-1 min-w-[120px] rounded-xl py-2.5 text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
               <Shield className="w-4 h-4 mr-1.5" />
@@ -407,6 +412,48 @@ const DoencaParkinson = () => {
           </TabsContent>
 
 
+          {/* MEDICAÇÃO - Cuidados na Toma */}
+          <TabsContent value="medicacao" className="animate-fade-in">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl sm:text-3xl font-bold font-serif mb-3">Cuidados na Toma da Medicação</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Orientações práticas sobre horários, alimentação e fatores que influenciam a eficácia dos medicamentos para o Parkinson.
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              {medicationCare.map((section, sectionIndex) => (
+                <div key={sectionIndex}>
+                  <h3 className="text-xl font-bold font-serif mb-4 flex items-center gap-2">
+                    <span className="text-2xl">{section.icon}</span>
+                    {section.title}
+                  </h3>
+                  <Accordion type="multiple" className="space-y-3">
+                    {section.items.map((item, itemIndex) => (
+                      <AccordionItem
+                        key={itemIndex}
+                        value={`med-${sectionIndex}-${itemIndex}`}
+                        className="bg-card rounded-2xl border border-border px-6 data-[state=open]:shadow-md transition-shadow"
+                      >
+                        <AccordionTrigger className="text-base font-bold font-serif hover:no-underline py-5">
+                          {item.label}
+                        </AccordionTrigger>
+                        <AccordionContent className="pb-5">
+                          <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                        </AccordionContent>
+                      </AccordionItem>
+                    ))}
+                  </Accordion>
+                </div>
+              ))}
+            </div>
+
+            <div className="bg-muted/50 rounded-2xl border border-border p-6 mt-8">
+              <p className="text-sm text-muted-foreground leading-relaxed text-center max-w-2xl mx-auto">
+                <strong>⚕️ Aviso:</strong> Estas orientações são gerais e educativas. Cada doente é único — consulte sempre o seu neurologista antes de alterar horários, doses ou hábitos alimentares relacionados com a medicação.
+              </p>
+            </div>
+          </TabsContent>
           <TabsContent value="fontes" className="animate-fade-in">
             <div className="text-center mb-8">
               <h2 className="text-2xl sm:text-3xl font-bold font-serif mb-3">Fontes Fidedignas</h2>
