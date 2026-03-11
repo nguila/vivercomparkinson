@@ -114,6 +114,18 @@ const DoencaParkinson = () => {
               <UtensilsCrossed className="w-4 h-4 mr-1.5" />
               Medicação
             </TabsTrigger>
+            <TabsTrigger value="diagnostico" className="flex-1 min-w-[120px] rounded-xl py-2.5 text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+              <Fingerprint className="w-4 h-4 mr-1.5" />
+              Diagnóstico
+            </TabsTrigger>
+            <TabsTrigger value="pre-diagnostico" className="flex-1 min-w-[120px] rounded-xl py-2.5 text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+              <ClipboardCheck className="w-4 h-4 mr-1.5" />
+              Pré-Diagnóstico
+            </TabsTrigger>
+            <TabsTrigger value="solucoes" className="flex-1 min-w-[120px] rounded-xl py-2.5 text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
+              <Sparkles className="w-4 h-4 mr-1.5" />
+              Soluções
+            </TabsTrigger>
             <TabsTrigger value="fontes" className="flex-1 min-w-[120px] rounded-xl py-2.5 text-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">
               <Shield className="w-4 h-4 mr-1.5" />
               Fontes
