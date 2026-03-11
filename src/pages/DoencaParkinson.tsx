@@ -23,7 +23,10 @@ import {
   preDiagnosticResults,
   solutionCategories,
 } from "@/data/parkinson-stages";
-import { ExternalLink, BookOpen, Brain, Activity, Heart, Shield, Clock, AlertCircle, Pill, Zap, UtensilsCrossed, Timer, Apple, Ban, BellRing, TrendingDown, Lightbulb, GlassWater, Fish, Wheat, Leaf, Bean, AlarmClock, NotebookPen, Sunrise, Tablets, Grape, Milk, FlaskConical, Wine, Candy, CircleAlert, RotateCcw, Siren, ThermometerSun, Stethoscope, Plane, Users, Package } from "lucide-react";
+import { ExternalLink, BookOpen, Brain, Activity, Heart, Shield, Clock, AlertCircle, Pill, Zap, UtensilsCrossed, Timer, Apple, Ban, BellRing, TrendingDown, Lightbulb, GlassWater, Fish, Wheat, Leaf, Bean, AlarmClock, NotebookPen, Sunrise, Tablets, Grape, Milk, FlaskConical, Wine, Candy, CircleAlert, RotateCcw, Siren, ThermometerSun, Stethoscope, Plane, Users, Package, Fingerprint, ClipboardCheck, Sparkles, CheckCircle2, XCircle, Star } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Progress } from "@/components/ui/progress";
 
 const DoencaParkinson = () => {
   const [activeTab, setActiveTab] = useState("fases");
