@@ -18,7 +18,7 @@ import {
   treatments,
   medicationCare,
 } from "@/data/parkinson-stages";
-import { ExternalLink, BookOpen, Brain, Activity, Heart, Shield, Clock, AlertCircle, Pill, Zap } from "lucide-react";
+import { ExternalLink, BookOpen, Brain, Activity, Heart, Shield, Clock, AlertCircle, Pill, Zap, UtensilsCrossed } from "lucide-react";
 
 const DoencaParkinson = () => {
   const [activeTab, setActiveTab] = useState("fases");
