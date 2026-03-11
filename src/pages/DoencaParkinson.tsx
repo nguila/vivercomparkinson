@@ -18,7 +18,7 @@ import {
   treatments,
   medicationCare,
 } from "@/data/parkinson-stages";
-import { ExternalLink, BookOpen, Brain, Activity, Heart, Shield, Clock, AlertCircle, Pill, Zap, UtensilsCrossed } from "lucide-react";
+import { ExternalLink, BookOpen, Brain, Activity, Heart, Shield, Clock, AlertCircle, Pill, Zap, UtensilsCrossed, Timer, Apple, Ban, BellRing, TrendingDown, Lightbulb, GlassWater, Fish, Wheat, Leaf, Bean, AlarmClock, NotebookPen, Sunrise, Tablets, Grape, Milk, FlaskConical, Wine, Candy, CircleAlert, RotateCcw, Siren, ThermometerSun, Stethoscope, Plane, Users, Package } from "lucide-react";
 
 const DoencaParkinson = () => {
   const [activeTab, setActiveTab] = useState("fases");
@@ -422,30 +422,90 @@ const DoencaParkinson = () => {
             </div>
 
             <div className="space-y-6">
-              {medicationCare.map((section, sectionIndex) => (
-                <div key={sectionIndex}>
-                  <h3 className="text-xl font-bold font-serif mb-4 flex items-center gap-2">
-                    <span className="text-2xl">{section.icon}</span>
-                    {section.title}
-                  </h3>
-                  <Accordion type="multiple" className="space-y-3">
-                    {section.items.map((item, itemIndex) => (
-                      <AccordionItem
-                        key={itemIndex}
-                        value={`med-${sectionIndex}-${itemIndex}`}
-                        className="bg-card rounded-2xl border border-border px-6 data-[state=open]:shadow-md transition-shadow"
-                      >
-                        <AccordionTrigger className="text-base font-bold font-serif hover:no-underline py-5">
-                          {item.label}
-                        </AccordionTrigger>
-                        <AccordionContent className="pb-5">
-                          <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
-                        </AccordionContent>
-                      </AccordionItem>
-                    ))}
-                  </Accordion>
-                </div>
-              ))}
+              {medicationCare.map((section, sectionIndex) => {
+                const sectionIcons: Record<number, React.ReactNode> = {
+                  0: <Timer className="w-6 h-6 text-primary" />,
+                  1: <Apple className="w-6 h-6 text-green-600" />,
+                  2: <Ban className="w-6 h-6 text-destructive" />,
+                  3: <BellRing className="w-6 h-6 text-amber-500" />,
+                  4: <TrendingDown className="w-6 h-6 text-destructive" />,
+                  5: <Lightbulb className="w-6 h-6 text-primary" />,
+                };
+
+                const itemIcons: Record<string, React.ReactNode> = {
+                  // Horários
+                  "med-0-0": <AlarmClock className="w-4 h-4 text-primary flex-shrink-0" />,
+                  "med-0-1": <UtensilsCrossed className="w-4 h-4 text-primary flex-shrink-0" />,
+                  "med-0-2": <Tablets className="w-4 h-4 text-primary flex-shrink-0" />,
+                  "med-0-3": <Sunrise className="w-4 h-4 text-primary flex-shrink-0" />,
+                  "med-0-4": <NotebookPen className="w-4 h-4 text-primary flex-shrink-0" />,
+                  // Aconselhados
+                  "med-1-0": <Grape className="w-4 h-4 text-green-600 flex-shrink-0" />,
+                  "med-1-1": <Wheat className="w-4 h-4 text-green-600 flex-shrink-0" />,
+                  "med-1-2": <Fish className="w-4 h-4 text-green-600 flex-shrink-0" />,
+                  "med-1-3": <Leaf className="w-4 h-4 text-green-600 flex-shrink-0" />,
+                  "med-1-4": <GlassWater className="w-4 h-4 text-green-600 flex-shrink-0" />,
+                  "med-1-5": <Bean className="w-4 h-4 text-green-600 flex-shrink-0" />,
+                  // Desaconselhados
+                  "med-2-0": <AlertCircle className="w-4 h-4 text-destructive flex-shrink-0" />,
+                  "med-2-1": <Milk className="w-4 h-4 text-destructive flex-shrink-0" />,
+                  "med-2-2": <FlaskConical className="w-4 h-4 text-destructive flex-shrink-0" />,
+                  "med-2-3": <Pill className="w-4 h-4 text-destructive flex-shrink-0" />,
+                  "med-2-4": <Wine className="w-4 h-4 text-destructive flex-shrink-0" />,
+                  "med-2-5": <Candy className="w-4 h-4 text-destructive flex-shrink-0" />,
+                  // Esquecimento
+                  "med-3-0": <Clock className="w-4 h-4 text-amber-500 flex-shrink-0" />,
+                  "med-3-1": <CircleAlert className="w-4 h-4 text-amber-500 flex-shrink-0" />,
+                  "med-3-2": <RotateCcw className="w-4 h-4 text-amber-500 flex-shrink-0" />,
+                  "med-3-3": <Activity className="w-4 h-4 text-amber-500 flex-shrink-0" />,
+                  "med-3-4": <Siren className="w-4 h-4 text-amber-500 flex-shrink-0" />,
+                  // Fatores
+                  "med-4-0": <UtensilsCrossed className="w-4 h-4 text-destructive flex-shrink-0" />,
+                  "med-4-1": <Activity className="w-4 h-4 text-destructive flex-shrink-0" />,
+                  "med-4-2": <Pill className="w-4 h-4 text-destructive flex-shrink-0" />,
+                  "med-4-3": <Brain className="w-4 h-4 text-destructive flex-shrink-0" />,
+                  "med-4-4": <ThermometerSun className="w-4 h-4 text-destructive flex-shrink-0" />,
+                  "med-4-5": <GlassWater className="w-4 h-4 text-destructive flex-shrink-0" />,
+                  "med-4-6": <FlaskConical className="w-4 h-4 text-destructive flex-shrink-0" />,
+                  // Dicas
+                  "med-5-0": <Package className="w-4 h-4 text-primary flex-shrink-0" />,
+                  "med-5-1": <Plane className="w-4 h-4 text-primary flex-shrink-0" />,
+                  "med-5-2": <ThermometerSun className="w-4 h-4 text-primary flex-shrink-0" />,
+                  "med-5-3": <Stethoscope className="w-4 h-4 text-primary flex-shrink-0" />,
+                  "med-5-4": <Users className="w-4 h-4 text-primary flex-shrink-0" />,
+                };
+
+                return (
+                  <div key={sectionIndex}>
+                    <h3 className="text-xl font-bold font-serif mb-4 flex items-center gap-2">
+                      {sectionIcons[sectionIndex]}
+                      {section.title}
+                    </h3>
+                    <Accordion type="multiple" className="space-y-3">
+                      {section.items.map((item, itemIndex) => {
+                        const iconKey = `med-${sectionIndex}-${itemIndex}`;
+                        return (
+                          <AccordionItem
+                            key={itemIndex}
+                            value={iconKey}
+                            className="bg-card rounded-2xl border border-border px-6 data-[state=open]:shadow-md transition-shadow"
+                          >
+                            <AccordionTrigger className="text-base font-bold font-serif hover:no-underline py-5">
+                              <span className="flex items-center gap-2.5">
+                                {itemIcons[iconKey]}
+                                {item.label}
+                              </span>
+                            </AccordionTrigger>
+                            <AccordionContent className="pb-5">
+                              <p className="text-sm text-muted-foreground leading-relaxed ml-6">{item.description}</p>
+                            </AccordionContent>
+                          </AccordionItem>
+                        );
+                      })}
+                    </Accordion>
+                  </div>
+                );
+              })}
             </div>
 
             <div className="bg-muted/50 rounded-2xl border border-border p-6 mt-8">
