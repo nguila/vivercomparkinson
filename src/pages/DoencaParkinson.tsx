@@ -561,6 +561,245 @@ const DoencaParkinson = () => {
               </p>
             </div>
           </TabsContent>
+
+          {/* DIAGNÓSTICO */}
+          <TabsContent value="diagnostico" className="animate-fade-in">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl sm:text-3xl font-bold font-serif mb-3">Diagnóstico Individual</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                O diagnóstico da doença de Parkinson é complexo e difere de pessoa para pessoa. Nem todos os doentes apresentam os mesmos sintomas.
+              </p>
+            </div>
+
+            <div className="bg-accent/30 rounded-2xl border border-border p-6 mb-8">
+              <div className="flex items-start gap-3">
+                <Fingerprint className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="font-bold font-serif text-lg mb-2">Cada caso é único</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    A doença de Parkinson manifesta-se de forma diferente em cada pessoa. A combinação de sintomas, a ordem em que surgem, 
+                    a velocidade de progressão e a resposta ao tratamento são altamente individuais. Por isso, dois doentes com o mesmo 
+                    diagnóstico podem ter experiências completamente distintas. É fundamental não comparar a sua situação com a de outros doentes.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+              {diagnosticFacts.map((fact, index) => (
+                <div key={index} className="bg-card rounded-2xl border border-border p-6 hover:shadow-lg hover:-translate-y-1 transition-all">
+                  <span className="text-4xl mb-4 block">{fact.icon}</span>
+                  <h3 className="text-lg font-bold font-serif mb-2">{fact.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{fact.description}</p>
+                </div>
+              ))}
+            </div>
+
+            <h3 className="text-2xl font-bold font-serif mb-6 text-center">Sintomas Mais Frequentes — Resumo</h3>
+
+            <div className="space-y-8">
+              <div>
+                <h4 className="text-xl font-bold font-serif mb-4 flex items-center gap-2">
+                  <Activity className="w-5 h-5 text-primary" />
+                  Sintomas Motores
+                </h4>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {frequentSymptomsSummary.motor.map((s, i) => (
+                    <div key={i} className="bg-card rounded-2xl border border-border p-5 hover:shadow-md transition-shadow">
+                      <div className="flex items-start justify-between gap-3 mb-2">
+                        <h5 className="font-bold text-sm">{s.name}</h5>
+                        <Badge variant="secondary" className="text-xs flex-shrink-0">{s.frequency}</Badge>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{s.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-xl font-bold font-serif mb-4 flex items-center gap-2">
+                  <Brain className="w-5 h-5 text-primary" />
+                  Sintomas Não-Motores
+                </h4>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {frequentSymptomsSummary.nonMotor.map((s, i) => (
+                    <div key={i} className="bg-card rounded-2xl border border-border p-5 hover:shadow-md transition-shadow">
+                      <div className="flex items-start justify-between gap-3 mb-2">
+                        <h5 className="font-bold text-sm">{s.name}</h5>
+                        <Badge variant="secondary" className="text-xs flex-shrink-0">{s.frequency}</Badge>
+                      </div>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{s.description}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-muted/50 rounded-2xl border border-border p-6 mt-8">
+              <p className="text-sm text-muted-foreground leading-relaxed text-center max-w-2xl mx-auto">
+                <strong>⚕️ Importante:</strong> A presença de um ou mais destes sintomas não significa necessariamente que tem Parkinson. 
+                Muitos destes sintomas podem ter outras causas. Apenas um neurologista pode fazer um diagnóstico correto após avaliação clínica completa.
+              </p>
+            </div>
+          </TabsContent>
+
+          {/* PRÉ-DIAGNÓSTICO */}
+          <TabsContent value="pre-diagnostico" className="animate-fade-in">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl sm:text-3xl font-bold font-serif mb-3">Questionário Pré-Diagnóstico</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Este questionário <strong>não substitui</strong> uma consulta médica. É apenas uma ferramenta de rastreio para ajudar a identificar sinais que justifiquem uma avaliação neurológica.
+              </p>
+            </div>
+
+            <div className="bg-accent/30 rounded-2xl border border-border p-6 mb-8">
+              <div className="flex items-start gap-3">
+                <AlertCircle className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  <strong>Aviso:</strong> Este teste não é um instrumento clínico validado. Serve apenas como orientação para decidir se deve procurar 
+                  avaliação médica. Muitos destes sintomas podem ter outras causas não relacionadas com o Parkinson.
+                </p>
+              </div>
+            </div>
+
+            <div className="max-w-3xl mx-auto">
+              <div className="space-y-4 mb-8">
+                {preDiagnosticQuestions.map((q) => {
+                  const categoryLabels = { motor: "Motor", nonMotor: "Não-Motor", daily: "Dia a Dia" };
+                  const categoryColors = { motor: "bg-primary/10 text-primary", nonMotor: "bg-accent text-accent-foreground", daily: "bg-muted text-muted-foreground" };
+                  return (
+                    <div
+                      key={q.id}
+                      className={`bg-card rounded-2xl border border-border p-5 hover:shadow-md transition-all cursor-pointer ${selectedAnswers.has(q.id) ? "border-primary shadow-md" : ""}`}
+                      onClick={() => toggleAnswer(q.id)}
+                    >
+                      <div className="flex items-start gap-4">
+                        <Checkbox
+                          checked={selectedAnswers.has(q.id)}
+                          onCheckedChange={() => toggleAnswer(q.id)}
+                          className="mt-0.5"
+                        />
+                        <div className="flex-1">
+                          <p className="text-sm font-medium leading-relaxed">{q.question}</p>
+                          <Badge variant="outline" className={`mt-2 text-xs ${categoryColors[q.category]}`}>
+                            {categoryLabels[q.category]}
+                          </Badge>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
+                <Button onClick={() => setShowResult(true)} size="lg" className="rounded-xl">
+                  <ClipboardCheck className="w-5 h-5 mr-2" />
+                  Ver Resultado
+                </Button>
+                <Button variant="outline" onClick={() => { setSelectedAnswers(new Set()); setShowResult(false); }} size="lg" className="rounded-xl">
+                  <RotateCcw className="w-4 h-4 mr-2" />
+                  Recomeçar
+                </Button>
+              </div>
+
+              {showResult && (() => {
+                const result = getResult();
+                return (
+                  <div className={`rounded-2xl border-2 p-8 ${result.bgColor} ${result.borderColor}`}>
+                    <div className="text-center mb-4">
+                      <h3 className={`text-2xl font-bold font-serif ${result.color}`}>{result.title}</h3>
+                    </div>
+                    <Progress value={result.pct} className="h-3 rounded-full mb-4" />
+                    <p className="text-sm text-center leading-relaxed mb-4">{result.description}</p>
+                    <p className="text-xs text-center text-muted-foreground">
+                      Selecionou {selectedAnswers.size} de {preDiagnosticQuestions.length} sintomas ({Math.round(result.pct)}% de indicadores positivos)
+                    </p>
+                  </div>
+                );
+              })()}
+            </div>
+
+            <div className="bg-muted/50 rounded-2xl border border-border p-6 mt-8">
+              <p className="text-sm text-muted-foreground leading-relaxed text-center max-w-2xl mx-auto">
+                <strong>⚕️ Lembre-se:</strong> Este questionário é meramente indicativo. Um diagnóstico correto requer avaliação clínica 
+                presencial por um neurologista, incluindo exame neurológico, história clínica detalhada e, possivelmente, exames complementares.
+              </p>
+            </div>
+          </TabsContent>
+
+          {/* SOLUÇÕES */}
+          <TabsContent value="solucoes" className="animate-fade-in">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl sm:text-3xl font-bold font-serif mb-3">Soluções e Alternativas</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Estratégias baseadas em evidência para melhorar competências cognitivas, físicas e mentais, 
+                atenuando o impacto da progressão da doença.
+              </p>
+            </div>
+
+            {solutionCategories.map((category, catIndex) => (
+              <div key={catIndex} className="mb-10">
+                <div className="flex items-center gap-3 mb-2">
+                  <span className="text-3xl">{category.icon}</span>
+                  <div>
+                    <h3 className="text-xl font-bold font-serif">{category.title}</h3>
+                    <p className="text-sm text-muted-foreground">{category.description}</p>
+                  </div>
+                </div>
+
+                <Accordion type="multiple" className="space-y-3 mt-4">
+                  {category.solutions.map((solution, solIndex) => (
+                    <AccordionItem
+                      key={solIndex}
+                      value={`sol-${catIndex}-${solIndex}`}
+                      className="bg-card rounded-2xl border border-border px-6 data-[state=open]:shadow-md transition-shadow"
+                    >
+                      <AccordionTrigger className="text-base font-bold font-serif hover:no-underline py-5">
+                        <span className="flex items-center gap-2.5">
+                          <Star className="w-4 h-4 text-primary flex-shrink-0" />
+                          {solution.name}
+                        </span>
+                      </AccordionTrigger>
+                      <AccordionContent className="pb-6 space-y-4">
+                        <p className="text-sm text-muted-foreground leading-relaxed">{solution.description}</p>
+                        
+                        <div>
+                          <h5 className="font-semibold text-xs uppercase tracking-wide text-primary mb-3 flex items-center gap-1.5">
+                            <CheckCircle2 className="w-3.5 h-3.5" />
+                            Benefícios
+                          </h5>
+                          <ul className="space-y-2">
+                            {solution.benefits.map((b, i) => (
+                              <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
+                                <span className="w-1.5 h-1.5 bg-primary/60 rounded-full mt-1.5 flex-shrink-0" />
+                                {b}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        <div className="bg-primary/5 rounded-xl p-4 border border-primary/10">
+                          <h5 className="font-semibold text-xs uppercase tracking-wide mb-2 flex items-center gap-1.5">
+                            <BookOpen className="w-3.5 h-3.5 text-primary" />
+                            Evidência Científica
+                          </h5>
+                          <p className="text-sm text-muted-foreground leading-relaxed">{solution.evidence}</p>
+                        </div>
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            ))}
+
+            <div className="bg-muted/50 rounded-2xl border border-border p-6 mt-6">
+              <p className="text-sm text-muted-foreground leading-relaxed text-center max-w-2xl mx-auto">
+                <strong>💡 Nota:</strong> Estas soluções são complementares ao tratamento médico e não o substituem. 
+                Consulte sempre a sua equipa médica antes de iniciar qualquer nova atividade ou terapia.
+              </p>
+            </div>
+          </TabsContent>
+
           <TabsContent value="fontes" className="animate-fade-in">
             <div className="text-center mb-8">
               <h2 className="text-2xl sm:text-3xl font-bold font-serif mb-3">Fontes Fidedignas</h2>
