@@ -618,3 +618,267 @@ export const reliableSources: ParkinsonSource[] = [
     type: "organization",
   },
 ];
+
+// ========== DIAGNÓSTICO ==========
+
+export interface DiagnosticFact {
+  title: string;
+  description: string;
+  icon: string;
+}
+
+export const diagnosticFacts: DiagnosticFact[] = [
+  {
+    title: "Cada caso é único",
+    description: "Não existem dois doentes com Parkinson iguais. A combinação de sintomas, a velocidade de progressão e a resposta ao tratamento variam enormemente de pessoa para pessoa.",
+    icon: "🧬",
+  },
+  {
+    title: "Nem todos tremem",
+    description: "Cerca de 30% dos doentes de Parkinson nunca desenvolvem tremor. O diagnóstico pode basear-se em rigidez, lentidão de movimentos ou instabilidade postural.",
+    icon: "🤲",
+  },
+  {
+    title: "Sintomas não-motores precedem os motores",
+    description: "Perda de olfato, obstipação, perturbações do sono REM e depressão podem surgir 5 a 10 anos antes dos primeiros sinais motores.",
+    icon: "🕐",
+  },
+  {
+    title: "Diagnóstico clínico",
+    description: "Não existe um exame laboratorial ou de imagem definitivo. O diagnóstico é essencialmente clínico, baseado na história e no exame neurológico, podendo ser complementado com DaTSCAN.",
+    icon: "🩺",
+  },
+  {
+    title: "Idade não é determinante",
+    description: "Embora mais comum após os 60 anos, cerca de 5-10% dos casos são diagnosticados antes dos 50 (Parkinson de início jovem), com características clínicas distintas.",
+    icon: "📅",
+  },
+  {
+    title: "Sintomas flutuam",
+    description: "Os sintomas podem variar ao longo do dia, de dia para dia, e ser influenciados por stress, fadiga, medicação e até condições meteorológicas.",
+    icon: "📊",
+  },
+];
+
+export const frequentSymptomsSummary = {
+  motor: [
+    { name: "Tremor em repouso", description: "Tremor rítmico, geralmente começando numa mão. Mais evidente em repouso e pode diminuir com o movimento voluntário.", frequency: "70%" },
+    { name: "Bradicinesia", description: "Lentidão progressiva dos movimentos. Dificulta tarefas como abotoar roupa, escrever ou levantar-se de uma cadeira.", frequency: "80-90%" },
+    { name: "Rigidez muscular", description: "Aumento do tónus muscular que causa resistência ao movimento passivo. Pode causar dor e limitar a amplitude de movimentos.", frequency: "75-90%" },
+    { name: "Instabilidade postural", description: "Dificuldade em manter o equilíbrio, especialmente em fases mais avançadas. Aumenta o risco de quedas.", frequency: "40-70%" },
+    { name: "Alterações na marcha", description: "Passos curtos e arrastados, festinação (aceleração involuntária), freezing (bloqueio súbito ao caminhar).", frequency: "60-80%" },
+    { name: "Micrografia", description: "Letra progressivamente mais pequena e ilegível. Um dos primeiros sinais subtis da doença.", frequency: "50-60%" },
+  ],
+  nonMotor: [
+    { name: "Perda de olfato", description: "Redução ou perda completa do olfato (anosmia/hiposmia). Frequentemente precede os sintomas motores em vários anos.", frequency: "70-90%" },
+    { name: "Perturbações do sono", description: "Insónia, sonolência diurna, síndrome das pernas inquietas e distúrbio comportamental do sono REM.", frequency: "60-80%" },
+    { name: "Depressão e ansiedade", description: "Podem ser sintomas da própria doença (não apenas reação ao diagnóstico) devido a alterações nos neurotransmissores.", frequency: "40-50%" },
+    { name: "Obstipação", description: "Trânsito intestinal lento, frequentemente presente anos antes do diagnóstico. Relacionado com a patologia no sistema nervoso entérico.", frequency: "50-80%" },
+    { name: "Fadiga", description: "Cansaço persistente não proporcional ao esforço. Um dos sintomas mais incapacitantes e subvalorizados.", frequency: "50-70%" },
+    { name: "Alterações cognitivas", description: "Dificuldades de concentração, planeamento e memória de trabalho. Podem evoluir para demência em fases avançadas.", frequency: "20-40%" },
+  ],
+};
+
+// ========== PRÉ-DIAGNÓSTICO (QUESTIONÁRIO) ==========
+
+export interface PreDiagnosticQuestion {
+  id: number;
+  question: string;
+  category: "motor" | "nonMotor" | "daily";
+  weight: number;
+}
+
+export const preDiagnosticQuestions: PreDiagnosticQuestion[] = [
+  { id: 1, question: "Notou tremor nas mãos, dedos ou queixo em repouso?", category: "motor", weight: 3 },
+  { id: 2, question: "Sente que os seus movimentos estão mais lentos do que o habitual?", category: "motor", weight: 3 },
+  { id: 3, question: "Tem dificuldade em levantar-se de uma cadeira ou da cama?", category: "motor", weight: 2 },
+  { id: 4, question: "A sua letra ficou mais pequena e difícil de ler nos últimos meses?", category: "motor", weight: 2 },
+  { id: 5, question: "Perdeu ou reduziu significativamente o sentido do olfato?", category: "nonMotor", weight: 3 },
+  { id: 6, question: "Tem tido problemas de obstipação persistente sem outra causa aparente?", category: "nonMotor", weight: 2 },
+  { id: 7, question: "O seu companheiro(a) refere que se agita, grita ou mexe muito durante o sono?", category: "nonMotor", weight: 3 },
+  { id: 8, question: "Sente-se deprimido(a) ou ansioso(a) sem motivo aparente?", category: "nonMotor", weight: 1 },
+  { id: 9, question: "A sua voz ficou mais baixa ou monocórdica?", category: "motor", weight: 2 },
+  { id: 10, question: "Tem tido tonturas ou sensação de desmaio ao levantar-se?", category: "nonMotor", weight: 1 },
+  { id: 11, question: "Nota rigidez nos braços, pernas ou pescoço que não melhora com o movimento?", category: "motor", weight: 3 },
+  { id: 12, question: "Tem dificuldade em abotoar botões, usar talheres ou realizar tarefas motoras finas?", category: "daily", weight: 2 },
+  { id: 13, question: "Sente que arrasta os pés ao caminhar ou dá passos mais curtos?", category: "motor", weight: 2 },
+  { id: 14, question: "Tem dificuldade em manter o equilíbrio ou já sofreu quedas inexplicáveis?", category: "motor", weight: 2 },
+  { id: 15, question: "Sente uma fadiga constante que não melhora com o descanso?", category: "nonMotor", weight: 1 },
+];
+
+export const preDiagnosticResults = {
+  low: {
+    title: "Risco Baixo",
+    description: "Com base nas suas respostas, os indicadores sugerem um risco baixo. No entanto, se os sintomas persistirem ou se agravarem, consulte o seu médico para uma avaliação completa.",
+    color: "text-green-600",
+    bgColor: "bg-green-50",
+    borderColor: "border-green-200",
+  },
+  moderate: {
+    title: "Risco Moderado",
+    description: "Algumas das suas respostas são compatíveis com possíveis sinais iniciais. Recomendamos que consulte o seu médico de família ou neurologista para uma avaliação clínica mais detalhada.",
+    color: "text-amber-600",
+    bgColor: "bg-amber-50",
+    borderColor: "border-amber-200",
+  },
+  high: {
+    title: "Risco Elevado — Consulte um Especialista",
+    description: "Vários dos seus sintomas são compatíveis com sinais típicos da doença de Parkinson. É fortemente recomendado que procure avaliação por um neurologista o mais brevemente possível.",
+    color: "text-destructive",
+    bgColor: "bg-red-50",
+    borderColor: "border-red-200",
+  },
+};
+
+// ========== SOLUÇÕES E ALTERNATIVAS ==========
+
+export interface SolutionCategory {
+  title: string;
+  description: string;
+  icon: string;
+  solutions: {
+    name: string;
+    description: string;
+    benefits: string[];
+    evidence: string;
+  }[];
+}
+
+export const solutionCategories: SolutionCategory[] = [
+  {
+    title: "Competências Cognitivas",
+    description: "Estratégias para manter e estimular a função cerebral, memória e capacidade de raciocínio.",
+    icon: "🧠",
+    solutions: [
+      {
+        name: "Jogos cognitivos e puzzles",
+        description: "Palavras cruzadas, sudoku, jogos de memória, apps de treino cerebral (Lumosity, Peak). Estimulam diferentes áreas cerebrais e promovem a neuroplasticidade.",
+        benefits: ["Melhora a memória de trabalho", "Estimula a atenção e concentração", "Promove a flexibilidade mental"],
+        evidence: "Evidência moderada — estudos mostram benefício na manutenção cognitiva quando praticados regularmente.",
+      },
+      {
+        name: "Aprendizagem de novas competências",
+        description: "Aprender um instrumento musical, um novo idioma, pintura ou fotografia. A novidade e o desafio são fundamentais para a neuroplasticidade.",
+        benefits: ["Cria novas conexões neuronais", "Aumenta a reserva cognitiva", "Proporciona satisfação e propósito"],
+        evidence: "Evidência forte — meta-análises confirmam que a aprendizagem contínua reduz o declínio cognitivo.",
+      },
+      {
+        name: "Leitura ativa e escrita",
+        description: "Ler livros, participar em clubes de leitura, escrever um diário ou memórias. A leitura ativa (com reflexão) é mais benéfica que a passiva.",
+        benefits: ["Mantém competências linguísticas", "Estimula a imaginação e memória", "Combate o isolamento social"],
+        evidence: "Evidência moderada a forte — associada a menor risco de demência em vários estudos longitudinais.",
+      },
+      {
+        name: "Terapia ocupacional cognitiva",
+        description: "Sessões com terapeuta ocupacional focadas em estratégias compensatórias para dificuldades do dia a dia: organização, planeamento, gestão de tarefas.",
+        benefits: ["Estratégias personalizadas", "Melhora a autonomia", "Adaptação do ambiente doméstico"],
+        evidence: "Evidência forte — recomendada pelas guidelines europeias de Parkinson.",
+      },
+    ],
+  },
+  {
+    title: "Competências Físicas",
+    description: "Exercício e atividade física adaptada para manter mobilidade, força e equilíbrio.",
+    icon: "💪",
+    solutions: [
+      {
+        name: "Dança (especialmente Tango e Dança de Salão)",
+        description: "A dança combina exercício aeróbico, equilíbrio, coordenação, ritmo e interação social. O Tango Argentino tem mostrado resultados particularmente promissores.",
+        benefits: ["Melhora o equilíbrio e a marcha", "Reduz o freezing", "Benefícios sociais e emocionais"],
+        evidence: "Evidência forte — múltiplos ensaios clínicos randomizados demonstram benefícios superiores ao exercício convencional.",
+      },
+      {
+        name: "Tai Chi e Qi Gong",
+        description: "Movimentos lentos, controlados e fluidos que melhoram o equilíbrio, a flexibilidade e a consciência corporal. Prática segura e acessível.",
+        benefits: ["Reduz o risco de quedas", "Melhora a estabilidade postural", "Promove o relaxamento e reduz o stress"],
+        evidence: "Evidência forte — recomendado pela Movement Disorder Society para melhoria do equilíbrio.",
+      },
+      {
+        name: "Exercício aeróbico intenso",
+        description: "Ciclismo, caminhada rápida, natação ou passadeira. O exercício intenso (60-80% frequência cardíaca máxima) tem mostrado efeitos neuroprotetores.",
+        benefits: ["Potencial efeito neuroprotetor", "Melhora a capacidade cardiorrespiratória", "Reduz a fadiga e melhora o humor"],
+        evidence: "Evidência forte — o estudo SPARX demonstrou que o exercício intenso pode retardar a progressão dos sintomas.",
+      },
+      {
+        name: "Fisioterapia especializada (LSVT BIG)",
+        description: "Programa de fisioterapia intensiva que treina movimentos amplos e exagerados para contrariar a tendência de redução de amplitude do Parkinson.",
+        benefits: ["Melhora a amplitude dos movimentos", "Treina a velocidade e coordenação", "Resultados duradouros com prática"],
+        evidence: "Evidência forte — programa validado cientificamente e recomendado por especialistas.",
+      },
+      {
+        name: "Boxe sem contacto (Rock Steady Boxing)",
+        description: "Treino inspirado no boxe, sem contacto, que trabalha agilidade, força, velocidade, coordenação e equilíbrio de forma motivante e social.",
+        benefits: ["Treino intenso e motivante", "Melhora reflexos e coordenação", "Forte componente social e comunitária"],
+        evidence: "Evidência moderada — crescente número de estudos mostra benefícios na mobilidade e qualidade de vida.",
+      },
+    ],
+  },
+  {
+    title: "Saúde Mental e Emocional",
+    description: "Abordagens para gerir o impacto psicológico da doença e promover o bem-estar emocional.",
+    icon: "💚",
+    solutions: [
+      {
+        name: "Mindfulness e meditação",
+        description: "Prática regular de atenção plena (mindfulness-based stress reduction — MBSR). 10-20 minutos diários podem ter impacto significativo na ansiedade e qualidade de vida.",
+        benefits: ["Reduz ansiedade e stress", "Melhora a qualidade do sono", "Aumenta a consciência corporal"],
+        evidence: "Evidência moderada a forte — estudos específicos em Parkinson mostram melhoria na qualidade de vida.",
+      },
+      {
+        name: "Terapia cognitivo-comportamental (TCC)",
+        description: "Acompanhamento psicológico focado em identificar e modificar padrões de pensamento negativos. Particularmente eficaz na depressão e ansiedade associadas ao Parkinson.",
+        benefits: ["Tratamento eficaz da depressão", "Estratégias de coping", "Melhoria da autoestima"],
+        evidence: "Evidência forte — recomendada pelas guidelines internacionais como tratamento de primeira linha para a depressão no Parkinson.",
+      },
+      {
+        name: "Grupos de apoio e pares",
+        description: "Participação em grupos de doentes e cuidadores (presenciais ou online). Partilhar experiências reduz o isolamento e fornece informação prática.",
+        benefits: ["Combate o isolamento", "Troca de experiências práticas", "Suporte emocional mútuo"],
+        evidence: "Evidência moderada — estudos mostram melhoria no bem-estar e adesão ao tratamento.",
+      },
+      {
+        name: "Musicoterapia",
+        description: "Sessões com musicoterapeuta ou prática musical ativa (cantar, tocar instrumentos). A música ativa múltiplas áreas cerebrais simultaneamente.",
+        benefits: ["Melhora o humor e a motivação", "Pode melhorar a fluência da fala", "Estimula a memória e emoções"],
+        evidence: "Evidência moderada — benefícios documentados na fala, marcha e bem-estar emocional.",
+      },
+      {
+        name: "Arteterapia e expressão criativa",
+        description: "Pintura, escultura, escrita criativa, teatro. A expressão artística proporciona um canal para processar emoções e manter a identidade pessoal.",
+        benefits: ["Canal de expressão emocional", "Mantém a motricidade fina", "Promove o sentido de propósito"],
+        evidence: "Evidência emergente — estudos qualitativos mostram impacto positivo significativo no bem-estar.",
+      },
+    ],
+  },
+  {
+    title: "Terapias Complementares",
+    description: "Abordagens integrativas que podem complementar o tratamento convencional.",
+    icon: "🌿",
+    solutions: [
+      {
+        name: "Terapia da fala (LSVT LOUD)",
+        description: "Programa intensivo de terapia da fala que treina o volume e a clareza vocal. Desenvolvido especificamente para o Parkinson.",
+        benefits: ["Aumenta o volume da voz", "Melhora a articulação e a deglutição", "Resultados duradouros"],
+        evidence: "Evidência forte — programa validado com décadas de investigação. Padrão de referência para a hipofonia no Parkinson.",
+      },
+      {
+        name: "Hidroterapia",
+        description: "Exercícios na água aquecida (32-34°C). A flutuabilidade reduz o impacto nas articulações enquanto a resistência da água fortalece os músculos.",
+        benefits: ["Exercício de baixo impacto", "Melhora a mobilidade e o equilíbrio", "Efeito relaxante e analgésico"],
+        evidence: "Evidência moderada — estudos mostram benefícios na mobilidade, equilíbrio e dor.",
+      },
+      {
+        name: "Acupuntura",
+        description: "Pode ajudar no controlo da dor, na insónia e na obstipação. Deve ser praticada por profissional qualificado e como complemento ao tratamento médico.",
+        benefits: ["Pode aliviar a dor", "Pode melhorar o sono", "Geralmente segura como complemento"],
+        evidence: "Evidência limitada mas promissora — alguns ensaios clínicos mostram benefícios em sintomas específicos.",
+      },
+      {
+        name: "Yoga adaptado",
+        description: "Yoga modificado para as capacidades do doente. Combina posturas, respiração e meditação. Existem programas específicos para Parkinson.",
+        benefits: ["Melhora a flexibilidade e o equilíbrio", "Reduz o stress e a ansiedade", "Promove a consciência corporal"],
+        evidence: "Evidência moderada — estudos mostram benefícios no equilíbrio, flexibilidade e qualidade de vida.",
+      },
+    ],
+  },
+];

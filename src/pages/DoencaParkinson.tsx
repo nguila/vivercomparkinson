@@ -30,6 +30,33 @@ import { Progress } from "@/components/ui/progress";
 
 const DoencaParkinson = () => {
   const [activeTab, setActiveTab] = useState("fases");
+  const [selectedAnswers, setSelectedAnswers] = useState<Set<number>>(new Set());
+  const [showResult, setShowResult] = useState(false);
+
+  const toggleAnswer = (id: number) => {
+    const next = new Set(selectedAnswers);
+    if (next.has(id)) next.delete(id);
+    else next.add(id);
+    setSelectedAnswers(next);
+    setShowResult(false);
+  };
+
+  const calculateScore = () => {
+    let score = 0;
+    preDiagnosticQuestions.forEach((q) => {
+      if (selectedAnswers.has(q.id)) score += q.weight;
+    });
+    return score;
+  };
+
+  const getResult = () => {
+    const score = calculateScore();
+    const maxScore = preDiagnosticQuestions.reduce((a, q) => a + q.weight, 0);
+    const pct = (score / maxScore) * 100;
+    if (pct < 25) return { ...preDiagnosticResults.low, pct };
+    if (pct < 55) return { ...preDiagnosticResults.moderate, pct };
+    return { ...preDiagnosticResults.high, pct };
+  };
 
   return (
     <div className="min-h-screen bg-background">
