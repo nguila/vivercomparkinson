@@ -17,6 +17,11 @@ import {
   reliableSources,
   treatments,
   medicationCare,
+  diagnosticFacts,
+  frequentSymptomsSummary,
+  preDiagnosticQuestions,
+  preDiagnosticResults,
+  solutionCategories,
 } from "@/data/parkinson-stages";
 import { ExternalLink, BookOpen, Brain, Activity, Heart, Shield, Clock, AlertCircle, Pill, Zap, UtensilsCrossed, Timer, Apple, Ban, BellRing, TrendingDown, Lightbulb, GlassWater, Fish, Wheat, Leaf, Bean, AlarmClock, NotebookPen, Sunrise, Tablets, Grape, Milk, FlaskConical, Wine, Candy, CircleAlert, RotateCcw, Siren, ThermometerSun, Stethoscope, Plane, Users, Package } from "lucide-react";
 
