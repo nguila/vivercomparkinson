@@ -264,6 +264,85 @@ export const managementStrategies = [
   },
 ];
 
+export interface MedicationCareSection {
+  title: string;
+  icon: string;
+  items: { label: string; description: string }[];
+}
+
+export const medicationCare: MedicationCareSection[] = [
+  {
+    title: "Horários e Regularidade",
+    icon: "⏰",
+    items: [
+      { label: "Tomar sempre à mesma hora", description: "A levodopa deve ser tomada a intervalos regulares (geralmente a cada 4-6 horas) para manter níveis estáveis de dopamina no cérebro. Use alarmes no telemóvel para não esquecer." },
+      { label: "30-60 minutos antes das refeições", description: "A levodopa é melhor absorvida com o estômago vazio. Idealmente, tome 30 a 60 minutos antes das refeições principais ou 1-2 horas depois de comer." },
+      { label: "Não partir ou esmagar comprimidos de libertação prolongada", description: "Os comprimidos de libertação prolongada (Sinemet CR, Madopar HBS) devem ser engolidos inteiros para garantir a libertação gradual do medicamento." },
+      { label: "Primeira toma ao acordar", description: "A primeira dose da manhã é crucial. Tome a levodopa logo ao acordar, antes de se levantar da cama, com um copo de água. Espere 20-30 minutos antes de tomar o pequeno-almoço." },
+      { label: "Manter um diário da medicação", description: "Registe os horários das tomas, os períodos ON/OFF e os sintomas. Esta informação é valiosa para o neurologista ajustar a medicação." },
+    ],
+  },
+  {
+    title: "Alimentos Aconselhados",
+    icon: "✅",
+    items: [
+      { label: "Frutas e vegetais ricos em antioxidantes", description: "Mirtilos, morangos, espinafres, brócolos e couve são ricos em antioxidantes que podem ajudar a proteger os neurónios. Consuma pelo menos 5 porções por dia." },
+      { label: "Alimentos ricos em fibra", description: "Aveia, leguminosas, sementes de linhaça e chia ajudam a combater a obstipação (muito comum no Parkinson) e melhoram a absorção da medicação a longo prazo." },
+      { label: "Ómega-3 (peixes gordos)", description: "Salmão, sardinha, cavala e atum são ricos em ácidos gordos ómega-3, que têm propriedades anti-inflamatórias e podem ser neuroprotetores." },
+      { label: "Hidratos de carbono complexos", description: "Arroz integral, batata-doce, quinoa e pão integral fornecem energia estável e não interferem com a absorção da levodopa." },
+      { label: "Água e líquidos em abundância", description: "Beba 1.5 a 2 litros de água por dia. A desidratação pode agravar a obstipação e a hipotensão ortostática, além de afetar a absorção da medicação." },
+      { label: "Favas e feijão-frade", description: "Contêm naturalmente levodopa em pequenas quantidades. Podem ser um complemento alimentar benéfico, mas não substituem a medicação." },
+    ],
+  },
+  {
+    title: "Alimentos Desaconselhados ou a Controlar",
+    icon: "⚠️",
+    items: [
+      { label: "Proteínas em excesso junto à medicação", description: "As proteínas competem com a levodopa pela absorção no intestino. Evite refeições ricas em proteínas (carne, peixe, ovos, queijo) nos 30-60 minutos antes e depois de tomar a levodopa. Redistribua as proteínas para o jantar." },
+      { label: "Leite e derivados junto à toma", description: "Os lacticínios são ricos em proteínas e cálcio, que podem interferir com a absorção da levodopa. Evite leite, iogurte e queijo próximo do horário da medicação." },
+      { label: "Alimentos ricos em ferro", description: "Suplementos de ferro e alimentos muito ricos em ferro (fígado, morcela) podem reduzir a absorção da levodopa em até 50%. Separe a toma de ferro da levodopa por pelo menos 2 horas." },
+      { label: "Vitamina B6 em doses elevadas", description: "Doses elevadas de vitamina B6 (piridoxina) podem reduzir a eficácia da levodopa quando tomada sem carbidopa. Com a combinação levodopa/carbidopa moderna, este efeito é minimizado, mas evite megadoses." },
+      { label: "Álcool", description: "O álcool pode agravar a sonolência, as tonturas e a hipotensão ortostática causadas pela medicação. Se consumir, faça-o com muita moderação e nunca próximo da toma da medicação." },
+      { label: "Excesso de açúcar e alimentos processados", description: "Alimentos muito açucarados podem provocar picos de glicemia que agravam as flutuações motoras. Prefira alimentos integrais e não processados." },
+    ],
+  },
+  {
+    title: "O Que Fazer em Caso de Esquecimento",
+    icon: "🔔",
+    items: [
+      { label: "Esqueceu e lembrou-se pouco depois", description: "Se se lembrar dentro de 1 hora do horário previsto, tome a dose imediatamente. Retome depois o horário normal." },
+      { label: "Esqueceu e já passou mais de 1 hora", description: "Se já passou mais de 1 hora, salte essa dose e tome a próxima no horário habitual. Nunca tome dose dupla para compensar — pode causar discinesias graves e outros efeitos secundários." },
+      { label: "Esquecimentos frequentes", description: "Se os esquecimentos são recorrentes, considere usar uma caixa organizadora de medicação semanal, alarmes no telemóvel, ou peça ajuda a um familiar/cuidador. Fale com o neurologista sobre formulações de libertação prolongada." },
+      { label: "Vómito após a toma", description: "Se vomitar nos 30 minutos seguintes à toma, pode repetir a dose. Se já passaram mais de 30 minutos, o medicamento já foi parcialmente absorvido — espere pela próxima toma regular." },
+      { label: "Nunca interromper bruscamente", description: "A interrupção súbita da levodopa ou dos agonistas dopaminérgicos pode causar síndrome neuroléptica maligna, uma emergência médica. Reduza sempre a medicação gradualmente e sob orientação médica." },
+    ],
+  },
+  {
+    title: "Fatores que Reduzem a Eficácia da Medicação",
+    icon: "❌",
+    items: [
+      { label: "Refeições ricas em proteínas", description: "Os aminoácidos das proteínas utilizam o mesmo sistema de transporte que a levodopa no intestino e na barreira hematoencefálica. Uma refeição rica em proteínas pode reduzir a absorção da levodopa em 30-50%." },
+      { label: "Gastroparésia e trânsito intestinal lento", description: "O Parkinson frequentemente afeta o sistema digestivo. A levodopa é absorvida no intestino delgado — se o esvaziamento gástrico estiver atrasado, a absorção é irregular e imprevisível." },
+      { label: "Interação com outros medicamentos", description: "Antipsicóticos, metoclopramida, antidepressivos IMAO não-seletivos e alguns anti-hipertensores podem reduzir a eficácia ou interagir perigosamente com a medicação anti-parkinsónica. Informe sempre o neurologista de todos os medicamentos que toma." },
+      { label: "Stress e ansiedade", description: "O stress emocional pode aumentar o consumo de dopamina e agravar os sintomas motores, dando a impressão de que a medicação não está a funcionar. Técnicas de relaxamento podem ajudar." },
+      { label: "Infeções e febre", description: "Doenças agudas, infeções urinárias e febre podem agravar dramaticamente os sintomas do Parkinson e reduzir a resposta à medicação. É essencial tratar rapidamente qualquer infeção." },
+      { label: "Desidratação", description: "A falta de líquidos afeta a absorção intestinal da levodopa e pode agravar a hipotensão ortostática. Mantenha-se bem hidratado ao longo do dia." },
+      { label: "Helicobacter pylori", description: "A infeção por H. pylori no estômago pode reduzir significativamente a absorção da levodopa. Se a medicação parece perder eficácia, peça ao médico para testar esta bactéria." },
+    ],
+  },
+  {
+    title: "Dicas Práticas para o Dia a Dia",
+    icon: "💡",
+    items: [
+      { label: "Tenha sempre medicação de reserva", description: "Mantenha uma pequena reserva de medicação na mala, no carro e em casa de familiares. Nunca deixe a medicação acabar sem ter renovado a receita." },
+      { label: "Viagens e fusos horários", description: "Em viagens, mantenha a medicação na bagagem de mão. Para fusos horários diferentes, ajuste os horários gradualmente (1 hora por dia). Leve sempre uma carta do médico com a lista de medicação." },
+      { label: "Calor e armazenamento", description: "Guarde a medicação em local fresco e seco (15-25°C). O calor excessivo pode degradar a levodopa. Nunca deixe medicação dentro do carro ao sol." },
+      { label: "Acompanhamento regular", description: "Consulte o neurologista a cada 3-6 meses para ajuste da medicação. Leve o diário de medicação e anote todas as dúvidas antes da consulta." },
+      { label: "Envolver a família", description: "Eduque familiares e cuidadores sobre a medicação, horários e sinais de alerta. Uma rede de apoio informada é fundamental para uma gestão eficaz da doença." },
+    ],
+  },
+];
+
 export interface Treatment {
   name: string;
   category: "dopaminergic" | "non-dopaminergic" | "surgical" | "emerging";

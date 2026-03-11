@@ -16,6 +16,7 @@ import {
   managementStrategies,
   reliableSources,
   treatments,
+  medicationCare,
 } from "@/data/parkinson-stages";
 import { ExternalLink, BookOpen, Brain, Activity, Heart, Shield, Clock, AlertCircle, Pill, Zap } from "lucide-react";
 
