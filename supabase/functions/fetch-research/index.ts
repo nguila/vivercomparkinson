@@ -4,10 +4,10 @@ const corsHeaders = {
 };
 
 const CATEGORY_QUERIES: Record<string, string> = {
-  "Terapias": "parkinson therapy treatment",
-  "Medicamentos": "parkinson drug medication pharmacology",
-  "Investigação": "parkinson research biomarker pathology",
-  "Ensaios Clínicos": "parkinson clinical trial",
+  "Terapias": "(parkinson) AND (therapy OR treatment OR rehabilitation)",
+  "Medicamentos": "(parkinson) AND (drug OR medication OR pharmacology OR levodopa)",
+  "Investigação": "(parkinson) AND (research OR biomarker OR pathology OR mechanism)",
+  "Ensaios Clínicos": "(parkinson) AND (clinical trial OR randomized OR phase)",
 };
 
 const CATEGORY_IMAGES: Record<string, string> = {
@@ -25,7 +25,6 @@ Deno.serve(async (req) => {
   try {
     const { category, pageSize = 8 } = await req.json().catch(() => ({ category: undefined, pageSize: 8 }));
 
-    // Build query - fetch from all categories or a specific one
     const categoriesToFetch = category && category !== "Todos"
       ? { [category]: CATEGORY_QUERIES[category] || "parkinson" }
       : CATEGORY_QUERIES;
@@ -35,27 +34,40 @@ Deno.serve(async (req) => {
     for (const [cat, query] of Object.entries(categoriesToFetch)) {
       const perCategory = category ? pageSize : Math.ceil(pageSize / Object.keys(categoriesToFetch).length);
       
-      const url = `https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=${encodeURIComponent(query)}&format=json&pageSize=${perCategory}&sort=DATE_DESC&resultType=core`;
+      const url = `https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=${encodeURIComponent(query)}&format=json&pageSize=${perCategory}&sort=CITED%20desc&resultType=lite`;
 
-      console.log(`Fetching Europe PMC: ${cat} (${perCategory} results)`);
+      console.log(`Fetching Europe PMC: ${cat}, URL: ${url}`);
       
       const response = await fetch(url);
+      const text = await response.text();
+      console.log(`Response status: ${response.status}, length: ${text.length}`);
+      
       if (!response.ok) {
-        console.error(`Europe PMC error for ${cat}: ${response.status}`);
+        console.error(`Europe PMC error for ${cat}: ${response.status} - ${text.substring(0, 200)}`);
         continue;
       }
 
-      const data = await response.json();
+      let data;
+      try {
+        data = JSON.parse(text);
+      } catch (e) {
+        console.error(`JSON parse error for ${cat}: ${e}`);
+        continue;
+      }
+
       const results = data.resultList?.result || [];
+      console.log(`Got ${results.length} results for ${cat}`);
 
       for (const article of results) {
         const dateStr = article.firstPublicationDate || article.dateOfCreation || "";
         const formattedDate = dateStr ? formatDate(dateStr) : "Data não disponível";
 
+        const articleId = article.pmid || article.id || Math.random().toString(36).slice(2);
+
         allResults.push({
-          id: `pubmed-${article.id || article.pmid || Math.random().toString(36).slice(2)}`,
-          title: article.title?.replace(/<[^>]*>/g, '') || "Sem título",
-          summary: truncate(article.abstractText?.replace(/<[^>]*>/g, '') || article.title || "", 200),
+          id: `pubmed-${articleId}`,
+          title: (article.title || "Sem título").replace(/<[^>]*>/g, ''),
+          summary: truncate((article.abstractText || article.title || "").replace(/<[^>]*>/g, ''), 200),
           category: cat,
           date: formattedDate,
           source: article.journalTitle || article.source || "Europe PMC",
@@ -63,10 +75,10 @@ Deno.serve(async (req) => {
             ? `https://doi.org/${article.doi}`
             : article.pmid
               ? `https://pubmed.ncbi.nlm.nih.gov/${article.pmid}`
-              : `https://europepmc.org/article/${article.source}/${article.id}`,
+              : `https://europepmc.org/article/MED/${articleId}`,
           image: CATEGORY_IMAGES[cat] || CATEGORY_IMAGES["Investigação"],
-          content: truncate(article.abstractText?.replace(/<[^>]*>/g, '') || "", 500),
-          tags: extractTags(article),
+          content: truncate((article.abstractText || article.title || "").replace(/<[^>]*>/g, ''), 500),
+          tags: extractTags(article, cat),
           isLive: true,
         });
       }
@@ -74,12 +86,12 @@ Deno.serve(async (req) => {
 
     // Sort by date descending
     allResults.sort((a, b) => {
-      const da = parsePortugueseDate(a.date);
-      const db = parsePortugueseDate(b.date);
+      const da = parseDate(a.date);
+      const db = parseDate(b.date);
       return db - da;
     });
 
-    console.log(`Returning ${allResults.length} results`);
+    console.log(`Returning ${allResults.length} total results`);
 
     return new Response(
       JSON.stringify({ success: true, data: allResults, fetchedAt: new Date().toISOString() }),
@@ -97,6 +109,7 @@ Deno.serve(async (req) => {
 function formatDate(dateStr: string): string {
   try {
     const d = new Date(dateStr);
+    if (isNaN(d.getTime())) return dateStr;
     const months = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
     return `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
   } catch {
@@ -104,14 +117,13 @@ function formatDate(dateStr: string): string {
   }
 }
 
-function parsePortugueseDate(dateStr: string): number {
-  try {
-    const months: Record<string, number> = { "Jan": 0, "Fev": 1, "Mar": 2, "Abr": 3, "Mai": 4, "Jun": 5, "Jul": 6, "Ago": 7, "Set": 8, "Out": 9, "Nov": 10, "Dez": 11 };
-    const parts = dateStr.replace(",", "").split(" ");
-    if (parts.length === 3) {
-      return new Date(parseInt(parts[2]), months[parts[0]] || 0, parseInt(parts[1])).getTime();
-    }
-  } catch {}
+function parseDate(dateStr: string): number {
+  const months: Record<string, number> = { "Jan": 0, "Fev": 1, "Mar": 2, "Abr": 3, "Mai": 4, "Jun": 5, "Jul": 6, "Ago": 7, "Set": 8, "Out": 9, "Nov": 10, "Dez": 11 };
+  const parts = dateStr.replace(",", "").split(" ");
+  if (parts.length === 3) {
+    const m = months[parts[0]];
+    if (m !== undefined) return new Date(parseInt(parts[2]), m, parseInt(parts[1])).getTime();
+  }
   return 0;
 }
 
@@ -120,16 +132,13 @@ function truncate(text: string, max: number): string {
   return text.slice(0, max).replace(/\s+\S*$/, '') + '…';
 }
 
-function extractTags(article: any): string[] {
+function extractTags(article: any, category: string): string[] {
   const tags: string[] = [];
   if (article.keywordList?.keyword) {
     tags.push(...article.keywordList.keyword.slice(0, 4));
   }
-  if (tags.length === 0 && article.meshHeadingList?.meshHeading) {
-    tags.push(...article.meshHeadingList.meshHeading.slice(0, 4).map((m: any) => m.descriptorName));
-  }
   if (tags.length === 0) {
-    tags.push("Parkinson", "investigação");
+    tags.push("Parkinson", category.toLowerCase());
   }
   return tags;
 }
