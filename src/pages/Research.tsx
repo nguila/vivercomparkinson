@@ -196,7 +196,7 @@ const Research = () => {
       <footer className="border-t border-border mt-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="pt-0 text-center text-sm text-muted-foreground">
-            <p>© 2025 Viver com Parkinson. Todos os direitos reservados.</p>
+            <p>© 2026 Viver com Parkinson. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
