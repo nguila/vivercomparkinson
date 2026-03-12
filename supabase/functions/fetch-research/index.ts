@@ -4,10 +4,10 @@ const corsHeaders = {
 };
 
 const CATEGORY_QUERIES: Record<string, string> = {
-  "Terapias": "(parkinson) AND (therapy OR treatment OR rehabilitation)",
-  "Medicamentos": "(parkinson) AND (drug OR medication OR pharmacology OR levodopa)",
-  "Investigação": "(parkinson) AND (research OR biomarker OR pathology OR mechanism)",
-  "Ensaios Clínicos": "(parkinson) AND (clinical trial OR randomized OR phase)",
+  "Terapias": '(TITLE:"parkinson*" OR TITLE:"parkinsonian") AND (therapy OR treatment OR rehabilitation OR stimulation) AND (SRC:MED)',
+  "Medicamentos": '(TITLE:"parkinson*") AND (drug OR medication OR levodopa OR dopamine agonist) AND (SRC:MED)',
+  "Investigação": '(TITLE:"parkinson*") AND (biomarker OR pathogenesis OR alpha-synuclein OR neurodegeneration) AND (SRC:MED)',
+  "Ensaios Clínicos": '(TITLE:"parkinson*") AND ("clinical trial" OR "randomized" OR "phase II" OR "phase III") AND (SRC:MED)',
 };
 
 const CATEGORY_IMAGES: Record<string, string> = {
