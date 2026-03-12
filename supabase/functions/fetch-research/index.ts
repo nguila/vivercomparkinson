@@ -34,7 +34,7 @@ Deno.serve(async (req) => {
     for (const [cat, query] of Object.entries(categoriesToFetch)) {
       const perCategory = category ? pageSize : Math.ceil(pageSize / Object.keys(categoriesToFetch).length);
       
-      const url = `https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=${encodeURIComponent(query)}&format=json&pageSize=${perCategory}&sort=DATE_COMPLETED%20desc&resultType=lite`;
+      const url = `https://www.ebi.ac.uk/europepmc/webservices/rest/search?query=${encodeURIComponent(query)}&format=json&pageSize=${perCategory}&sort=P_PDATE_D%20desc&resultType=lite`;
 
       console.log(`Fetching Europe PMC: ${cat}, URL: ${url}`);
       
