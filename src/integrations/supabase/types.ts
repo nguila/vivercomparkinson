@@ -44,6 +44,36 @@ export type Database = {
         }
         Relationships: []
       }
+      translation_cache: {
+        Row: {
+          article_id: string
+          created_at: string
+          id: string
+          original_summary: string
+          original_title: string
+          translated_summary: string
+          translated_title: string
+        }
+        Insert: {
+          article_id: string
+          created_at?: string
+          id?: string
+          original_summary: string
+          original_title: string
+          translated_summary: string
+          translated_title: string
+        }
+        Update: {
+          article_id?: string
+          created_at?: string
+          id?: string
+          original_summary?: string
+          original_title?: string
+          translated_summary?: string
+          translated_title?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never

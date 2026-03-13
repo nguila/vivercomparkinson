@@ -1,7 +1,16 @@
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version',
 };
+
+function getSupabaseAdmin() {
+  return createClient(
+    Deno.env.get("SUPABASE_URL")!,
+    Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
+  );
+}
 
 const CATEGORY_QUERIES: Record<string, string> = {
   "Terapias": "parkinson disease therapy treatment rehabilitation",
@@ -16,6 +25,61 @@ const CATEGORY_IMAGES: Record<string, string> = {
   "Investigação": "https://images.unsplash.com/photo-1579154204601-01588f351e67?w=800&q=80",
   "Ensaios Clínicos": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&q=80",
 };
+
+async function translateWithCache(articles: any[]): Promise<void> {
+  const sb = getSupabaseAdmin();
+  const articleIds = articles.map(a => a.id);
+
+  // Fetch cached translations
+  const { data: cached } = await sb
+    .from("translation_cache")
+    .select("article_id, translated_title, translated_summary")
+    .in("article_id", articleIds);
+
+  const cacheMap = new Map((cached || []).map(c => [c.article_id, c]));
+
+  // Separate cached vs uncached
+  const uncached: { index: number; title: string; summary: string }[] = [];
+  for (let i = 0; i < articles.length; i++) {
+    const hit = cacheMap.get(articles[i].id);
+    if (hit) {
+      articles[i].title = hit.translated_title;
+      articles[i].summary = hit.translated_summary;
+    } else {
+      uncached.push({ index: i, title: articles[i].title, summary: articles[i].summary });
+    }
+  }
+
+  console.log(`Cache: ${articles.length - uncached.length} hits, ${uncached.length} misses`);
+
+  if (uncached.length === 0) return;
+
+  // Translate uncached
+  const translated = await translateTexts(uncached.map(u => ({ title: u.title, summary: u.summary })));
+
+  // Apply translations and store in cache
+  const toInsert: any[] = [];
+  for (let i = 0; i < uncached.length; i++) {
+    const idx = uncached[i].index;
+    const origTitle = articles[idx].title;
+    const origSummary = articles[idx].summary;
+    articles[idx].title = translated[i].title;
+    articles[idx].summary = translated[i].summary;
+    toInsert.push({
+      article_id: articles[idx].id,
+      original_title: origTitle,
+      original_summary: origSummary,
+      translated_title: translated[i].title,
+      translated_summary: translated[i].summary,
+    });
+  }
+
+  if (toInsert.length > 0) {
+    const { error } = await sb.from("translation_cache").upsert(toInsert, { onConflict: "article_id" });
+    if (error) console.error("Cache insert error:", error);
+    else console.log(`Cached ${toInsert.length} new translations`);
+  }
+}
 
 async function translateTexts(texts: { title: string; summary: string }[]): Promise<{ title: string; summary: string }[]> {
   const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
@@ -57,7 +121,6 @@ async function translateTexts(texts: { title: string; summary: string }[]): Prom
     const data = await response.json();
     const content = data.choices?.[0]?.message?.content || "";
     
-    // Extract JSON from response (handle potential markdown wrapping)
     const jsonMatch = content.match(/\[[\s\S]*\]/);
     if (!jsonMatch) {
       console.error("Could not parse translation response:", content.substring(0, 200));
@@ -161,14 +224,9 @@ Deno.serve(async (req) => {
       return db - da;
     });
 
-    // Translate titles and summaries to Portuguese
+    // Translate titles and summaries to Portuguese (with cache)
     if (filtered.length > 0) {
-      const textsToTranslate = filtered.map(r => ({ title: r.title, summary: r.summary }));
-      const translated = await translateTexts(textsToTranslate);
-      for (let i = 0; i < filtered.length; i++) {
-        filtered[i].title = translated[i].title;
-        filtered[i].summary = translated[i].summary;
-      }
+      await translateWithCache(filtered);
     }
 
     console.log(`Returning ${filtered.length} total results (translated)`);
