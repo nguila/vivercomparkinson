@@ -162,19 +162,19 @@ Deno.serve(async (req) => {
     });
 
     // Translate titles and summaries to Portuguese
-    if (allResults.length > 0) {
-      const textsToTranslate = allResults.map(r => ({ title: r.title, summary: r.summary }));
+    if (filtered.length > 0) {
+      const textsToTranslate = filtered.map(r => ({ title: r.title, summary: r.summary }));
       const translated = await translateTexts(textsToTranslate);
-      for (let i = 0; i < allResults.length; i++) {
-        allResults[i].title = translated[i].title;
-        allResults[i].summary = translated[i].summary;
+      for (let i = 0; i < filtered.length; i++) {
+        filtered[i].title = translated[i].title;
+        filtered[i].summary = translated[i].summary;
       }
     }
 
-    console.log(`Returning ${allResults.length} total results (translated)`);
+    console.log(`Returning ${filtered.length} total results (translated)`);
 
     return new Response(
-      JSON.stringify({ success: true, data: allResults, fetchedAt: new Date().toISOString() }),
+      JSON.stringify({ success: true, data: filtered, fetchedAt: new Date().toISOString() }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   } catch (error) {
