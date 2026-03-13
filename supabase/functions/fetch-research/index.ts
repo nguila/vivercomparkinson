@@ -146,27 +146,35 @@ Deno.serve(async (req) => {
       }
     }
 
+    // Filter out future dates (articles with "ahead of print" dates)
+    const now = new Date();
+    const currentTimestamp = now.getTime();
+    const filtered = allResults.filter(r => {
+      const ts = parseDate(r.date);
+      return ts === 0 || ts <= currentTimestamp;
+    });
+
     // Sort by date descending
-    allResults.sort((a, b) => {
+    filtered.sort((a, b) => {
       const da = parseDate(a.date);
       const db = parseDate(b.date);
       return db - da;
     });
 
     // Translate titles and summaries to Portuguese
-    if (allResults.length > 0) {
-      const textsToTranslate = allResults.map(r => ({ title: r.title, summary: r.summary }));
+    if (filtered.length > 0) {
+      const textsToTranslate = filtered.map(r => ({ title: r.title, summary: r.summary }));
       const translated = await translateTexts(textsToTranslate);
-      for (let i = 0; i < allResults.length; i++) {
-        allResults[i].title = translated[i].title;
-        allResults[i].summary = translated[i].summary;
+      for (let i = 0; i < filtered.length; i++) {
+        filtered[i].title = translated[i].title;
+        filtered[i].summary = translated[i].summary;
       }
     }
 
-    console.log(`Returning ${allResults.length} total results (translated)`);
+    console.log(`Returning ${filtered.length} total results (translated)`);
 
     return new Response(
-      JSON.stringify({ success: true, data: allResults, fetchedAt: new Date().toISOString() }),
+      JSON.stringify({ success: true, data: filtered, fetchedAt: new Date().toISOString() }),
       { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
     );
   } catch (error) {
@@ -180,10 +188,16 @@ Deno.serve(async (req) => {
 
 function formatDate(dateStr: string): string {
   try {
-    const d = new Date(dateStr);
-    if (isNaN(d.getTime())) return dateStr;
-    const months = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
-    return `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+    // Europe PMC returns dates as "YYYY-MM-DD" — parse manually to avoid timezone shifts
+    const parts = dateStr.split("-");
+    if (parts.length === 3) {
+      const year = parseInt(parts[0]);
+      const month = parseInt(parts[1]) - 1; // 0-indexed
+      const day = parseInt(parts[2]);
+      const months = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
+      return `${months[month]} ${day}, ${year}`;
+    }
+    return dateStr;
   } catch {
     return dateStr;
   }
