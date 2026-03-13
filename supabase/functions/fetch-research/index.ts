@@ -146,8 +146,16 @@ Deno.serve(async (req) => {
       }
     }
 
+    // Filter out future dates (articles with "ahead of print" dates)
+    const now = new Date();
+    const currentTimestamp = now.getTime();
+    const filtered = allResults.filter(r => {
+      const ts = parseDate(r.date);
+      return ts === 0 || ts <= currentTimestamp;
+    });
+
     // Sort by date descending
-    allResults.sort((a, b) => {
+    filtered.sort((a, b) => {
       const da = parseDate(a.date);
       const db = parseDate(b.date);
       return db - da;
