@@ -17,6 +17,68 @@ const CATEGORY_IMAGES: Record<string, string> = {
   "Ensaios Clínicos": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&q=80",
 };
 
+async function translateTexts(texts: { title: string; summary: string }[]): Promise<{ title: string; summary: string }[]> {
+  const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
+  if (!LOVABLE_API_KEY) {
+    console.warn("LOVABLE_API_KEY not set, skipping translation");
+    return texts;
+  }
+
+  try {
+    const prompt = texts.map((t, i) => `[${i}] TITLE: ${t.title}\nSUMMARY: ${t.summary}`).join("\n---\n");
+
+    const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${LOVABLE_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "google/gemini-2.5-flash-lite",
+        messages: [
+          {
+            role: "system",
+            content: `Traduzes títulos e resumos de artigos científicos de inglês para português de Portugal (PT-PT). Mantém a terminologia médica e científica correta. Responde APENAS em JSON válido, um array de objetos com "title" e "summary". Sem explicações adicionais, sem markdown.`
+          },
+          {
+            role: "user",
+            content: `Traduz para português de Portugal (PT-PT) os seguintes títulos e resumos. Responde com um JSON array:\n\n${prompt}`
+          }
+        ],
+        temperature: 0.1,
+      }),
+    });
+
+    if (!response.ok) {
+      console.error("Translation API error:", response.status);
+      return texts;
+    }
+
+    const data = await response.json();
+    const content = data.choices?.[0]?.message?.content || "";
+    
+    // Extract JSON from response (handle potential markdown wrapping)
+    const jsonMatch = content.match(/\[[\s\S]*\]/);
+    if (!jsonMatch) {
+      console.error("Could not parse translation response:", content.substring(0, 200));
+      return texts;
+    }
+
+    const translated = JSON.parse(jsonMatch[0]);
+    if (Array.isArray(translated) && translated.length === texts.length) {
+      return translated.map((t: any, i: number) => ({
+        title: t.title || texts[i].title,
+        summary: t.summary || texts[i].summary,
+      }));
+    }
+
+    return texts;
+  } catch (e) {
+    console.error("Translation error:", e);
+    return texts;
+  }
+}
+
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
@@ -91,7 +153,17 @@ Deno.serve(async (req) => {
       return db - da;
     });
 
-    console.log(`Returning ${allResults.length} total results`);
+    // Translate titles and summaries to Portuguese
+    if (allResults.length > 0) {
+      const textsToTranslate = allResults.map(r => ({ title: r.title, summary: r.summary }));
+      const translated = await translateTexts(textsToTranslate);
+      for (let i = 0; i < allResults.length; i++) {
+        allResults[i].title = translated[i].title;
+        allResults[i].summary = translated[i].summary;
+      }
+    }
+
+    console.log(`Returning ${allResults.length} total results (translated)`);
 
     return new Response(
       JSON.stringify({ success: true, data: allResults, fetchedAt: new Date().toISOString() }),
