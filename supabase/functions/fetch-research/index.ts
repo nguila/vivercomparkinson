@@ -224,14 +224,9 @@ Deno.serve(async (req) => {
       return db - da;
     });
 
-    // Translate titles and summaries to Portuguese
+    // Translate titles and summaries to Portuguese (with cache)
     if (filtered.length > 0) {
-      const textsToTranslate = filtered.map(r => ({ title: r.title, summary: r.summary }));
-      const translated = await translateTexts(textsToTranslate);
-      for (let i = 0; i < filtered.length; i++) {
-        filtered[i].title = translated[i].title;
-        filtered[i].summary = translated[i].summary;
-      }
+      await translateWithCache(filtered);
     }
 
     console.log(`Returning ${filtered.length} total results (translated)`);
