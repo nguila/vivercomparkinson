@@ -188,10 +188,16 @@ Deno.serve(async (req) => {
 
 function formatDate(dateStr: string): string {
   try {
-    const d = new Date(dateStr);
-    if (isNaN(d.getTime())) return dateStr;
-    const months = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
-    return `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+    // Europe PMC returns dates as "YYYY-MM-DD" — parse manually to avoid timezone shifts
+    const parts = dateStr.split("-");
+    if (parts.length === 3) {
+      const year = parseInt(parts[0]);
+      const month = parseInt(parts[1]) - 1; // 0-indexed
+      const day = parseInt(parts[2]);
+      const months = ["Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
+      return `${months[month]} ${day}, ${year}`;
+    }
+    return dateStr;
   } catch {
     return dateStr;
   }
